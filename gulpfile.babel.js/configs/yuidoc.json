@@ -1,0 +1,13 @@
+{
+  "name": "react-ssr-spa",
+  "description": "Single page app rendered server side in react.",
+  "version": "0.0.1",
+  "url": "",
+  "logo": "",
+  "options": {
+    "paths": [
+      "./src"
+    ],
+    "outdir": "./docs"
+  }
+}

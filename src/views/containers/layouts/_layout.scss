@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  @include flex-grid-row;
+
+  flex-flow: column;
+}
+
+.main {
+  margin: 4rem 0 0;
+}
+
+html,
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.fonts-loaded {
+  html,
+  body {
+    font-family: Amble, sans-serif;
+  }
+}
+
+html {
+  -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-misspelled-properties, no-vendor-prefixes
+  overflow-y: scroll;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:visited {
+    color: $blue;
+  }
+
+  &:hover {
+    color: $blue;
+  }
+
+  &:active {
+    color: $blue;
+  }
+}
+

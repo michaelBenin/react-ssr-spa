@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "comma-dangle": [2, "never"],
+    "react/jsx-filename-extension": [0, { "extensions": [".js"] }],
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "mocha": true
+  }
+}

@@ -1,0 +1,13 @@
+.header {
+  @include flex-grid-row;
+
+  background: $white;
+  border-bottom: 1px solid $blue;
+  height: 4rem;
+  // @include flex-row()
+  left: 50%;
+  position: fixed;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 1;
+}

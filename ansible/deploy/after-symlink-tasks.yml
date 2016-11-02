@@ -1,0 +1,10 @@
+---
+- name: start pm2 process
+  sudo: yes
+  shell: HOME=/home/ubuntu pm2 startOrReload ./current/pm2/pm2.json5
+  args:
+    chdir: /var/www/react-ssr-spa
+
+- name: save processes for pm2
+  sudo: yes
+  shell: pm2 save

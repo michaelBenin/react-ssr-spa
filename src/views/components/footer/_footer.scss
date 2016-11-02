@@ -1,0 +1,18 @@
+.footer {
+  @include flex-grid-column;
+
+  border-top: solid 1px $light-gray;
+  margin: 2rem 0 0;
+
+  ul {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    color: $blue;
+  }
+}

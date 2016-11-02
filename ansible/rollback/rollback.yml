@@ -1,0 +1,9 @@
+---
+- hosts: tag_Name_webAppApi
+  sudo: yes
+  roles:
+    - role: carlosbuenosvinos.ansistrano-rollback
+      ansistrano_deploy_to: "/var/www/react-ssr-spa" # Base path to deploy to.
+      ansistrano_version_dir: "releases" # Releases folder name
+      ansistrano_current_dir: "current" # Softlink name. You should rarely changed it.
+      ansistrano_after_symlink_tasks_file:  "{{ playbook_dir }}/after-symlink-tasks.yml"

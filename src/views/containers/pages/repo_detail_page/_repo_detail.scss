@@ -1,0 +1,30 @@
+.repo-detail-page {
+  &__main {
+    @include flex-grid-column($columns: 12);
+  }
+
+  &__sidebar {
+    display: none;
+  }
+}
+
+@media #{$large-up} {
+  .repo-detail-page {
+    @include flex-grid-row;
+
+    flex-flow: row;
+    padding: 0;
+
+    &__main {
+      @include flex-grid-column($columns: 8);
+    }
+
+    &__sidebar {
+      @include flex-grid-column($columns: 4);
+
+      display: block;
+      margin-top: 1rem;
+    }
+  }
+}
+

@@ -1,0 +1,6 @@
+.not-found {
+  @include flex-grid-column($columns: 12);
+
+  background: $light-gray;
+  margin: 2rem 0 0;
+}

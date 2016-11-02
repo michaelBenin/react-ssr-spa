@@ -1,0 +1,24 @@
+---
+- hosts: tag_Name_webAppApi
+  sudo: yes
+  roles:
+    - role: carlosbuenosvinos.ansistrano-deploy
+      ansistrano_deploy_from: "." # Where my local project is (relative or absolute path)
+      ansistrano_deploy_to: "/var/www/react-ssr-spa" # Base path to deploy to.
+      ansistrano_version_dir: "releases" # Releases folder name
+      ansistrano_current_dir: "current" # Softlink name. You should rarely changed it.
+      ansistrano_current_via: "symlink" # Deployment strategy who code should be deployed to current path. Options are symlink or rsync
+      ansistrano_shared_paths: [] # Shared paths to symlink to release dir
+      ansistrano_keep_releases: 2 # Releases to keep after a new deployment. See "Pruning old releases".
+      ansistrano_deploy_via: "s3_unarchive" # Method used to deliver the code to the server. Options are copy, rsync, git, s3 or download.
+      ansistrano_allow_anonymous_stats: no
+
+      # Variables used in the S3 deployment strategy
+      ansistrano_s3_bucket: react-ssr-spa-artifacts
+      ansistrano_s3_object: "artifacts/{{ lookup('env', 'GIT_COMMIT') }}.tar.gz" # Add the _unarchive suffix to the ansistrano_deploy_via if your object is a package (ie: s3_unarchive)
+      ansistrano_s3_region: us-east-1
+      # Optional variables, omitted by default
+      ansistrano_s3_aws_access_key: {{ lookup('env', 'AWS_ACCESS_KEY') }}
+      ansistrano_s3_aws_secret_key: {{ lookup('env', 'AWS_SECRET_KEY') }}
+
+      ansistrano_after_symlink_tasks_file:  "{{ playbook_dir }}/after-symlink-tasks.yml"

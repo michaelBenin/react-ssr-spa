@@ -1,0 +1,33 @@
+// Framework
+@import '../../../node_modules/normalize-scss/sass/normalize';
+
+@include normalize;
+
+@import 'variables/colors';
+@import 'framework/mixins';
+@import 'framework/typography';
+@import 'framework/foundation_settings';
+@import '../../../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-flex-grid;
+@include foundation-flex-video;
+
+// External Libs
+@import '../../../node_modules/font-awesome/scss/font-awesome';
+
+//@import '../../../node_modules/slick-carousel/slick/slick.scss';
+
+// Layouts
+@import '../../views/containers/layouts/layout';
+// Pages
+@import '../../views/containers/pages/index_page/index';
+@import '../../views/containers/pages/about_page/about';
+@import '../../views/containers/pages/repo_detail_page/repo_detail';
+@import '../../views/containers/pages/not_found_page/not_found';
+@import '../../views/containers/pages/search_results_page/search_results';
+
+// Components
+@import '../../views/components/header/header';
+@import '../../views/components/nav/nav';
+@import '../../views/components/footer/footer';
+

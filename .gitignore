@@ -1,0 +1,12 @@
+.env
+.env_dev
+.env_staging
+.env_prod
+.idea
+.DS_Store
+*.log
+dist
+docs
+node_modules
+bower_components
+dump.rdb

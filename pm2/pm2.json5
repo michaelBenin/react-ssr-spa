@@ -1,0 +1,25 @@
+{
+  "apps": [
+    {
+      "name": "react-ssr-spa",
+      "cwd": "./current",
+      "script": "dist/server/index.js",
+      "instances": "0",
+      "exec_mode": "cluster_mode",
+      "max_memory_restart": "500M",
+      "min_uptime": 1000,
+      "watch": false,
+      "merge_logs": true,
+      "log_file": "/var/log/react-ssr-spa/pm2_react-ssr-spa_web_app_child.log",
+      "error_file": "/var/log/react-ssr-spa/pm2_react-ssr-spa_web_app_error.log",
+      "out_file": "/var/log/react-ssr-spa/pm2_react-ssr-spa_web_app_child_out.log",
+      "exec_interpreter": "node",
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "pmx": false,
+      "vizion": false,
+      "restart_delay": 4000
+    }
+  ]
+}
