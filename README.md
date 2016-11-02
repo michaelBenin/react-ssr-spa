@@ -20,7 +20,7 @@ node.js v5.6.0
 npm v3.8.6
 
 ````
-git clone git@bitbucket.org:react-ssr-spa-CI/react-ssr-spa.git
+git clone git@github.com:michaelBenin/react-ssr-spa.git
 cd react-ssr-spa
 npm i
 npm start
@@ -28,7 +28,7 @@ npm start
 
 ### Configuration:
 
-Create an .env file at the root of the directory. See .env.example
+(Optional) Create an .env file at the root of the directory. See .env.example in root.
 
 ## Commands:
 
