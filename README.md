@@ -96,17 +96,13 @@ To run server in production mode:
 
     npm run prod-server
 
-### Upload Artifacts to S3
+### Upload Artifact to S3
 
     npm run create-upload-artifact
 
 ### Upload Static Files to S3
 
-    npm run create-upload-artifact
-
-### Upload Static Files to S3
-
-    npm run create-upload-artifact
+    npm run upload-static-files
 
 ### Deployment (ansible & ansistrano)
 
