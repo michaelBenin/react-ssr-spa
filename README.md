@@ -16,8 +16,8 @@ Should you use this as a starting point for your application? A good way to know
 
 Requirements:
 
-node.js v5.6.0
-npm v3.8.6
+node.js v6.9.1
+npm v3.10.8
 
 ````
 git clone git@github.com:michaelBenin/react-ssr-spa.git
