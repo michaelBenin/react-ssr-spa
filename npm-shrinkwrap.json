@@ -7746,9 +7746,9 @@
       }
     },
     "react-router-redux": {
-      "version": "4.0.7",
-      "from": "react-router-redux@4.0.7",
-      "resolved": "https://registry.npmjs.org/react-router-redux/-/react-router-redux-4.0.7.tgz"
+      "version": "4.0.6",
+      "from": "react-router-redux@4.0.6",
+      "resolved": "https://registry.npmjs.org/react-router-redux/-/react-router-redux-4.0.6.tgz"
     },
     "react-side-effect": {
       "version": "1.0.2",
