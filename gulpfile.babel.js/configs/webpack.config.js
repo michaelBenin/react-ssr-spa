@@ -7,6 +7,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3001',
     'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
     path.join(__dirname, '../../src/client/index')
   ],
   output: {
@@ -24,8 +25,13 @@ module.exports = {
         loaders: ['json-loader']
       }, {
         test: /\.js$/,
-        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'],
-        include: path.join(__dirname, '../../src')
+        loader: 'babel',
+        include: path.join(__dirname, '../../src'),
+        exclude: path.join(__dirname, '../../node_modules'),
+        query: {
+          presets: ['es2015', 'react', 'stage-0'],
+          plugins: ['react-hot-loader/babel']
+        }
       }]
   }
 };

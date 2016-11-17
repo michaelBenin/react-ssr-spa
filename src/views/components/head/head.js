@@ -166,7 +166,7 @@ function mapStateToProps(state) {
 
 Head.propTypes = {
   staticUrl: PropTypes.string,
-  meta: PropTypes.shape({})
+  meta: PropTypes.shape({}) // eslint-disable-line react/no-unused-prop-types
 };
 
 export default connect(mapStateToProps)(Head);

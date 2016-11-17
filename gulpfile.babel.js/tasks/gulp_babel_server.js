@@ -10,7 +10,7 @@ gulp.task('babel-server', function babelServer() {
       sourceMaps: 'inline',
       presets: [
         'react',
-        'node5'
+        'node6'
       ]
     }))
     .pipe(gulp.dest(config.dest));

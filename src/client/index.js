@@ -13,7 +13,7 @@ import Root from '../views/containers/root_container';
 import { ThirdPartyJs, loadAllThirdPartyJs } from './utils/third_party_js_util';
 
 initialize().catch(function logError(/* err */) {
- // console.error(err);
+  // console.error(err);
 });
 // get json here
 let bootstrappedConfig = {};
@@ -54,3 +54,22 @@ match({
     renderedApp
   );
 });
+
+if (module.hot) {
+  module.hot.accept(() => {
+    const HotLoadRoot = require('../views/containers/root_container'); // eslint-disable-line global-require
+    match({
+      history,
+      routes
+    }, (error  /* , redirectLocation, renderProps*/) => {
+      if (error) {
+        console.error(error); // eslint-disable-line no-console
+      }
+
+      render(
+        <HotLoadRoot store={store}>{routes}</HotLoadRoot>,
+        window.document
+      );
+    });
+  });
+}
