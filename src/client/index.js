@@ -58,18 +58,9 @@ match({
 if (module.hot) {
   module.hot.accept(() => {
     const HotLoadRoot = require('../views/containers/root_container'); // eslint-disable-line global-require
-    match({
-      history,
-      routes
-    }, (error  /* , redirectLocation, renderProps*/) => {
-      if (error) {
-        console.error(error); // eslint-disable-line no-console
-      }
-
-      render(
-        <HotLoadRoot store={store}>{routes}</HotLoadRoot>,
-        window.document
-      );
-    });
+    render(
+      <HotLoadRoot />,
+      window.document
+    );
   });
 }
