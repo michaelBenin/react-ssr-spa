@@ -36,6 +36,10 @@ npm start
 
     npm start
 
+Optimized for use with 
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)and [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+
+
 ### Server Side Unit Tests:
 
     npm run server-unit-test

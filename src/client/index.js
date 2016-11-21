@@ -29,8 +29,7 @@ try {
   // console.error(error, 'Error parsing client config.');
   bootstrappedConfig = {};
 }
-
-const store = configureStore(browserHistory, bootstrappedConfig);
+const store = configureStore(browserHistory, bootstrappedConfig, env);
 const history = syncHistoryWithStore(browserHistory, store);
 const routes = getRoutes(history, store);
 ThirdPartyJs.setThirdPartyGlobals();

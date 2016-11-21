@@ -9,15 +9,27 @@ import reducer from '../reducers';
 
 export let store = {}; // eslint-disable-line import/no-mutable-exports
 
-export function configureStore(history, initialState = {}) {
-  store = createStore(
-    reducer,
-    initialState,
-    compose(
-      applyMiddleware(routerMiddleware(history)),
-      applyMiddleware(thunk)
-    )
-  );
+export function configureStore(history, initialState = {}, env) {
+  if (env !== 'development') {
+    store = createStore(
+      reducer,
+      initialState,
+      compose(
+        applyMiddleware(routerMiddleware(history)),
+        applyMiddleware(thunk)
+      )
+    );
+  } else {
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle, max-len
+    store = createStore(
+      reducer,
+      initialState,
+      composeEnhancers(
+        applyMiddleware(routerMiddleware(history)),
+        applyMiddleware(thunk)
+      )
+    );
+  }
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
