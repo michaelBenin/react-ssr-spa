@@ -24,6 +24,7 @@ git clone git@github.com:michaelBenin/react-ssr-spa.git
 cd react-ssr-spa
 npm i
 npm start
+Open browser http://localhost:8001/
 ````
 
 ### Configuration:
