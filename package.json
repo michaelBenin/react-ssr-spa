@@ -12,6 +12,8 @@
     "start": "NODE_ENV=development gulp dev",
     "client-unit-test": "gulp client-unit-test",
     "client-integration-test": "gulp client-integration-test",
+    "client-unit-test-watch": "KARMA_AUTOWATCH=on gulp client-unit-test",
+    "client-integration-test-watch": "KARMA_AUTOWATCH=on gulp client-integration-test",
     "server-unit-test": "gulp server-unit-test",
     "server-integration-test": "gulp server-integration-test",
     "acceptance-test": "gulp acceptance-test",

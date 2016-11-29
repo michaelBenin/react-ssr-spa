@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-describe('Example test', function describeSuite() {
-  it('Should return hello', function returnHello() {
+describe('Example test', function () {
+  it('Should return hello', function () {
     expect('hello').to.equal('hello');
   });
 });

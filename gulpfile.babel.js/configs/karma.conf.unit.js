@@ -1,5 +1,9 @@
 const path = require('path');
 
+const karmaAuto = process.env.KARMA_AUTOWATCH;
+const singleRun = (karmaAuto !== 'on');
+const autoWatch = (karmaAuto === 'on');
+
 // TODO: http://nicolasgallagher.com/how-to-test-react-components-karma-webpack/
 module.exports = function karmaConfUnit(config) {
   const conf = {
@@ -19,7 +23,8 @@ module.exports = function karmaConfUnit(config) {
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {},
     reporters: ['dots'],
-    singleRun: true,
+    singleRun,
+    autoWatch,
     // webpack config object
     webpack: {
       devtool: 'sourcemap',

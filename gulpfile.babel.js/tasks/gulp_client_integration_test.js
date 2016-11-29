@@ -6,6 +6,8 @@ import { log } from 'gulp-util';
 
 const redisPath = '../../dist/server/services/redis_service';
 const serverPath = '../../dist/server/services/server_service';
+const karmaAuto = process.env.KARMA_AUTOWATCH;
+const singleRun = (karmaAuto !== 'on');
 
 gulp.task('client-integration-test',
   function clientIntegrationTest(done) {
@@ -15,7 +17,7 @@ gulp.task('client-integration-test',
       new Server({
         configFile: path.join(__dirname,
           '../../gulpfile.babel.js/configs/karma.conf.integration.js'),
-        singleRun: true
+        singleRun
       }, function end() {
         require(serverPath) // eslint-disable-line global-require
           .createOrGetServer()
