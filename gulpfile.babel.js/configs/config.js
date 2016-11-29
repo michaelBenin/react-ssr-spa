@@ -37,8 +37,7 @@ const config = {
       integration: {
         src: [
           'test/server/utils/test_initializer_util.js',
-          'test/server/integration/spec/controllers/**/*.js',
-          'test/server/integration/spec/middleware/**/*.js',
+          'test/server/integration/**/*.js',
           'test/server/utils/test_teardown_util.js'
         ]
       },
@@ -46,7 +45,7 @@ const config = {
         src: [
           'test/server/utils/test_initializer_utils.js',
           'test/server/utils/enzyme_initializer.js',
-          'test/server/unit/spec/**/*.js'
+          'test/server/unit/**/*.js'
         ]
       }
     }

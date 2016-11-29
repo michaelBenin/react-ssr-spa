@@ -1,4 +1,4 @@
-import server from '../../../utils/app_util';
+import server from '../../utils/app_util';
 
 describe('React router middleware test', function () {
   this.timeout(1000);

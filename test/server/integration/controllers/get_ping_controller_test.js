@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import server from '../../../utils/app_util';
+import server from '../../utils/app_util';
 
 describe('Ping controller/route test', function () {
   this.timeout(1000);

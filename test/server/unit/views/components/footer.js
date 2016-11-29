@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
-import Footer from '../../../../../../src/views/components/footer/footer';
+import Footer from '../../../../../src/views/components/footer/footer';
 
 describe('A suite for footer', function describeSuite() {
   it('contains the correct class', function correctClass() {

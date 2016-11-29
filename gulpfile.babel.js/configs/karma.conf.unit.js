@@ -6,7 +6,7 @@ module.exports = function karmaConfUnit(config) {
     browsers: ['Chrome'],
     // karma only needs to know about the test bundle
     files: [
-      path.join(__dirname, '../../test/client/unit/spec/**/*')
+      path.join(__dirname, '../../test/client/unit/**/*')
     ],
     frameworks: ['mocha'],
     plugins: [
@@ -36,7 +36,7 @@ module.exports = function karmaConfUnit(config) {
     }
   };
 
-  conf.preprocessors[path.join(__dirname, '../../test/client/unit/spec/**/*')] = [
+  conf.preprocessors[path.join(__dirname, '../../test/client/unit/**/*')] = [
     'webpack'
   // 'sourcemap'
   ];
