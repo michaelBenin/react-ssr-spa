@@ -1,6 +1,6 @@
 {
   "name": "react-ssr-spa",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "dependencies": {
     "abab": {
       "version": "1.0.3",

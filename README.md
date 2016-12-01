@@ -37,8 +37,11 @@ Open browser http://localhost:8001/
 
     npm start
 
-Optimized for use with 
-[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)and [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+Optimized for use with: 
+
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+
+[Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
 
 ### Server Side Unit Tests:
@@ -53,11 +56,13 @@ Optimized for use with
 ### Client Side Unit Tests:
 
     npm run client-unit-test
+    npm run client-unit-test-watch
 
 
 ### Client Side Integration Tests:
 
     npm run client-integration-test
+    npm run client-integration-test-watch
 
 
 ### Functional / Acceptance Tests (WIP):
@@ -130,6 +135,8 @@ https://github.com/reactjs/react-redux
 https://github.com/reactjs/react-router-redux
 
 https://github.com/gaearon/redux-thunk
+
+https://github.com/nfl/react-helmet
 
 https://github.com/expressjs/express
 
