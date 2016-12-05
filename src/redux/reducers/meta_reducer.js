@@ -44,7 +44,7 @@ function getMetaRepo(action) {
       { property: 'fb:pages', content: '' },
       { property: 'og:url', content: '' },
       { property: 'og:title', content: '' },
-      { property: 'og:iamge', content: '' },
+      { property: 'og:image', content: '' },
       { property: 'og:description', content: `${get(action, 'repo.description')}` },
       { property: 'og:type', content: '' },
       { property: 'og:site_name', content: '' },
