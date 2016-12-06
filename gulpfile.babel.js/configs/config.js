@@ -6,7 +6,6 @@ const config = {
     'docs',
     'node_modules',
     'dist',
-    'bower_components',
     'logs/**/*.log'
   ],
   dest: 'dist',
@@ -64,15 +63,7 @@ const config = {
       style: 'expanded'
     },
     autoprefixerBrowsers: [
-      'ie >= 10',
-      'ie_mob >= 10',
-      'ff >= 30',
-      'chrome >= 34',
-      'safari >= 7',
-      'opera >= 23',
-      'ios >= 7',
-      'android >= 4.4',
-      'bb >= 10'
+      'last 2 versions'
     ],
     main: {
       stylesSrc: cssSrcPath,
