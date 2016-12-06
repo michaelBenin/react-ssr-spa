@@ -124,6 +124,7 @@
     "gulp-svgmin": "1.2.3",
     "gulp-tar": "1.9.0",
     "gulp-util": "3.0.7",
+    "gulp-webdriver": "2.0.2",
     "js-polyfills": "0.1.27",
     "jsdom": "9.8.3",
     "json-loader": "0.5.4",
@@ -146,6 +147,7 @@
     "supertest": "2.0.1",
     "supertest-as-promised": "4.0.2",
     "type-detect": "4.0.0",
+    "wdio-mocha-framework": "0.5.4",
     "webdriverio": "4.4.0",
     "webpack": "1.13.3",
     "webpack-dev-server": "1.16.2"

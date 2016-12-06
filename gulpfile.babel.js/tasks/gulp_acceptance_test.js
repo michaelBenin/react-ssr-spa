@@ -1,37 +1,32 @@
-/*eslint-disable */
 import gulp from 'gulp';
-import mocha from 'gulp-mocha';
+import webdriver from 'gulp-webdriver';
 import selenium from 'selenium-standalone';
 import runSequence from 'run-sequence';
+import { log } from 'gulp-util';
+import { join } from 'path';
 
-gulp.task('webdriver', () => {
-  return gulp.src([
-    'test/acceptance/utils/initializer_util.js',
-    'test/acceptance/spec/**/*.js',
-    'test/acceptance/utils/teardown.js'
-  ], {
-    read: false
-  }).pipe(mocha())
-    .on('error', function (err) {
-      console.error(err);
-    });
-});
+const configPath = join(
+  __dirname,
+  '../../gulpfile.babel.js/configs/wdio.conf.js'
+);
 
-gulp.task('selenium', function (done) {
+gulp.task('webdriver', () => gulp.src(configPath).pipe(webdriver()));
+
+gulp.task('selenium', (done) => {
   selenium.install({
     logger(message) {
-      console.info(message);
+      log(message);
     }
-  }, function (err) {
+  }, (err) => {
     if (err) {
       return done(err);
     }
-    selenium.start(function (err, child) {
-      if (err) {
-        return done(err);
+    return selenium.start((serr, child) => {
+      if (serr) {
+        return done(serr);
       }
-      var startServer = require('../../dist/server');
-      startServer.default.then(function () {
+      const startServer = require('../../dist/server');// eslint-disable-line global-require, max-len
+      return startServer.default.then(() => {
         selenium.child = child;
         done();
       });
@@ -39,17 +34,16 @@ gulp.task('selenium', function (done) {
   });
 });
 
-gulp.task('kill', function () {
+gulp.task('kill', () => {
   selenium.child.kill();
-  var gracefulExit = require('../../dist/server/utils/graceful_exit_util');
-  gracefulExit.default();
+  const gracefulExit = require('../../dist/server/utils/graceful_exit_util'); // eslint-disable-line global-require, max-len
+  gracefulExit.default(false, true);
 });
 
-gulp.task('acceptance-test', function (callback) {
+gulp.task('acceptance-test', (callback) => {
   runSequence(
     'selenium',
     'webdriver',
     'kill',
     callback);
 });
-/*eslint-enable */

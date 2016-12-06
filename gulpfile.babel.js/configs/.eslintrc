@@ -10,5 +10,8 @@
     "node": true,
     "browser": true,
     "mocha": true
+  },
+  "globals": {
+    "browser": true
   }
 }
