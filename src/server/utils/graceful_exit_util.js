@@ -2,7 +2,7 @@
 // import nodemailer from 'nodemailer';
 import gracefulExit from 'express-graceful-exit';
 import log from '../services/logger_service';
-import { app, createOrGetServer } from '../services/server_service';
+import { app, createOrGetServer } from '../services/express_service';
 import redisClient from '../services/redis_service';
 import config from '../config';
 // const env = config.get('env');

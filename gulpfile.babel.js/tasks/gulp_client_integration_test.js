@@ -5,7 +5,7 @@ import { Server } from 'karma';
 import { log } from 'gulp-util';
 
 const redisPath = '../../dist/server/services/redis_service';
-const serverPath = '../../dist/server/services/server_service';
+const serverPath = '../../dist/server/services/express_service';
 const karmaAuto = process.env.KARMA_AUTOWATCH;
 const singleRun = (karmaAuto !== 'on');
 
