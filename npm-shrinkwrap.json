@@ -9274,6 +9274,20 @@
       "resolved": "https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-15.0.0.tgz",
       "dev": true
     },
+    "stylelint-scss": {
+      "version": "1.3.4",
+      "from": "stylelint-scss@latest",
+      "resolved": "https://registry.npmjs.org/stylelint-scss/-/stylelint-scss-1.3.4.tgz",
+      "dev": true,
+      "dependencies": {
+        "postcss-media-query-parser": {
+          "version": "0.1.0",
+          "from": "postcss-media-query-parser@>=0.1.0 <0.2.0",
+          "resolved": "https://registry.npmjs.org/postcss-media-query-parser/-/postcss-media-query-parser-0.1.0.tgz",
+          "dev": true
+        }
+      }
+    },
     "sugarss": {
       "version": "0.2.0",
       "from": "sugarss@>=0.2.0 <0.3.0",

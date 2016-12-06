@@ -11,6 +11,7 @@
   }
 
   &__link {
+
     &:first-of-type {
       margin: 0;
     }
@@ -52,7 +53,9 @@
 }
 
 @media #{$medium-up} {
+
   .top-nav {
+
     &__logo {
       height: 1.875rem;
       width: 8.75rem;

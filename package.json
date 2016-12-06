@@ -142,6 +142,7 @@
     "selenium-standalone": "5.8.0",
     "sinon": "1.17.6",
     "stylelint-config-standard": "15.0.0",
+    "stylelint-scss": "1.3.4",
     "supertest": "2.0.1",
     "supertest-as-promised": "4.0.2",
     "type-detect": "4.0.0",

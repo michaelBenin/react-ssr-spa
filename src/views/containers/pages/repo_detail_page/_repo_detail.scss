@@ -1,4 +1,5 @@
 .repo-detail-page {
+
   &__main {
     @include flex-grid-column($columns: 12);
   }
@@ -9,6 +10,7 @@
 }
 
 @media #{$large-up} {
+
   .repo-detail-page {
     @include flex-grid-row;
 
@@ -27,4 +29,3 @@
     }
   }
 }
-
