@@ -3334,9 +3334,9 @@
       "resolved": "https://registry.npmjs.org/forwarded/-/forwarded-0.1.0.tgz"
     },
     "foundation-sites": {
-      "version": "6.3.0-rc1",
-      "from": "foundation-sites@6.3.0-rc1",
-      "resolved": "https://registry.npmjs.org/foundation-sites/-/foundation-sites-6.3.0-rc1.tgz",
+      "version": "6.2.2-rc2",
+      "from": "foundation-sites@6.2.2-rc2",
+      "resolved": "https://registry.npmjs.org/foundation-sites/-/foundation-sites-6.2.2-rc2.tgz",
       "dependencies": {
         "jquery": {
           "version": "2.2.4",
@@ -7021,7 +7021,8 @@
     "normalize-scss": {
       "version": "6.0.0",
       "from": "normalize-scss@>=6.0.0 <7.0.0",
-      "resolved": "https://registry.npmjs.org/normalize-scss/-/normalize-scss-6.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/normalize-scss/-/normalize-scss-6.0.0.tgz",
+      "dev": true
     },
     "normalize-selector": {
       "version": "0.2.0",
