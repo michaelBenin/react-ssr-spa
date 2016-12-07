@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/michaelBenin/react-ssr-spa.svg?branch=master)](https://travis-ci.org/michaelBenin/react-ssr-spa)
+
 # react-ssr-spa 
 
 ### About:
