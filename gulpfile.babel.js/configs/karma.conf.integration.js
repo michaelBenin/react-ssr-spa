@@ -1,13 +1,14 @@
 const path = require('path');
 
 const karmaAuto = process.env.KARMA_AUTOWATCH;
+const travis = process.env.TRAVIS_CI;
 const singleRun = (karmaAuto !== 'on');
 const autoWatch = (karmaAuto === 'on');
 
 // TODO: http://nicolasgallagher.com/how-to-test-react-components-karma-webpack/
 module.exports = function karmaConfIntegration(config) {
   const conf = {
-    browsers: ['Chrome'],
+    browsers: (travis ? ['Chrome_travis_ci'] : ['Chrome']),
     // karma only needs to know about the test bundle
     files: [
       path.join(__dirname, '../../test/client/integration/**/*')
@@ -20,6 +21,14 @@ module.exports = function karmaConfIntegration(config) {
       // 'karma-sourcemap-loader',
       'karma-webpack'
     ],
+
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {},
     reporters: ['dots'],
