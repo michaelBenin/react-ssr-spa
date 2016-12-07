@@ -7,5 +7,8 @@ exports.config = {
   capabilities: [{
     browserName: 'chrome'
   }],
-  framework: 'mocha'
+  framework: 'mocha',
+  mochaOpts: {
+    require: 'babel-register'
+  }
 };

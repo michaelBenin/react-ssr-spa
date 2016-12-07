@@ -1,6 +1,4 @@
-
-
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
 describe('webdriver.io page', function () {
   it('should have the right server rendered title', function () {
