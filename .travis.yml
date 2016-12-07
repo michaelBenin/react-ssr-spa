@@ -2,7 +2,7 @@ sudo: false
 language: node_js
 
 node_js:
-  - "6.1.x"
+  - "6.9.2"
 
 before_install:
   - export CHROME_BIN=chromium-browser
