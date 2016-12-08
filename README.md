@@ -19,7 +19,7 @@ Should you use this as a starting point for your application? A good way to know
 
 Requirements:
 
-node.js v6.9.1
+node.js v6.9.x
 npm v3.10.8
 
 ````
