@@ -105,6 +105,7 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.8.0",
     "font-awesome": "4.7.0",
+    "foundation-sites": "6.3.0-rc2",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.1",
     "gulp-aws": "0.0.5",
