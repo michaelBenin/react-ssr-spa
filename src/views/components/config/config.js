@@ -9,6 +9,10 @@ class Config extends Component {
   }
 
   render() {
+    if (!this.props.initialPageLoad) {
+      return null;
+    }
+
     return (
       <script
         className="client-config"
@@ -20,12 +24,16 @@ class Config extends Component {
 }
 
 Config.propTypes = {
-  state: PropTypes.string.isRequired
+  state: PropTypes.string.isRequired,
+  initialPageLoad: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
+  const { initialPageLoad } = state.config;
+  const currentState = (initialPageLoad ? JSON.stringify(state) : '');
   return {
-    state: JSON.stringify(state)
+    state: currentState,
+    initialPageLoad
   };
 }
 
