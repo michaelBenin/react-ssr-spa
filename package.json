@@ -31,7 +31,8 @@
     "clean": "gulp clean",
     "styles-doc": "gulp style-doc",
     "js-doc": "gulp js-doc",
-    "docs": "gulp js-doc style-doc"
+    "docs": "gulp js-doc style-doc",
+    "coverage": "gulp babel-server && cross-env NODE_ENV=coverage nyc report --reporter=text-lcov --include=dist --source-map=true mocha -r babel-register test/server/utils/test_initializer_util.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/integration/**/*.js test/server/utils/test_teardown_util.js | coveralls"
   },
   "pre-commit": [
     "test"
@@ -85,6 +86,7 @@
     "babel-core": "6.18.2",
     "babel-eslint": "7.1.1",
     "babel-loader": "6.2.8",
+    "babel-plugin-istanbul": "3.0.0",
     "babel-preset-es2015": "6.18.0",
     "babel-preset-latest-minimal": "1.1.2",
     "babel-preset-react": "6.16.0",
@@ -93,6 +95,8 @@
     "bunyan-prettystream": "0.1.3",
     "chai": "3.5.0",
     "chai-enzyme": "0.6.1",
+    "coveralls": "2.11.15",
+    "cross-env": "3.1.3",
     "del": "2.2.2",
     "enzyme": "2.6.0",
     "eslint": "3.11.1",
@@ -118,6 +122,7 @@
     "gulp-nodemon": "2.2.1",
     "gulp-rename": "1.2.2",
     "gulp-sass": "2.3.2",
+    "gulp-shell": "0.5.2",
     "gulp-sourcemaps": "2.2.0",
     "gulp-stylefmt": "1.0.0",
     "gulp-stylelint": "3.5.0",
@@ -133,8 +138,10 @@
     "karma-chrome-launcher": "2.0.0",
     "karma-mocha": "1.3.0",
     "karma-webpack": "1.8.0",
+    "mocha": "https://registry.npmjs.org/mocha/-/mocha-3.2.0.tgz",
     "mocha.parallel": "0.13.0",
     "normalize-scss": "6.0.0",
+    "nyc": "10.0.0",
     "pre-commit": "1.1.3",
     "react-addons-test-utils": "15.4.1",
     "react-hot-loader": "3.0.0-beta.6",

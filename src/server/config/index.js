@@ -10,13 +10,14 @@ import base from './base';
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development';
 }
-const env = process.env.NODE_ENV;
+
+const env = (process.env.NODE_ENV === 'coverage' ? 'development' : process.env.NODE_ENV);
 const configPath = path.join(__dirname, env);
 
 const envConfig = require(configPath); // eslint-disable-line  import/no-dynamic-require
 const configuration = _.defaultsDeep(
   {
-    env: process.env.NODE_ENV
+    env
   },
   envConfig.default,
   base

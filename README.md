@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/michaelBenin/react-ssr-spa.svg?branch=master)](https://travis-ci.org/michaelBenin/react-ssr-spa) [![dependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa) [![devDependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/dev-status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa?type=dev) [![NSP Status](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f/badge)](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f)
+[![Build Status](https://travis-ci.org/michaelBenin/react-ssr-spa.svg?branch=master)](https://travis-ci.org/michaelBenin/react-ssr-spa) [![dependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa) [![devDependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/dev-status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa?type=dev) [![NSP Status](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f/badge)](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f) 
+[![Coverage Status](https://coveralls.io/repos/github/michaelBenin/react-ssr-spa/badge.svg?branch=master)](https://coveralls.io/github/michaelBenin/react-ssr-spa?branch=master)
+
 # react-ssr-spa 
 
 ### About:

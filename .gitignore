@@ -4,8 +4,10 @@
 .env_prod
 .idea
 .DS_Store
+.nyc_output
 *.log
 dist
 docs
-node_modules
 dump.rdb
+coverage
+node_modules
