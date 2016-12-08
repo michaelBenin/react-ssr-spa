@@ -32,7 +32,7 @@
     "styles-doc": "gulp style-doc",
     "js-doc": "gulp js-doc",
     "docs": "gulp js-doc style-doc",
-    "coverage": "gulp babel-server && cross-env NODE_ENV=coverage nyc report --reporter=text-lcov --include=dist --source-map=true mocha -r babel-register test/server/utils/test_initializer_util.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/integration/**/*.js test/server/utils/test_teardown_util.js | coveralls"
+    "coverage": "cross-env NODE_ENV=coverage nyc --exclude=dist/client --reporter=text-lcov --include=dist --source-map=true mocha -r babel-register test/server/utils/initializer_util.js test/server/utils/test_initializer_util.js test/server/integration/**/*.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/utils/test_teardown_util.js | coveralls"
   },
   "pre-commit": [
     "test"
