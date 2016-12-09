@@ -15,3 +15,5 @@ install:
 script:
   - npm test
   - npm run coverage
+  - npm run client-coverage
+
