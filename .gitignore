@@ -6,8 +6,9 @@
 .DS_Store
 .nyc_output
 *.log
+coverage
 dist
 docs
 dump.rdb
-coverage
+karma_coverage
 node_modules
