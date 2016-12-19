@@ -53,11 +53,31 @@
         }
       }
     },
+    "adm-zip": {
+      "version": "0.4.7",
+      "from": "adm-zip@>=0.4.3 <0.5.0",
+      "resolved": "https://registry.npmjs.org/adm-zip/-/adm-zip-0.4.7.tgz",
+      "dev": true
+    },
     "after": {
       "version": "0.8.2",
       "from": "after@>=0.8.1 <0.9.0",
       "resolved": "https://registry.npmjs.org/after/-/after-0.8.2.tgz",
       "dev": true
+    },
+    "agent-base": {
+      "version": "2.0.1",
+      "from": "agent-base@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/agent-base/-/agent-base-2.0.1.tgz",
+      "dev": true,
+      "dependencies": {
+        "semver": {
+          "version": "5.0.3",
+          "from": "semver@>=5.0.1 <5.1.0",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.0.3.tgz",
+          "dev": true
+        }
+      }
     },
     "ajv": {
       "version": "4.9.2",
@@ -4644,6 +4664,12 @@
       "resolved": "https://registry.npmjs.org/https-browserify/-/https-browserify-0.0.1.tgz",
       "dev": true
     },
+    "https-proxy-agent": {
+      "version": "1.0.0",
+      "from": "https-proxy-agent@>=1.0.0 <1.1.0",
+      "resolved": "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-1.0.0.tgz",
+      "dev": true
+    },
     "ice-cap": {
       "version": "0.0.4",
       "from": "ice-cap@0.0.4",
@@ -9209,6 +9235,26 @@
         }
       }
     },
+    "sauce-connect-launcher": {
+      "version": "1.1.1",
+      "from": "sauce-connect-launcher@>=1.1.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/sauce-connect-launcher/-/sauce-connect-launcher-1.1.1.tgz",
+      "dev": true,
+      "dependencies": {
+        "async": {
+          "version": "2.1.4",
+          "from": "async@>=2.1.2 <3.0.0",
+          "resolved": "https://registry.npmjs.org/async/-/async-2.1.4.tgz",
+          "dev": true
+        },
+        "rimraf": {
+          "version": "2.5.4",
+          "from": "rimraf@>=2.5.4 <3.0.0",
+          "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.5.4.tgz",
+          "dev": true
+        }
+      }
+    },
     "sax": {
       "version": "1.1.5",
       "from": "sax@1.1.5",
@@ -11023,6 +11069,12 @@
           "dev": true
         }
       }
+    },
+    "wdio-sauce-service": {
+      "version": "0.3.1",
+      "from": "wdio-sauce-service@latest",
+      "resolved": "https://registry.npmjs.org/wdio-sauce-service/-/wdio-sauce-service-0.3.1.tgz",
+      "dev": true
     },
     "wdio-sync": {
       "version": "0.6.7",

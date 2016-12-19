@@ -1,23 +1,26 @@
-[![Build Status](https://travis-ci.org/michaelBenin/react-ssr-spa.svg?branch=master)](https://travis-ci.org/michaelBenin/react-ssr-spa) [![dependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa) [![devDependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/dev-status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa?type=dev) [![NSP Status](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f/badge)](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f) 
+[![Build Status](https://travis-ci.org/michaelBenin/react-ssr-spa.svg?branch=master)](https://travis-ci.org/michaelBenin/react-ssr-spa) [![dependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa) [![devDependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/dev-status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa?type=dev) [![NSP Status](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f/badge)](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f)
 
 Server Coverage: [![Coverage Status](https://coveralls.io/repos/github/michaelBenin/react-ssr-spa/badge.svg?branch=master)](https://coveralls.io/github/michaelBenin/react-ssr-spa?branch=master)
 
 Client Coverage: [![codecov](https://codecov.io/gh/michaelBenin/react-ssr-spa/branch/master/graph/badge.svg)](https://codecov.io/gh/michaelBenin/react-ssr-spa)
 
+Acceptance Tests: [![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://saucelabs.com/u/YOUR_SAUCE_USERNAME)
+
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/YOUR_SAUCE_USERNAME.svg)](https://saucelabs.com/u/YOUR_SAUCE_USERNAME)
 
 
-# react-ssr-spa 
+# react-ssr-spa
 
 ### About:
 
-react-ssr-spa is a react app that is server side rendered and is a single page app. 
+react-ssr-spa is a react app that is server side rendered and is a single page app.
 
-Should you use this as a starting point for your application? A good way to know is if you answered yes to any of the following questions. 
- 
+Should you use this as a starting point for your application? A good way to know is if you answered yes to any of the following questions.
+
  Do we need SEO?
 
  Do we need fast page loads without a loading spinner?
- 
+
  Do we need a fast app like website?
 
 ## Quickstart:
@@ -45,7 +48,7 @@ Open browser http://localhost:8001/
 
     npm start
 
-Optimized for use with: 
+Optimized for use with:
 
 [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 
@@ -91,7 +94,7 @@ Optimized for use with:
 ### Generate JS Documentation:
 
     npm run js-doc
-    
+
 ### Generate Style Documentation:
 
     npm run style-doc
@@ -148,7 +151,7 @@ https://github.com/nfl/react-helmet
 
 https://github.com/expressjs/express
 
-### Inspiration: 
+### Inspiration:
 
 https://github.com/rendrjs/rendr
 

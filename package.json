@@ -160,6 +160,7 @@
     "supertest-as-promised": "4.0.2",
     "type-detect": "4.0.0",
     "wdio-mocha-framework": "0.5.4",
+    "wdio-sauce-service": "0.3.1",
     "webdriverio": "4.4.0",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2"
