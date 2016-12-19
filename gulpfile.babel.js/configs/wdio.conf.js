@@ -18,7 +18,7 @@ if (process.env.TRAVIS_CI) {
   conf.key = process.env.SAUCE_ACCESS_KEY;
   conf.capabilities = [{
     browserName: 'chrome',
-    version: '42.0',
+    version: '42',
     platform: 'XP',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     name: 'react-ssr-spa-acceptance',
