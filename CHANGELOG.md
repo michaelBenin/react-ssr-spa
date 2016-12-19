@@ -1,5 +1,22 @@
 # Changelog
 
+## 5.0.0
+
+### Bugfixes
+
+* Client config won't rerender after initial page load
+
+### Added
+
+* Client side code coverage with codecov
+* Added badge to readme
+* Added client side test for coverage report
+
+### Changed
+
+* Added dependencies for client side code coverage
+* Added client side coverage command to package.json and travis config
+
 ## 4.0.0
 
 ### Bugfixes
@@ -8,7 +25,7 @@
 * Fixed hot reloading reducers
 * Fixed source maps in google chrome
 * Fixed enzyme breaking canUseDOM in integration tests
- 
+
 ### Added
 
 * Upgraded dependencies
@@ -58,7 +75,7 @@
 
 ### Changed
 
-* Webpack dev config was modified for latest react-hot-loader, also entry points were updated. 
+* Webpack dev config was modified for latest react-hot-loader, also entry points were updated.
 
 
 
