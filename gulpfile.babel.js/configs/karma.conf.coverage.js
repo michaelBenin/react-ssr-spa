@@ -12,7 +12,7 @@ module.exports = function karmaConfIntegration(config) {
       path.join(__dirname, '../../test/client/unit/**/*'),
       path.join(__dirname, '../../test/client/integration/**/*'),
       {
-        pattern: 'src/client/**/*',
+        pattern: path.join(__dirname, '../../src/client/**/*.js'),
         watched: false,
         included: false,
         served: true,
@@ -67,19 +67,20 @@ module.exports = function karmaConfIntegration(config) {
             plugins: ['istanbul']
           }
         }]
-      },
+      }
+    },
 
-      webpackMiddleware: {
-        noInfo: true
-      },
+    webpackMiddleware: {
+      noInfo: true
+    },
 
-      customLaunchers: {
-        Chrome_travis_ci: {
-          base: 'Chrome',
-          flags: ['--no-sandbox']
-        }
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
       }
     }
+
   };
 
   conf.preprocessors[path.join(__dirname, '../../test/client/integration/**/*')] = [
