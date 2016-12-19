@@ -10,7 +10,14 @@ module.exports = function karmaConfIntegration(config) {
 
     files: [
       path.join(__dirname, '../../test/client/unit/**/*'),
-      path.join(__dirname, '../../test/client/integration/**/*')
+      path.join(__dirname, '../../test/client/integration/**/*'),
+      {
+        pattern: 'src/client/**/*',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: true
+      }
     ],
 
     exclude: [
@@ -32,7 +39,17 @@ module.exports = function karmaConfIntegration(config) {
 
     preprocessors: {},
 
-    reporters: ['coverage'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      reporters: [
+        {
+          subdir: '.',
+          type: 'lcov'
+        }
+      ],
+      dir: path.join(__dirname, '../../', 'karma_coverage')
+    },
 
     webpack: {
       devtool: 'sourcemap',
@@ -46,34 +63,22 @@ module.exports = function karmaConfIntegration(config) {
           ],
           exclude: path.join(__dirname, '../../node_modules'),
           query: {
-            presets: ['es2015', 'react', 'stage-0']
+            presets: ['es2015', 'react', 'stage-0'],
+            plugins: ['istanbul']
           }
-        }],
-        postLoaders: [
-          {
-            test: /\.js$/,
-            loader: 'istanbul-instrumenter',
-            include: path.join(__dirname, '../../src/client') }
-        ]
+        }]
+      },
+
+      webpackMiddleware: {
+        noInfo: true
+      },
+
+      customLaunchers: {
+        Chrome_travis_ci: {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+        }
       }
-    },
-
-    webpackMiddleware: {
-      noInfo: true
-    },
-
-    customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
-
-    coverageReporter: {
-      dir: path.join(__dirname, '../../karma_coverage'),
-      reporters: [
-        { type: 'lcov' }
-      ]
     }
   };
 
@@ -88,6 +93,8 @@ module.exports = function karmaConfIntegration(config) {
   ];
 
   conf.preprocessors[path.join(__dirname, '../../src/client/**/*.js')] = [
+    'webpack',
+    'sourcemap',
     'coverage'
   ];
 
