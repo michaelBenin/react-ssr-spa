@@ -2,15 +2,17 @@ addons:
   sauce_connect: true
 
 sudo: false
-language: node_js
 language: java
 
-node_js:
-  - "6.9.2"
+env:
+  - NODE_VERSION=v6.9.2
+
 jdk:
   - oraclejdk8
 
 before_install:
+  - nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
