@@ -1,6 +1,7 @@
 // http://webdriver.io/guide/testrunner/configurationfile.html
 
 const conf = {
+  services: ['selenium-standalone'],
   specs: [
     'test/acceptance/spec/**/*.js'
   ],
@@ -14,7 +15,7 @@ const conf = {
 };
 
 if (process.env.TRAVIS_CI) {
-  conf.services = ['sauce'];
+  conf.services = ['selenium-standalone', 'sauce'];
   conf.sauceConnect = true;
   conf.user = process.env.SAUCE_USERNAME;
   conf.key = process.env.SAUCE_ACCESS_KEY;

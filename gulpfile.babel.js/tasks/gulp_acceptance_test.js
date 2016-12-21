@@ -1,8 +1,7 @@
 import gulp from 'gulp';
 import webdriver from 'gulp-webdriver';
-import selenium from 'selenium-standalone';
 import runSequence from 'run-sequence';
-import { log } from 'gulp-util';
+// import { log } from 'gulp-util';
 import { join } from 'path';
 
 const configPath = join(
@@ -10,39 +9,25 @@ const configPath = join(
   '../../gulpfile.babel.js/configs/wdio.conf.js'
 );
 
-gulp.task('webdriver', () => gulp.src(configPath).pipe(webdriver()));
+gulp.task('webdriver', () =>
+  gulp.src(configPath).pipe(webdriver({
+    logLevel: 'verbose'
+  }))
+);
 
-gulp.task('selenium', (done) => {
-  selenium.install({
-    logger(message) {
-      log(message);
-    }
-  }, (err) => {
-    if (err) {
-      return done(err);
-    }
-    return selenium.start((serr, child) => {
-      if (serr) {
-        return done(serr);
-      }
-      const startServer = require('../../dist/server');// eslint-disable-line global-require, max-len
-      return startServer.default.then(() => {
-        selenium.child = child;
-        done();
-      });
-    });
-  });
+gulp.task('start-test-server', (done) => {
+  require('../../dist/server').default.then(done);// eslint-disable-line global-require, max-len
 });
 
+
 gulp.task('kill', () => {
-  selenium.child.kill();
   const gracefulExit = require('../../dist/server/utils/graceful_exit_util'); // eslint-disable-line global-require, max-len
   gracefulExit.default(false, true);
 });
 
 gulp.task('acceptance-test', (callback) => {
   runSequence(
-    'selenium',
+    'start-test-server',
     'webdriver',
     'kill',
     callback);
