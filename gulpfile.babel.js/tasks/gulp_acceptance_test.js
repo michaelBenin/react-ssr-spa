@@ -13,29 +13,35 @@ const configPath = join(
 gulp.task('webdriver', () => gulp.src(configPath).pipe(webdriver()));
 
 gulp.task('selenium', (done) => {
-  selenium.install({
-    logger(message) {
-      log(message);
-    }
-  }, (err) => {
-    if (err) {
-      return done(err);
-    }
-    return selenium.start((serr, child) => {
-      if (serr) {
-        return done(serr);
+  if (!process.env.TRAVIS_CI) {
+    return selenium.install({
+      logger(message) {
+        log(message);
       }
-      const startServer = require('../../dist/server');// eslint-disable-line global-require, max-len
-      return startServer.default.then(() => {
-        selenium.child = child;
-        done();
+    }, (err) => {
+      if (err) {
+        return done(err);
+      }
+      return selenium.start((serr, child) => {
+        if (serr) {
+          return done(serr);
+        }
+        const startServer = require('../../dist/server');// eslint-disable-line global-require, max-len
+        return startServer.default.then(() => {
+          selenium.child = child;
+          done();
+        });
       });
     });
-  });
+  }
+  const startServer = require('../../dist/server');// eslint-disable-line global-require, max-len
+  return startServer.default.then(done);
 });
 
 gulp.task('kill', () => {
-  selenium.child.kill();
+  if (!process.env.TRAVIS_CI) {
+    selenium.child.kill();
+  }
   const gracefulExit = require('../../dist/server/utils/graceful_exit_util'); // eslint-disable-line global-require, max-len
   gracefulExit.default(false, true);
 });
