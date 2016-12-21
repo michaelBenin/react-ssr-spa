@@ -14,6 +14,7 @@ const conf = {
 };
 
 if (process.env.TRAVIS_CI) {
+  conf.services = ['sauce'];
   conf.sauceConnect = true;
   conf.user = process.env.SAUCE_USERNAME;
   conf.key = process.env.SAUCE_ACCESS_KEY;
