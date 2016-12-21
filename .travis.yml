@@ -25,5 +25,5 @@ script:
   - npm test
   - npm run coverage
   - npm run client-coverage
-  - npm run sauce-acceptance-test
+  - npm run acceptance-test
 
