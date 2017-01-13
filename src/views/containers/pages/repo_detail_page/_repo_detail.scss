@@ -9,7 +9,7 @@
   }
 }
 
-@media #{$large-up} {
+@include breakpoint(large up) {
 
   .repo-detail-page {
     @include flex-grid-row;

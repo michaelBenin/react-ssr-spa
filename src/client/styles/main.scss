@@ -10,7 +10,7 @@
 @import '../../../node_modules/foundation-sites/scss/foundation';
 
 @include foundation-flex-grid;
-@include foundation-flex-video;
+@include foundation-responsive-embed;
 
 // External Libs
 @import '../../../node_modules/font-awesome/scss/font-awesome';

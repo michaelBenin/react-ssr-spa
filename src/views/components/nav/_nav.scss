@@ -52,7 +52,7 @@
   }
 }
 
-@media #{$medium-up} {
+@include breakpoint(medium up) {
 
   .top-nav {
 
