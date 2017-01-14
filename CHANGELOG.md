@@ -1,5 +1,20 @@
 # Changelog
 
+## 6.0.0
+
+### Bugfixes
+
+* Code now abides most up to date linters
+* Removing deprecated vars/fns from updated libs
+
+### Added
+
+* Foundation for acceptance testing
+
+### Changed
+
+* Upgraded dependencies
+
 ## 5.0.0
 
 ### Bugfixes
