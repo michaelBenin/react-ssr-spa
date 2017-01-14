@@ -16,7 +16,7 @@ install:
   - npm i
 
 script:
-  - java -version
   - npm test
   - npm run coverage
   - npm run client-coverage
+  - npm run acceptance-test
