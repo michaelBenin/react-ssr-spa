@@ -4,6 +4,7 @@
 
 ### Bugfixes
 
+* React server rendering performance 30% faster
 * Code now abides most up to date linters
 * Removing deprecated vars/fns from updated libs
 
