@@ -50,10 +50,10 @@ class Search extends Component { // eslint-disable-line react/prefer-stateless-f
 }
 
 Search.propTypes = {
-  isLoading: PropTypes.bool,
-  error: PropTypes.bool,
-  errorMessage: PropTypes.string,
-  response: PropTypes.shape()
+  isLoading: PropTypes.bool, // eslint-disable-line react/require-default-props
+  error: PropTypes.bool, // eslint-disable-line react/require-default-props
+  errorMessage: PropTypes.string, // eslint-disable-line react/require-default-props
+  response: PropTypes.shape() // eslint-disable-line react/require-default-props
 };
 
 function mapStateToProps(state = {}) {

@@ -10,6 +10,6 @@ export default function Style({
 }
 
 Style.propTypes = {
-  innerHtml: PropTypes.string
+  innerHtml: PropTypes.string.isRequired
 };
 

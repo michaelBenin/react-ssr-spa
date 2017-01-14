@@ -26,26 +26,26 @@ function Head(props) {
     <head lang="en">
       <title>{title}</title>
 
-      {meta.map(function createMetaTags(conf, index) {
-        return <meta key={index} {...conf} />;
+      {meta.map(function createMetaTags(conf) {
+        return <meta key={JSON.stringify(conf)} {...conf} />;
       })}
 
       <link href={`${props.staticUrl}/css/main.css`} rel="stylesheet" />
 
-      {link.map(function createLinkTags(conf, index) {
-        return <link key={index} {...conf} />;
+      {link.map(function createLinkTags(conf) {
+        return <link key={JSON.stringify(conf)} {...conf} />;
       })}
 
-      {script.map(function createScriptTags(conf, index) {
-        return <Script key={index} {...conf} />;
+      {script.map(function createScriptTags(conf) {
+        return <Script key={JSON.stringify(conf)} {...conf} />;
       })}
 
-      {noscript.map(function createNoScriptTags(conf, index) {
-        return <Noscript key={index} {...conf} />;
+      {noscript.map(function createNoScriptTags(conf) {
+        return <Noscript key={JSON.stringify(conf)} {...conf} />;
       })}
 
-      {style.map(function createStyleTags(conf, index) {
-        return <Noscript key={index} {...conf} />;
+      {style.map(function createStyleTags(conf) {
+        return <Noscript key={JSON.stringify(conf)} {...conf} />;
       })}
       {ClientSideHead(props.initialPageLoad, { title, meta, link, script, noscript, style })}
     </head>

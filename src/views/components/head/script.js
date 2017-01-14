@@ -10,8 +10,8 @@ export default function Script({
 }
 
 Script.propTypes = {
-  innerHtml: PropTypes.string,
-  type: PropTypes.string,
-  src: PropTypes.string
+  innerHtml: PropTypes.string, // eslint-disable-line react/require-default-props
+  type: PropTypes.string.isRequired,
+  src: PropTypes.string // eslint-disable-line react/require-default-props
 };
 

@@ -10,6 +10,6 @@ export default function Noscript({
 }
 
 Noscript.propTypes = {
-  innerHtml: PropTypes.string
+  innerHtml: PropTypes.string.isRequired
 };
 

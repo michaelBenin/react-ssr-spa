@@ -55,10 +55,10 @@ function mapStateToProps(state = {}) {
 }
 
 RepoDetail.propTypes = {
-  repo: PropTypes.shape({}),
-  isLoading: PropTypes.bool,
-  error: PropTypes.bool,
-  errorMessage: PropTypes.string
+  repo: PropTypes.shape({}), // eslint-disable-line react/require-default-props
+  isLoading: PropTypes.bool, // eslint-disable-line react/require-default-props
+  error: PropTypes.bool, // eslint-disable-line react/require-default-props
+  errorMessage: PropTypes.string // eslint-disable-line react/require-default-props
 };
 
 export default connect(mapStateToProps)(RepoDetail);
