@@ -4,9 +4,9 @@ Server Coverage: [![Coverage Status](https://coveralls.io/repos/github/michaelBe
 
 Client Coverage: [![codecov](https://codecov.io/gh/michaelBenin/react-ssr-spa/branch/master/graph/badge.svg)](https://codecov.io/gh/michaelBenin/react-ssr-spa)
 
-Acceptance Tests: [![Sauce Test Status](https://saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://saucelabs.com/u/YOUR_SAUCE_USERNAME)
+Acceptance Tests: [![Sauce Test Status](https://saucelabs.com/buildstatus/react-ssr-spa)](https://saucelabs.com/u/react-ssr-spa)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/YOUR_SAUCE_USERNAME.svg)](https://saucelabs.com/u/YOUR_SAUCE_USERNAME)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/react-ssr-spa.svg)](https://saucelabs.com/u/react-ssr-spa)
 
 
 # react-ssr-spa
