@@ -56,11 +56,9 @@ function getMetaRepo(action) {
       { itemProp: 'name', content: '' },
       { itemProp: 'description', content: `${get(action, 'repo.description')}` },
       { itemProp: 'image', content: `${get(action, 'repo.owner.avatar_url')}` },
-
       { httpEquiv: 'refresh', content: '' },
       { httpEquiv: 'x-ua-compatible', content: '' },
       { httpEquiv: 'cleartype', content: '' }
-
     ],
     link: [
       { rel: 'dns-prefetch', href: '' },
@@ -69,21 +67,8 @@ function getMetaRepo(action) {
       { rel: 'canonical', href: '' },
       { rel: 'publisher', href: '' },
       { rel: 'image_src', href: `${get(action, 'repo.owner.avatar_url')}` },
-
       { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-      { rel: 'apple-touch-icon', sizes: '', href: '' },
-
       { rel: 'icon', type: 'image/png', sizes: '', href: '' },
-      { rel: 'icon', type: 'image/png', sizes: '', href: '' },
-      { rel: 'icon', type: 'image/png', sizes: '', href: '' },
-
       { rel: 'manifest', href: '' }
     ],
     script: [{ type: 'application/ld+json', innerHTML: '{ \'@context\': \'http://schema.org\' }' }],
