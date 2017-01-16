@@ -15,6 +15,7 @@ import RepoDetailPage from '../views/containers/pages/repo_detail_page/repo_deta
 import repoDetailStateManager from './route_state_managers/repo_detail_state_manager';
 import notFoundStateManager from './route_state_managers/not_found_state_manager';
 import searchResultsStateManager from './route_state_managers/search_results_state_manager';
+import homepageStateManager from './route_state_managers/homepage_state_manager';
 
 function logPageView() {
   if (canUseDOM) {
@@ -50,6 +51,7 @@ export default function giveRoutesHystoryAndStore(history, store) {
       <Route path="/" component={Layout}>
         <IndexRoute
           component={IndexPage}
+          onEnter={homepageStateManager(store)}
         />
         <Route
           path="/about"
