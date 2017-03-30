@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import 'autotrack';
 import scriptJS from 'scriptjs';
+import P from 'bluebird';
 
 export class ThirdPartyJs {
   // config here: https://analytics.google.com/analytics/web/#management/Settings/a45063514w75598220p78098335/%3Fm.page%3DPropertySettings/

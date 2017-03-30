@@ -1,12 +1,20 @@
 {
   "presets": [
-    "latest-minimal",
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }],
     "react"
   ],
   "env": {
     "coverage": {
       "presets": [
-        "latest-minimal",
+        ["env", {
+          "targets": {
+            "node": "current"
+          }
+        }],
         "react"
       ],
       "plugins": [

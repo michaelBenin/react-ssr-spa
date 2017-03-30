@@ -10,7 +10,11 @@ gulp.task('babel-server', function babelServer() {
       sourceMaps: 'inline',
       presets: [
         'react',
-        'latest-minimal'
+        ['env', {
+          targets: {
+            node: 'current'
+          }
+        }]
       ]
     }))
     .pipe(gulp.dest(config.dest));

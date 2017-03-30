@@ -1,9 +1,14 @@
 {
   "extends": "airbnb",
   "rules": {
+    "react/require-default-props": ["off"],
+    "react/no-array-index-key": ["off"],
     "comma-dangle": [2, "never"],
     "react/jsx-filename-extension": [0, { "extensions": [".js"] }],
-    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }]
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
+    "class-methods-use-this": [0],
+    "jsx-a11y/no-static-element-interactions": [0],
+    "react/jsx-boolean-value": ["off"]
   },
   "env": {
     "es6": true,

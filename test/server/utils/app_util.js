@@ -1,4 +1,4 @@
-import supertestPromised from 'supertest-as-promised';
+import supertest from 'supertest';
 import { app } from '../../../src/server/services/express_service';
 
-export default supertestPromised.agent(app);
+export default supertest.agent(app);

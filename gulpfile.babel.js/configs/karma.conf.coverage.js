@@ -63,7 +63,11 @@ module.exports = function karmaConfIntegration(config) {
           ],
           exclude: path.join(__dirname, '../../node_modules'),
           query: {
-            presets: ['es2015', 'react', 'stage-0'],
+            presets: ['react', ['env', {
+              targets: {
+                browsers: ['last 2 versions']
+              }
+            }]],
             plugins: ['istanbul']
           }
         }]

@@ -7,7 +7,7 @@ gulp.task('server-integration-test',
   function serverIntegrationTest() {
     return gulp.src(config.test.server.integration.src, {
       read: false
-    }).pipe(mocha())
+    }).pipe(mocha({ require: 'babel-register' }))
     .once('error', function handleError(err) {
       log(err);
     });

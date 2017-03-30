@@ -6,7 +6,7 @@ import config from './../configs/config';
 gulp.task('server-unit-test', function serverUnitTeset() {
   return gulp.src(config.test.server.unit.src, {
     read: false
-  }).pipe(mocha()).once('error', function handleError(err) {
+  }).pipe(mocha({ require: 'babel-register' })).once('error', function handleError(err) {
     log(err);
   });
 });

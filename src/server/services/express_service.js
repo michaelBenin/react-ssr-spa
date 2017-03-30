@@ -67,6 +67,7 @@ let server = false;
 export const createOrGetServer = () => {
   if (!server) {
     server = http.createServer(app);
+    expressGracefulExit.init(server);
   }
   return server;
 };

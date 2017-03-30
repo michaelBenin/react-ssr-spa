@@ -37,11 +37,22 @@ module.exports = function karmaConfUnit(config) {
     webpack: {
       devtool: 'sourcemap',
       module: {
-        loaders: [{
-          test: /\.js$/,
-          loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'],
-          exclude: path.join(__dirname, '../../node_modules')
-        }]
+        loaders: [
+          {
+            include: /\.json$/,
+            loaders: ['json-loader']
+          }, {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: path.join(__dirname, '../../node_modules'),
+            query: {
+              presets: ['react', ['env', {
+                targets: {
+                  browsers: ['last 2 versions']
+                }
+              }]]
+            }
+          }]
       }
     },
     webpackMiddleware: {
@@ -51,7 +62,7 @@ module.exports = function karmaConfUnit(config) {
 
   conf.preprocessors[path.join(__dirname, '../../test/client/unit/**/*')] = [
     'webpack'
-  // 'sourcemap'
+    // 'sourcemap'
   ];
   config.set(conf);
 };
