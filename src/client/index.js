@@ -20,7 +20,7 @@ let bootstrappedConfig = {};
 let env = false;
 const $config = $('.client-config');
 try {
-  bootstrappedConfig = JSON.parse($config.html());
+  bootstrappedConfig = $config.data('state');
   env = bootstrappedConfig.config.env;
   if (env === 'development') {
     window.disqus_developer = 1;

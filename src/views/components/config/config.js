@@ -2,11 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 class Config extends Component {
-  createConfig() {
-    return {
-      __html: this.props.state
-    };
-  }
 
   render() {
     if (!this.props.initialPageLoad) {
@@ -17,7 +12,8 @@ class Config extends Component {
       <script
         className="client-config"
         type="application/json"
-        dangerouslySetInnerHTML={this.createConfig()} // eslint-disable-line react/no-danger
+        charSet="UTF-8"
+        data-state={this.props.state}
       />
     );
   }
