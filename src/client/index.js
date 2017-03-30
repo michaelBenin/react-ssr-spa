@@ -5,7 +5,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { match, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { configureStore } from '../redux/store/store';
+import configureStore from '../redux/store/store';
 import getRoutes from '../react_router/react_router';
 import initialize from './utils/initializer_util';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';

@@ -7,7 +7,7 @@ import { renderToString } from 'react-dom/server';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
 import getRoutes from '../../react_router/react_router';
-import { configureStore } from '../../redux/store/store';
+import configureStore from '../../redux/store/store';
 import Root from '../../views/containers/root_container';
 import config from '../config';
 

@@ -2,14 +2,12 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 // https://github.com/gaearon/redux-thunk
 import thunk from 'redux-thunk';
-
 import { routerMiddleware } from 'react-router-redux';
-
 import reducer from '../reducers';
 
-export let store = {}; // eslint-disable-line import/no-mutable-exports
+export default function configureStore(history, initialState = {}, env) {
+  let store = {}; // eslint-disable-line import/no-mutable-exports
 
-export function configureStore(history, initialState = {}, env) {
   if (env !== 'development') {
     store = createStore(
       reducer,

@@ -9,15 +9,15 @@ export default function fetchSearchData(store) {
       if (store.getState().config.initialPageLoad === true) {
         return callback();
       }
-      fetchSearchAction(nextState.params.query)(dispatch);
+      fetchSearchAction(nextState.params.query, store)(dispatch);
       return callback();
     }
     // run sync
-    return fetchSearchAction(nextState.params.query)(dispatch)
+    return fetchSearchAction(nextState.params.query, store)(dispatch)
       .then(callback)
-      .catch(function handleServerSideRenderError() {
+      .catch(function handleServerSideRenderError(err) {
         // log error
-        callback();
+        callback(err);
       });
   };
 }

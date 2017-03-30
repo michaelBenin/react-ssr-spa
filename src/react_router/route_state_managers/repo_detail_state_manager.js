@@ -9,15 +9,15 @@ export default function fetchDataWithStore(store) {
       if (store.getState().config.initialPageLoad === true) {
         return callback();
       }
-      asyncRepoDetailAction(nextState.params)(dispatch);
+      asyncRepoDetailAction(nextState.params, store)(dispatch);
       return callback();
     }
     // run sync
-    return asyncRepoDetailAction(nextState.params)(dispatch)
+    return asyncRepoDetailAction(nextState.params, store)(dispatch)
       .then(callback)
-      .catch(function handleActionError() {
+      .catch(function handleActionError(err) {
         // log error
-        callback();
+        callback(err);
       });
   };
 }
