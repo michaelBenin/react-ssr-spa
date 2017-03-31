@@ -16,7 +16,9 @@ module.exports = {
         RUNTIME_ENV: JSON.stringify('browser')
       }
     }),
-    new webpack.optimize.DedupePlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
@@ -30,22 +32,26 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
-        include: /\.json$/,
-        loaders: ['json-loader']
-      }, {
-        test: /\.js$/,
-        loader: 'babel',
-        include: path.join(__dirname, '../../src'),
-        exclude: path.join(__dirname, '../../node_modules'),
-        query: {
-          presets: ['react', ['env', {
-            targets: {
-              browsers: ['last 2 versions']
+        test: /\.js?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['react'],
+                ['env', {
+                  targets: {
+                    browsers: ['last 2 versions']
+                  }
+                }]],
+              plugins: ['react-hot-loader/babel']
             }
-          }]]
-        }
-      }]
+          }
+        ],
+        exclude: /node_modules/
+      }
+    ]
   }
 };

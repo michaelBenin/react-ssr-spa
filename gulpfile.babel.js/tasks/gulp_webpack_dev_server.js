@@ -11,7 +11,7 @@ gulp.task('webpack-dev-server', function runWebpackDevServer(callback) {
     historyApiFallback: true
   });
 
-  /* const server = */ webpackApp.listen(3001, 'localhost',
+  const server = webpackApp.listen(3001, 'localhost',
     function webpackDevServerRunning(err /* , result*/) {
       if (err) {
         log(err);
@@ -22,8 +22,7 @@ gulp.task('webpack-dev-server', function runWebpackDevServer(callback) {
 
   process.on('SIGINT', () => {
     log('Process interrupted');
-    // TODO: fork webpack bc this isn't working!
-    // server.close();
+    server.close();
     process.exit();
   });
 });

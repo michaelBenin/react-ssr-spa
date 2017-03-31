@@ -54,23 +54,27 @@ module.exports = function karmaConfIntegration(config) {
     webpack: {
       devtool: 'sourcemap',
       module: {
-        loaders: [{
-          test: /\.js$/,
-          loader: 'babel',
-          include: [
-            path.join(__dirname, '../../test'),
-            path.join(__dirname, '../../src/client')
-          ],
-          exclude: path.join(__dirname, '../../node_modules'),
-          query: {
-            presets: ['react', ['env', {
-              targets: {
-                browsers: ['last 2 versions']
+        rules: [
+          {
+            test: /\.js?$/,
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    ['react'],
+                    ['env', {
+                      targets: {
+                        browsers: ['last 2 versions']
+                      }
+                    }]],
+                  plugins: ['istanbul']
+                }
               }
-            }]],
-            plugins: ['istanbul']
+            ],
+            exclude: /node_modules/
           }
-        }]
+        ]
       }
     },
 

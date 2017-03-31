@@ -88,7 +88,7 @@
     "babel-eslint": "7.2.1",
     "babel-loader": "6.4.1",
     "babel-plugin-istanbul": "4.1.1",
-    "babel-preset-env": "1.2.2",
+    "babel-preset-env": "1.3.2",
     "babel-preset-react": "6.23.0",
     "babel-runtime": "6.23.0",
     "bunyan-prettystream": "0.1.3",
@@ -97,7 +97,7 @@
     "cheerio": "0.22.0",
     "codecov": "2.1.0",
     "coveralls": "2.13.0",
-    "cross-env": "3.2.4",
+    "cross-env": "4.0.0",
     "del": "2.2.2",
     "enzyme": "2.8.0",
     "eslint": "3.18.0",
@@ -140,7 +140,7 @@
     "karma-coverage": "1.1.1",
     "karma-mocha": "1.3.0",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "1.8.0",
+    "karma-webpack": "2.0.3",
     "mocha": "3.2.0",
     "mocha.parallel": "0.15.0",
     "normalize-scss": "6.0.0",
@@ -160,8 +160,8 @@
     "type-detect": "4.0.0",
     "wdio-mocha-framework": "0.5.9",
     "webdriverio": "4.6.2",
-    "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack": "2.3.2",
+    "webpack-dev-server": "2.4.2"
   },
   "engines": {
     "node": "~6.9.0"
