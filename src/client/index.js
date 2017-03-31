@@ -1,12 +1,9 @@
-// https://github.com/reactjs/react-router/blob/master/docs/guides/ServerRendering.md
-// https://github.com/reactjs/react-router-redux/blob/master/examples/server/client.js
 import $ from 'jquery';
 import React from 'react';
 import { render } from 'react-dom';
-import { match, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from '../redux/store/store';
-import getRoutes from '../react_router/react_router';
 import initialize from './utils/initializer_util';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
 import Root from '../views/containers/root_container';
@@ -30,29 +27,19 @@ try {
   bootstrappedConfig = {};
 }
 const store = configureStore(browserHistory, bootstrappedConfig, env);
-const history = syncHistoryWithStore(browserHistory, store);
-const routes = getRoutes(history, store);
+
 ThirdPartyJs.setThirdPartyGlobals();
 
-match({
-  history,
-  routes
-}, (error  /* , redirectLocation, renderProps*/) => {
-  if (error) {
-    // handle error here
-  }
+function renderedApp() {
+  store.dispatch(initialLoadActionCreator());
+  loadAllThirdPartyJs(env);
+}
 
-  function renderedApp() {
-    store.dispatch(initialLoadActionCreator());
-    loadAllThirdPartyJs(env);
-  }
-
-  render(
-    <Root store={store}>{routes}</Root>,
-    window.document,
-    renderedApp
-  );
-});
+render(
+  <Root store={store} history={browserHistory} />,
+  window.document,
+  renderedApp
+);
 
 if (module.hot) {
   module.hot.accept(() => {

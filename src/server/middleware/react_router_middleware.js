@@ -1,12 +1,11 @@
 import P from 'bluebird';
 import React from 'react';
-import { createMemoryHistory, RouterContext, match } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { createMemoryHistory } from 'react-router';
 import { renderToString } from 'react-dom/server';
-
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
-import getRoutes from '../../react_router/react_router';
+import { getRoutesWithStore } from '../../react_router/react_router';
+import { matchRoutes, renderRoutes } from 'react-router-config'
 import configureStore from '../../redux/store/store';
 import Root from '../../views/containers/root_container';
 import config from '../config';
@@ -35,31 +34,22 @@ export default (req, res) => {
       }
     });
 
-    const history = syncHistoryWithStore(memoryHistory, store);
-    const routes = getRoutes(history, store);
+    const routes = getRoutesWithStore(store);
 
-    return match({
-      history,
-      routes,
-      location: req.url
-    }, function matchCallback(error, redirectLocation, renderProps) {
-      if (redirectLocation) {
-        return res.status(301)
-          .redirect(redirectLocation.pathname + (redirectLocation.search || ''));
-      }
+    const branch = matchRoutes(routes, req.url);
 
+    const promises = branch.map(({ route, match }) => {
+      return route.loadData
+        ? route.loadData(match)
+        : Promise.resolve(null)
+    });
+
+    promises.then(function() {
       let status;
-
       status = store.getState().status.code;
 
-      if (error) {
-        log.error(error);
-        status = 500;
-      }
-
-
       const renderedDOM = `<!doctype>${renderToString(
-        <Root store={store}><RouterContext {...renderProps} /></Root>
+        <Root store={store} history={memoryHistory}/>
       )}`;
 
       // TODO: cache rendered dom in redis
@@ -75,6 +65,9 @@ export default (req, res) => {
         redisClient.EXPIRE(statusKey, cacheExpire); // eslint-disable-line new-cap
       }
       return false;
+    }).catch(function(err) {
+      log.error(err);
+      res.status(500).json(err);
     });
   }
 
