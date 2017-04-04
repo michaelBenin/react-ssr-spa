@@ -22,14 +22,14 @@ export function getRoutesWithStore(store) {
       component: Layout,
       routes: [
         {
-          path: '/',
-          exact: true,
-          component: IndexPage,
-        },
-        {
           path: '/about',
           exact: true,
           component: AboutPage
+        },
+        {
+          path: '/',
+          exact: true,
+          component: IndexPage,
         },
         {
           path: '/search/:query',
@@ -49,13 +49,4 @@ export function getRoutesWithStore(store) {
       ]
     }
   ];
-}
-
-export function getRoutes() {
-  return (
-    <div>
-      <Route path="/" component={IndexPage} />
-      <Route path="/about" component={AboutPage} />
-    </div>
-  )
 }

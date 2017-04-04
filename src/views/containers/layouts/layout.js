@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from './../../components/header/header';
 import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
+import { renderRoutes } from 'react-router-config';
 
 class Layout extends Component {
 
@@ -26,7 +27,7 @@ class Layout extends Component {
       <body className="layout">
         <Header />
         <section className="main" role="main">
-          {this.props.children}
+          {renderRoutes(this.props.route.routes)}
         </section>
         <Footer />
         <Config />
@@ -46,8 +47,7 @@ function mapStateToProps(state) {
 
 Layout.propTypes = {
   env: PropTypes.string.isRequired,
-  staticUrl: PropTypes.string.isRequired,
-  children: PropTypes.shape({}).isRequired
+  staticUrl: PropTypes.string.isRequired
 };
 
 export default connect(mapStateToProps)(Layout);

@@ -23,7 +23,7 @@ export default (req, res) => {
   const statusKey = `${req.url}:__status`;
 
   function returnFromApi() {
-    const memoryHistory = createMemoryHistory(req.url);
+    const memoryHistory = createMemoryHistory({ initialEntries: [req.url] });
     // Unexpected keys will be ignored.
     const store = configureStore(memoryHistory, {
       config: {
@@ -47,6 +47,7 @@ export default (req, res) => {
     P.all(promises).then(function() {
       let status;
       status = store.getState().status.code;
+      //console.log(store.getState());
 
       const renderedDOM = `<!doctype>${renderToString(
         <Root store={store} history={memoryHistory}/>
