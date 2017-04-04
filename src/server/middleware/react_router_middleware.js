@@ -1,6 +1,6 @@
 import P from 'bluebird';
 import React from 'react';
-import { createMemoryHistory } from 'react-router';
+import createMemoryHistory from 'history/createMemoryHistory';
 import { renderToString } from 'react-dom/server';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
@@ -41,10 +41,10 @@ export default (req, res) => {
     const promises = branch.map(({ route, match }) => {
       return route.loadData
         ? route.loadData(match)
-        : Promise.resolve(null)
+        : P.resolve(null)
     });
 
-    promises.then(function() {
+    P.all(promises).then(function() {
       let status;
       status = store.getState().status.code;
 

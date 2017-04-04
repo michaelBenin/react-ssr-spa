@@ -3,7 +3,7 @@ import {Route} from 'react-router';
 import {matchRoutes, renderRoutes} from 'react-router-config';
 import {ConnectedRouter} from 'react-router-redux';
 import {Provider} from 'react-redux';
-import { getRoutesWithStore } from '../../react_router/react_router';
+import { getRoutesWithStore, getRoutes } from '../../react_router/react_router';
 import Head from '../components/head/head';
 import Layout from '../containers/layouts/layout';
 
@@ -11,14 +11,14 @@ class Root extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <ConnectedRouter history={this.props.history}>
           <html lang="en-US">
           <Head />
           <Layout>
-            {renderRoutes(getRoutesWithStore(this.props.store))}
+            <ConnectedRouter history={this.props.history}>
+              {getRoutes()}
+            </ConnectedRouter>
           </Layout>
           </html>
-        </ConnectedRouter>
       </Provider>
     );
   }

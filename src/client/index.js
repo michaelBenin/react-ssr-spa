@@ -1,13 +1,14 @@
 import $ from 'jquery';
 import React from 'react';
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 import configureStore from '../redux/store/store';
 import initialize from './utils/initializer_util';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
 import Root from '../views/containers/root_container';
 import { ThirdPartyJs, loadAllThirdPartyJs } from './utils/third_party_js_util';
+
+const browserHistory = createHistory();
 
 initialize().catch(function logError(/* err */) {
   // console.error(err);
@@ -26,6 +27,9 @@ try {
   // console.error(error, 'Error parsing client config.');
   bootstrappedConfig = {};
 }
+
+browserHistory.location.key = bootstrappedConfig.routing.location.key;
+
 const store = configureStore(browserHistory, bootstrappedConfig, env);
 
 ThirdPartyJs.setThirdPartyGlobals();

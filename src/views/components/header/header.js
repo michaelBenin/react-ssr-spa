@@ -1,10 +1,9 @@
 import React from 'react';
-import Nav from '../nav/nav';
 
 export default function () {
   return (
     <header className="header">
-      <Nav />
+      <h1>Header</h1>
     </header>
   );
 }

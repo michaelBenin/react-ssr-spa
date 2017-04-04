@@ -1,6 +1,6 @@
 import { canUseDOM } from 'exenv';
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route } from 'react-router';
 
 // Page Containers with components
 import Layout from '../views/containers/layouts/layout';
@@ -38,7 +38,7 @@ export function getRoutesWithStore(store) {
         },
         {
           path: '/search/:query',
-          component: SearchResultsPage.constructor,
+          component: SearchResultsPage,
           loadData: searchResultsStateManager(store)
         },
         {
@@ -49,4 +49,13 @@ export function getRoutesWithStore(store) {
       ]
     }
   ];
+}
+
+export function getRoutes() {
+  return (
+    <div>
+      <Route path="/" component={IndexPage} />
+      <Route path="/about" component={AboutPage} />
+    </div>
+  )
 }
