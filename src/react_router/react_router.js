@@ -1,6 +1,3 @@
-import { canUseDOM } from 'exenv';
-import React from 'react';
-import { Router, Route } from 'react-router';
 
 // Page Containers with components
 import Layout from '../views/containers/layouts/layout';
@@ -16,7 +13,7 @@ import repoDetailStateManager from './route_state_managers/repo_detail_state_man
 import notFoundStateManager from './route_state_managers/not_found_state_manager';
 import searchResultsStateManager from './route_state_managers/search_results_state_manager';
 
-export function getRoutesWithStore(store) {
+export default function getRoutesWithStore(store) {
   return [
     {
       component: Layout,
@@ -37,7 +34,13 @@ export function getRoutesWithStore(store) {
         },
         {
           path: '/',
-          component: IndexPage
+          component: IndexPage,
+          exact: true,
+          strict: true
+        },
+        {
+          component: NotFound,
+          loadData: notFoundStateManager(store)
         }
       ]
     }

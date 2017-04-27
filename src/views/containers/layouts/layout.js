@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
+
 import Header from './../../components/header/header';
 import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
-import { renderRoutes } from 'react-router-config';
 
 class Layout extends Component {
 
@@ -46,6 +47,7 @@ function mapStateToProps(state) {
 }
 
 Layout.propTypes = {
+  route: PropTypes.arrayOf(PropTypes.shape({})),
   env: PropTypes.string.isRequired,
   staticUrl: PropTypes.string.isRequired
 };

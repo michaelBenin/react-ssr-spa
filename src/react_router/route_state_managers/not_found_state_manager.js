@@ -4,10 +4,16 @@ import notFoundActionCreator from '../../redux/action_creators/not_found_status_
 export default function NotFound(store) {
   return function handleNotFound(nextState, replace, callback) {
     if (canUseDOM) {
-      return callback();
+      if (callback) {
+        return callback();
+      }
+      return false;
     }
     const { dispatch } = store;
     dispatch(notFoundActionCreator(404, 'NOT_FOUND_STATUS'));
-    return callback();
+    if (callback) {
+      return callback();
+    }
+    return false;
   };
 }

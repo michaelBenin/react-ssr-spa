@@ -1,14 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <ul className="footer__link-container">
         <li className="footer__link">
-          <h1>Footer</h1>
+          <Link to={'/'}>react-ssr-spa</Link>
         </li>
       </ul>
     </footer>
   );
 }
-

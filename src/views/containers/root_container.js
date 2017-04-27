@@ -1,23 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { renderRoutes } from 'react-router-config';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import { getRoutesWithStore } from '../../react_router/react_router';
+import getRoutesWithStore from '../../react_router/react_router';
 import Head from '../components/head/head';
 
-class Root extends Component {
-  render() {
-    return (
-      <Provider store={this.props.store}>
-        <ConnectedRouter history={this.props.history}>
-          <html lang="en-US">
-            <Head />
-            {renderRoutes(getRoutesWithStore(this.props.store))}
-          </html>
-        </ConnectedRouter>
-      </Provider>
-    );
-  }
+function Root({ store, history }) {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <html lang="en-US">
+          <Head />
+          {renderRoutes(getRoutesWithStore(store))}
+        </html>
+      </ConnectedRouter>
+    </Provider>
+  );
 }
 
 

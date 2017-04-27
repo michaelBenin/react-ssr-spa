@@ -2,10 +2,11 @@ import P from 'bluebird';
 import React from 'react';
 import createMemoryHistory from 'history/createMemoryHistory';
 import { renderToString } from 'react-dom/server';
+import { matchRoutes } from 'react-router-config';
+
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
-import { getRoutesWithStore } from '../../react_router/react_router';
-import { matchRoutes, renderRoutes } from 'react-router-config';
+import getRoutesWithStore from '../../react_router/react_router';
 import configureStore from '../../redux/store/store';
 import Root from '../../views/containers/root_container';
 import config from '../config';
@@ -38,13 +39,14 @@ export default (req, res) => {
 
     const branch = matchRoutes(routes, req.url);
 
-    const promises = branch.map(({ route, match }) => route.loadData
+    const promises = branch.map(function matchMap({ route, match }) {
+      return route.loadData
         ? route.loadData(match)
-        : P.resolve(null));
+        : P.resolve(null);
+    });
 
     P.all(promises).then(() => {
-      let status;
-      status = store.getState().status.code;
+      const status = store.getState().status.code;
       // console.log(store.getState());
 
       const renderedDOM = `<!doctype>${renderToString(

@@ -7,17 +7,31 @@ export default function fetchDataWithStore(store) {
     // run async
     if (canUseDOM) {
       if (store.getState().config.initialPageLoad === true) {
-        return callback();
+        if (callback) {
+          return callback();
+        }
+        return false;
       }
       asyncRepoDetailAction(nextState.params, store)(dispatch);
-      return callback();
+      if (callback) {
+        return callback();
+      }
+      return false;
     }
     // run sync
     return asyncRepoDetailAction(nextState.params, store)(dispatch)
-      .then(callback)
-      .catch(function handleActionError(err) {
+      .then(function cb() {
+        if (callback) {
+          return callback();
+        }
+        return false;
+      })
+      .catch(function handleActionError(/* err*/) {
         // log error
-        callback(err);
+        if (callback) {
+          return callback();
+        }
+        return false;
       });
   };
 }
