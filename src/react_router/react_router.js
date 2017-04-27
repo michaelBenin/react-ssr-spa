@@ -23,18 +23,7 @@ export function getRoutesWithStore(store) {
       routes: [
         {
           path: '/about',
-          exact: true,
           component: AboutPage
-        },
-        {
-          path: '/',
-          exact: true,
-          component: IndexPage,
-        },
-        {
-          path: '/search/:query',
-          component: SearchResultsPage,
-          loadData: searchResultsStateManager(store)
         },
         {
           path: '/search/:query',
@@ -45,7 +34,11 @@ export function getRoutesWithStore(store) {
           path: '/repo/:user/:title',
           component: RepoDetailPage,
           loadData:repoDetailStateManager(store)
-        }
+        },
+        {
+          path: '/',
+          component: IndexPage,
+        },
       ]
     }
   ];

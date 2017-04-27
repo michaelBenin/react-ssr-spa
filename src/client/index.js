@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import configureStore from '../redux/store/store';
 import initialize from './utils/initializer_util';
+import { setRoutes } from './utils/client_route_handler';
+import { getRoutesWithStore } from '../react_router/react_router';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
 import Root from '../views/containers/root_container';
 import { ThirdPartyJs, loadAllThirdPartyJs } from './utils/third_party_js_util';
@@ -32,12 +34,15 @@ browserHistory.location.key = bootstrappedConfig.routing.location.key;
 
 const store = configureStore(browserHistory, bootstrappedConfig, env);
 
+setRoutes(getRoutesWithStore(store));
+
 ThirdPartyJs.setThirdPartyGlobals();
 
 function renderedApp() {
   store.dispatch(initialLoadActionCreator());
   loadAllThirdPartyJs(env);
 }
+
 
 render(
   <Root store={store} history={browserHistory} />,

@@ -26,7 +26,7 @@ function Head(props) {
   return (
     <head lang="en">
       <title>{title}</title>
-
+      <meta charSet="utf-8" />
       {meta.map(function createMetaTags(conf) {
         return <meta key={JSON.stringify(conf)} {...conf} />;
       })}

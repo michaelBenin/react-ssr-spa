@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 // import { get as _get } from 'lodash';
 
 /*
@@ -35,11 +35,9 @@ class Search extends Component { // eslint-disable-line react/prefer-stateless-f
           {this.props.response.items.map(function mapItems(item) {
             return (
               <li key={`${item.owner.login}|${item.name}`}>
-                <Link to={`/repo/${item.owner.login}/${item.name}`}>
                   <h3>{item.name}</h3>
                   <cite>{item.owner.login}</cite>
                   <img src={item.owner.avatar_url} alt="Name" />
-                </Link>
               </li>
             );
           })}

@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Route} from 'react-router';
-import {matchRoutes, renderRoutes} from 'react-router-config';
+import {renderRoutes} from 'react-router-config';
 import {ConnectedRouter} from 'react-router-redux';
 import {Provider} from 'react-redux';
 import { getRoutesWithStore } from '../../react_router/react_router';

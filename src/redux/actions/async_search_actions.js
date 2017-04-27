@@ -10,6 +10,7 @@ export default function fetchSearchAction(query, store) {
   return function firstDispatch(dispatch) {
     dispatch(searchActions.searchLoading());
     return SearchModel.fetch(query, store).then(function handleSearchModelData(searchData) {
+      // searchData.data.items = [{test: 'hi'}];
       dispatch(searchActions.searchLoaded(searchData.data));
     }).catch(function handleSearchError(err) {
       log.error(err, 'Error in fetching repo.');

@@ -13,22 +13,22 @@ class Config extends Component {
         className="client-config"
         type="application/json"
         charSet="UTF-8"
-        data-state={this.props.state}
+        data-state={this.props.data}
       />
     );
   }
 }
 
 Config.propTypes = {
-  state: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
   initialPageLoad: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
   const { initialPageLoad } = state.config;
-  const currentState = (initialPageLoad ? JSON.stringify(state) : '');
+  const data = (initialPageLoad ? JSON.stringify(state) : '');
   return {
-    state: currentState,
+    data,
     initialPageLoad
   };
 }
