@@ -5,7 +5,7 @@ import { renderToString } from 'react-dom/server';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
 import { getRoutesWithStore } from '../../react_router/react_router';
-import { matchRoutes, renderRoutes } from 'react-router-config'
+import { matchRoutes, renderRoutes } from 'react-router-config';
 import configureStore from '../../redux/store/store';
 import Root from '../../views/containers/root_container';
 import config from '../config';
@@ -38,19 +38,17 @@ export default (req, res) => {
 
     const branch = matchRoutes(routes, req.url);
 
-    const promises = branch.map(({ route, match }) => {
-      return route.loadData
+    const promises = branch.map(({ route, match }) => route.loadData
         ? route.loadData(match)
-        : P.resolve(null)
-    });
+        : P.resolve(null));
 
-    P.all(promises).then(function() {
+    P.all(promises).then(() => {
       let status;
       status = store.getState().status.code;
-      //console.log(store.getState());
+      // console.log(store.getState());
 
       const renderedDOM = `<!doctype>${renderToString(
-        <Root store={store} history={memoryHistory}/>
+        <Root store={store} history={memoryHistory} />
       )}`;
 
       // TODO: cache rendered dom in redis
@@ -66,7 +64,7 @@ export default (req, res) => {
         redisClient.EXPIRE(statusKey, cacheExpire); // eslint-disable-line new-cap
       }
       return false;
-    }).catch(function(err) {
+    }).catch((err) => {
       log.error(err);
       res.status(500).json(err);
     });

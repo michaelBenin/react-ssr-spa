@@ -35,9 +35,9 @@ class Search extends Component { // eslint-disable-line react/prefer-stateless-f
           {this.props.response.items.map(function mapItems(item) {
             return (
               <li key={`${item.owner.login}|${item.name}`}>
-                  <h3>{item.name}</h3>
-                  <cite>{item.owner.login}</cite>
-                  <img src={item.owner.avatar_url} alt="Name" />
+                <h3>{item.name}</h3>
+                <cite>{item.owner.login}</cite>
+                <img src={item.owner.avatar_url} alt="Name" />
               </li>
             );
           })}

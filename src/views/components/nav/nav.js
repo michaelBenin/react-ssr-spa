@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { navigate } from '../../../client/utils/client_route_handler';
+import { push } from 'react-router-redux';
 
 class Nav extends Component {
   constructor(props) {
@@ -67,7 +67,8 @@ function mapDispatchToProps(dispatch) {
   return {
     goToSearch(e) {
       e.preventDefault();
-      navigate(dispatch, `/search/${this.searchQuery.value}`)
+      const query = this.searchQuery.value;
+      dispatch(push(`/search/${query}`));
     }
   };
 }

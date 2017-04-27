@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import configureStore from '../redux/store/store';
 import initialize from './utils/initializer_util';
-import { setRoutes } from './utils/client_route_handler';
+import { matchRoutes } from 'react-router-config';
 import { getRoutesWithStore } from '../react_router/react_router';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
 import Root from '../views/containers/root_container';
@@ -34,7 +34,15 @@ browserHistory.location.key = bootstrappedConfig.routing.location.key;
 
 const store = configureStore(browserHistory, bootstrappedConfig, env);
 
-setRoutes(getRoutesWithStore(store));
+const routesToMatch = getRoutesWithStore(store);
+
+browserHistory.listen((location /* , action*/) => {
+  const url = `${location.pathname}${location.search}${location.hash}`;
+  const branch = matchRoutes(routesToMatch, url);
+  branch.map(({ route, match }) => route.loadData
+        ? route.loadData(match)
+        : P.resolve(null));
+});
 
 ThirdPartyJs.setThirdPartyGlobals();
 

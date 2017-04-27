@@ -7,23 +7,25 @@ export default function fetchSearchData(store) {
     // run async
     if (canUseDOM) {
       if (store.getState().config.initialPageLoad === true) {
-        if(callback) {
+        if (callback) {
           return callback();
         }
         return false;
       }
       fetchSearchAction(nextState.params.query, store)(dispatch);
-      if(callback) {
+      if (callback) {
         return callback();
       }
       return false;
     }
     // run sync
     return fetchSearchAction(nextState.params.query, store)(dispatch)
-      .then(function cb() { if(callback) {
-        return callback();
-      }
-        return false; })
+      .then(function cb() {
+        if (callback) {
+          return callback();
+        }
+        return false;
+      })
       .catch(function handleServerSideRenderError(err) {
         // log error
         callback(err);

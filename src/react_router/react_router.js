@@ -33,12 +33,12 @@ export function getRoutesWithStore(store) {
         {
           path: '/repo/:user/:title',
           component: RepoDetailPage,
-          loadData:repoDetailStateManager(store)
+          loadData: repoDetailStateManager(store)
         },
         {
           path: '/',
-          component: IndexPage,
-        },
+          component: IndexPage
+        }
       ]
     }
   ];
