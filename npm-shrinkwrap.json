@@ -1877,6 +1877,11 @@
       "resolved": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.4.tgz",
       "dev": true
     },
+    "create-react-class": {
+      "version": "15.5.2",
+      "from": "create-react-class@>=15.5.1 <16.0.0",
+      "resolved": "https://registry.npmjs.org/create-react-class/-/create-react-class-15.5.2.tgz"
+    },
     "cross-env": {
       "version": "4.0.0",
       "from": "cross-env@4.0.0",
@@ -9101,6 +9106,11 @@
       "from": "promise@>=7.1.1 <8.0.0",
       "resolved": "https://registry.npmjs.org/promise/-/promise-7.1.1.tgz"
     },
+    "prop-types": {
+      "version": "15.5.8",
+      "from": "prop-types@>=15.0.0 <16.0.0",
+      "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.5.8.tgz"
+    },
     "proxy-addr": {
       "version": "1.1.4",
       "from": "proxy-addr@>=1.1.3 <1.2.0",
@@ -9285,14 +9295,14 @@
       "dev": true
     },
     "react-redux": {
-      "version": "5.0.3",
-      "from": "react-redux@5.0.3",
-      "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-5.0.3.tgz"
+      "version": "5.0.4",
+      "from": "react-redux@5.0.4",
+      "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-5.0.4.tgz"
     },
     "react-router": {
-      "version": "4.0.0",
-      "from": "react-router@4.0.0",
-      "resolved": "https://registry.npmjs.org/react-router/-/react-router-4.0.0.tgz",
+      "version": "4.1.1",
+      "from": "react-router@4.1.1",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-4.1.1.tgz",
       "dependencies": {
         "path-to-regexp": {
           "version": "1.7.0",
@@ -9302,14 +9312,14 @@
       }
     },
     "react-router-config": {
-      "version": "1.0.0-beta.1",
-      "from": "react-router-config@1.0.0-beta.1",
-      "resolved": "https://registry.npmjs.org/react-router-config/-/react-router-config-1.0.0-beta.1.tgz"
+      "version": "1.0.0-beta.3",
+      "from": "react-router-config@1.0.0-beta.3",
+      "resolved": "https://registry.npmjs.org/react-router-config/-/react-router-config-1.0.0-beta.3.tgz"
     },
     "react-router-dom": {
-      "version": "4.0.0",
-      "from": "react-router-dom@4.0.0",
-      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-4.0.0.tgz"
+      "version": "4.1.1",
+      "from": "react-router-dom@4.1.1",
+      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-4.1.1.tgz"
     },
     "react-router-redux": {
       "version": "5.0.0-alpha.4",
