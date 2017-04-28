@@ -55,7 +55,8 @@ export default (req, res) => {
 
       // TODO: cache rendered dom in redis
       res.writeHead(status, {
-        'Content-Type': 'text/html'
+        'Content-Type': 'text/html',
+        'Access-Control-Allow-Origin': '*'
       });
 
       res.end(renderedDOM);

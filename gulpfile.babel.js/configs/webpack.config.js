@@ -23,6 +23,11 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: 'http://localhost:3001/static'
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

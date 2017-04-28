@@ -62,10 +62,13 @@ render(
 );
 
 if (module.hot) {
-  module.hot.accept(() => {
-    const HotLoadRoot = require('../views/containers/root_container'); // eslint-disable-line global-require
+  module.hot.accept([
+    '../react_router/react_router',
+    '../views/containers/root_container'
+  ], () => {
+    const HotLoadRoot = require('../views/containers/root_container').default; // eslint-disable-line global-require
     render(
-      <HotLoadRoot />,
+      <HotLoadRoot store={store} history={browserHistory} />,
       window.document
     );
   });

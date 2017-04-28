@@ -47,7 +47,11 @@ function mapStateToProps(state) {
 }
 
 Layout.propTypes = {
-  route: PropTypes.arrayOf(PropTypes.shape({})),
+  route: PropTypes.shape({
+    routes: PropTypes.arrayOf(PropTypes.shape({
+
+    }))
+  }),
   env: PropTypes.string.isRequired,
   staticUrl: PropTypes.string.isRequired
 };
