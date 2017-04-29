@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/michaelBenin/react-ssr-spa.svg?branch=master)](https://travis-ci.org/michaelBenin/react-ssr-spa) [![dependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa) [![devDependencies Status](https://david-dm.org/michaelBenin/react-ssr-spa/dev-status.svg)](https://david-dm.org/michaelBenin/react-ssr-spa?type=dev) [![NSP Status](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f/badge)](https://nodesecurity.io/orgs/react-ssr-spa/projects/517c11e2-34a4-425f-bf5e-3b074e49ab7f)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 Server Coverage: [![Coverage Status](https://coveralls.io/repos/github/michaelBenin/react-ssr-spa/badge.svg?branch=master)](https://coveralls.io/github/michaelBenin/react-ssr-spa?branch=master)
 
