@@ -5,7 +5,10 @@ function getMetaRepo(action) {
     title: `${get(action, 'repo.name')} - ${get(action, 'repo.description')}`,
     meta: [
       { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+      },
       { name: 'subject', content: '' },
       { name: 'description', content: `${get(action, 'repo.description')}` },
       { name: 'keywords', content: '' },
@@ -25,8 +28,14 @@ function getMetaRepo(action) {
       { name: 'twitter:card', content: '' },
       { name: 'twitter:url', content: '' },
       { name: 'twitter:title', content: '' },
-      { name: 'twitter:description', content: `${get(action, 'repo.description')}` },
-      { name: 'twitter:image', content: `${get(action, 'repo.owner.avatar_url')}` },
+      {
+        name: 'twitter:description',
+        content: `${get(action, 'repo.description')}`
+      },
+      {
+        name: 'twitter:image',
+        content: `${get(action, 'repo.owner.avatar_url')}`
+      },
       { name: 'twitter:site', content: '' },
       { name: 'twitter:creator', content: '' },
 
@@ -45,7 +54,10 @@ function getMetaRepo(action) {
       { property: 'og:url', content: '' },
       { property: 'og:title', content: '' },
       { property: 'og:image', content: '' },
-      { property: 'og:description', content: `${get(action, 'repo.description')}` },
+      {
+        property: 'og:description',
+        content: `${get(action, 'repo.description')}`
+      },
       { property: 'og:type', content: '' },
       { property: 'og:site_name', content: '' },
       { property: 'og:locale', content: '' },
@@ -54,13 +66,15 @@ function getMetaRepo(action) {
       { property: 'fb:article_style', content: '' },
 
       { itemProp: 'name', content: '' },
-      { itemProp: 'description', content: `${get(action, 'repo.description')}` },
+      {
+        itemProp: 'description',
+        content: `${get(action, 'repo.description')}`
+      },
       { itemProp: 'image', content: `${get(action, 'repo.owner.avatar_url')}` },
 
       { httpEquiv: 'refresh', content: '' },
       { httpEquiv: 'x-ua-compatible', content: '' },
       { httpEquiv: 'cleartype', content: '' }
-
     ],
     link: [
       { rel: 'dns-prefetch', href: '' },
@@ -86,7 +100,12 @@ function getMetaRepo(action) {
 
       { rel: 'manifest', href: '' }
     ],
-    script: [{ type: 'application/ld+json', innerHTML: '{ \'@context\': \'http://schema.org\' }' }],
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: "{ '@context': 'http://schema.org' }"
+      }
+    ],
     noscript: [],
     style: []
   };

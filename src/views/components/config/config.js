@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Config extends Component {
-
   render() {
     if (!this.props.initialPageLoad) {
       return null;
@@ -27,7 +26,7 @@ Config.propTypes = {
 
 function mapStateToProps(state) {
   const { initialPageLoad } = state.config;
-  const data = (initialPageLoad ? JSON.stringify(state) : '');
+  const data = initialPageLoad ? JSON.stringify(state) : '';
   return {
     data,
     initialPageLoad

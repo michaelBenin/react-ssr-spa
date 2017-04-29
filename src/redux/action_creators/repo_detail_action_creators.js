@@ -24,4 +24,3 @@ export function repoDetailLoadError(error) {
     }
   };
 }
-

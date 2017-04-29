@@ -9,11 +9,14 @@ gulp.task('sass-dev', function sassDev() {
   const targetProps = config.styles.main;
   const { cssDest, stylesSrc, sassConf, autoprefixerBrowsers } = targetProps;
 
-  return gulp.src(stylesSrc)
+  return gulp
+    .src(stylesSrc)
     .pipe(sourcemaps.init())
     .pipe(sass(sassConf).on('error', sass.logError))
     .pipe(autoprefixer(autoprefixerBrowsers))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(cssDest))
-    .pipe(livereload({ file: 'http://localhost:3000/dist/static/css/main.css' }));
+    .pipe(
+      livereload({ file: 'http://localhost:3000/dist/static/css/main.css' })
+    );
 });

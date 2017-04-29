@@ -54,11 +54,15 @@ module.exports = {
             options: {
               presets: [
                 ['react'],
-                ['env', {
-                  targets: {
-                    browsers: ['last 2 versions']
+                [
+                  'env',
+                  {
+                    targets: {
+                      browsers: ['last 2 versions']
+                    }
                   }
-                }]],
+                ]
+              ],
               plugins: ['react-hot-loader/babel']
             }
           }
@@ -68,4 +72,3 @@ module.exports = {
     ]
   }
 };
-

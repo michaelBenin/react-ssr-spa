@@ -9,7 +9,11 @@ function validateUuid(str) {
 }
 
 // http://validatejs.org/#custom-validator
-validate.validators.uuidv4 = function uuidv4(value, options, key /* , attributes */) {
+validate.validators.uuidv4 = function uuidv4(
+  value,
+  options,
+  key /* , attributes */
+) {
   if (validateUuid(value) === true) {
     return null;
   }
@@ -19,4 +23,3 @@ validate.validators.uuidv4 = function uuidv4(value, options, key /* , attributes
 export default validate;
 
 // Example: // http://stackoverflow.com/questions/29121733/validate-js-promises-on-custom-validation
-

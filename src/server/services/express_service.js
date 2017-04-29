@@ -35,20 +35,24 @@ app.disable('x-powered-by');
 app.use(helmet());
 
 // TODO: configure for specific routes
-app.use(contentValidator.validateMax({
-  max: MAX_CONTENT_LENGTH_ACCEPTED,
-  status: 400,
-  message: 'Exceeds Max Content.'
-}));
+app.use(
+  contentValidator.validateMax({
+    max: MAX_CONTENT_LENGTH_ACCEPTED,
+    status: 400,
+    message: 'Exceeds Max Content.'
+  })
+);
 
 app.use(expressGracefulExit.middleware(app));
 
 // TODO: configure for specific routes
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 
 // USED WITH BODY PARSER
 // TODO: configure for specific routes
@@ -75,4 +79,3 @@ export const createOrGetServer = () => {
 export const setServer = (runningServer) => {
   server = runningServer;
 };
-

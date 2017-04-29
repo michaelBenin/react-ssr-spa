@@ -4,18 +4,24 @@ import babel from 'gulp-babel';
 import config from './../configs/config';
 
 gulp.task('babel-server', function babelServer() {
-  return gulp.src(config.server.src)
+  return gulp
+    .src(config.server.src)
     .pipe(changed(config.dest))
-    .pipe(babel({
-      sourceMaps: 'inline',
-      presets: [
-        'react',
-        ['env', {
-          targets: {
-            node: 'current'
-          }
-        }]
-      ]
-    }))
+    .pipe(
+      babel({
+        sourceMaps: 'inline',
+        presets: [
+          'react',
+          [
+            'env',
+            {
+              targets: {
+                node: 'current'
+              }
+            }
+          ]
+        ]
+      })
+    )
     .pipe(gulp.dest(config.dest));
 });

@@ -8,6 +8,7 @@ function ValidationErrors(errors, options, attributes, constraints) {
 }
 ValidationErrors.prototype = new Error();
 
-export const wrappedValidation = { // eslint-disable-line import/prefer-default-export
+// eslint-disable-next-line import/prefer-default-export
+export const wrappedValidation = {
   wrapErrors: ValidationErrors
 };

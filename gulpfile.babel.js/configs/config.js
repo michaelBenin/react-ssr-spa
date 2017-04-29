@@ -2,24 +2,11 @@ const cssSrcPath = './src/client/styles/main.scss';
 const staticFilePath = './dist/static/css';
 
 const config = {
-  clean: [
-    'docs',
-    'node_modules',
-    'dist',
-    'logs/**/*.log'
-  ],
+  clean: ['docs', 'node_modules', 'dist', 'logs/**/*.log'],
   dest: 'dist',
   nodemon: {
-    ignore: [
-      'dist/client/**',
-      'src/**',
-      'test/**',
-      '.git',
-      'node_modules/**'
-    ],
-    watch: [
-      'dist/'
-    ],
+    ignore: ['dist/client/**', 'src/**', 'test/**', '.git', 'node_modules/**'],
+    watch: ['dist/'],
     script: 'dist/server',
     ext: 'js',
     env: {
@@ -63,15 +50,11 @@ const config = {
     sassConf: {
       style: 'expanded'
     },
-    autoprefixerBrowsers: [
-      'last 2 versions'
-    ],
+    autoprefixerBrowsers: ['last 2 versions'],
     main: {
       stylesSrc: cssSrcPath,
       cssDest: staticFilePath,
-      scssWatch: [
-        'src/**/*.scss'
-      ]
+      scssWatch: ['src/**/*.scss']
     }
   },
   stylelint: {
@@ -81,25 +64,17 @@ const config = {
     ]
   },
   server: {
-    src: [
-      'src/**/*',
-      '!src/assets/**/*',
-      '!src/**/*.scss'
-    ]
+    src: ['src/**/*', '!src/assets/**/*', '!src/**/*.scss']
   },
   babel: {
     sourceMaps: 'inline'
   },
   vendorJS: {
-    src: [
-      'bower_components/modernizer/modernizr.js'
-    ],
+    src: ['bower_components/modernizer/modernizr.js'],
     dest: 'dist/static/js'
   },
   assets: {
-    src: [
-      'src/assets/**/*'
-    ],
+    src: ['src/assets/**/*'],
     dest: 'dist/static/assets'
   },
   doc: {

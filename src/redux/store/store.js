@@ -18,7 +18,8 @@ export default function configureStore(history, initialState = {}, env) {
       )
     );
   } else {
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle, max-len
+    const composeEnhancers =
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle, max-len
     store = createStore(
       reducer,
       initialState,

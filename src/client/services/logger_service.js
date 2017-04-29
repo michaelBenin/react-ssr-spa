@@ -23,7 +23,7 @@ function log(level, data, message) {
       message
     }
   });
-/* TODO: Uncomment when we have analytics
+  /* TODO: Uncomment when we have analytics
  .then(function loggerResponse(response) {
  // Track response with analytics
  // response.code
@@ -73,7 +73,6 @@ function createLogFn(level) {
  * @module services/logger
  */
 export default {
-
   /**
    * @name module:services/logger.trace
    * @type {logMethod}

@@ -1,5 +1,6 @@
 import { canUseDOM } from 'exenv';
-import asyncRepoDetailAction from '../../redux/actions/async_repo_detail_actions';
+import asyncRepoDetailAction
+  from '../../redux/actions/async_repo_detail_actions';
 
 export default function fetchDataWithStore(store) {
   return function fetchData(nextState, replace, callback) {
@@ -26,12 +27,14 @@ export default function fetchDataWithStore(store) {
         }
         return false;
       })
-      .catch(function handleActionError(/* err*/) {
-        // log error
-        if (callback) {
-          return callback();
+      .catch(
+        function handleActionError(/* err*/) {
+          // log error
+          if (callback) {
+            return callback();
+          }
+          return false;
         }
-        return false;
-      });
+      );
   };
 }

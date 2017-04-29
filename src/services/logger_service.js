@@ -9,6 +9,6 @@ if (process.env.RUNTIME_ENV !== 'browser') {
   clientLog = require('../client/services/logger_service'); // eslint-disable-line global-require
 }
 
-const log = (canUseDOM ? clientLog : serverLog);
+const log = canUseDOM ? clientLog : serverLog;
 
 module.exports = log;

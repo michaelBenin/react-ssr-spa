@@ -8,7 +8,6 @@ import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
 
 class Layout extends Component {
-
   livereload() {
     if (this.props.env === 'development') {
       return <script src="//localhost:35729/livereload.js" async />;
@@ -49,9 +48,7 @@ function mapStateToProps(state) {
 
 Layout.propTypes = {
   route: PropTypes.shape({
-    routes: PropTypes.arrayOf(PropTypes.shape({
-
-    }))
+    routes: PropTypes.arrayOf(PropTypes.shape({}))
   }),
   env: PropTypes.string.isRequired,
   staticUrl: PropTypes.string.isRequired

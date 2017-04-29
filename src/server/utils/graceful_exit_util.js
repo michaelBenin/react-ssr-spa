@@ -10,7 +10,10 @@ export default (err, silent) => {
   const exitCode = err ? 1 : 0;
   if (err) {
     log.info(`Process exiting because of error: ${err.message}`);
-    log.fatal(err.stack, `${err.message} - commit: ${process.env.GIT_COMMIT}, Build Number: ${process.env.BUILD_NUMBER}`);
+    log.fatal(
+      err.stack,
+      `${err.message} - commit: ${process.env.GIT_COMMIT}, Build Number: ${process.env.BUILD_NUMBER}`
+    );
   } else {
     log.info('Exiting without error.');
   }
@@ -31,8 +34,10 @@ export default (err, silent) => {
 
   return gracefulExit.gracefulExitHandler(app, createOrGetServer(), {
     log: true,
-    logger(data) { return log.info(data); },
-    suicideTimeout: (3 * 1000),  // pm2 waits 4 seconds
+    logger(data) {
+      return log.info(data);
+    },
+    suicideTimeout: 3 * 1000, // pm2 waits 4 seconds
     exitProcess: false,
     force: true,
     callback: gracefulExitCallback

@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-/*
-import { canUseDOM } from 'exenv';
-if(canUseDOM) {
-  debugger;
-}
-*/
-
-class RepoDetail extends Component { // eslint-disable-line react/prefer-stateless-function
-
+// eslint-disable-next-line react/prefer-stateless-function
+class RepoDetail extends Component {
   render() {
     if (this.props.error) {
-      const errorMessage = 'We\'re sorry, please try again later.';
+      const errorMessage = "We're sorry, please try again later.";
       return (
         <section className="repo-detail-page">
           <article className="repo-detail-page__main">
@@ -45,7 +38,8 @@ class RepoDetail extends Component { // eslint-disable-line react/prefer-statele
         <section className="repo-detail-page__sidebar">
           <cite>{`Owner: ${repo.owner.login}`}</cite>
           <p>{`Stars: ${repo.stargazers_count}`}</p>
-          <p>{`Watchers: ${repo.watchers_count}`}</p></section>
+          <p>{`Watchers: ${repo.watchers_count}`}</p>
+        </section>
       </section>
     );
   }

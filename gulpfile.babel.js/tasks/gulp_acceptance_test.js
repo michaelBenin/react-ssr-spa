@@ -10,15 +10,16 @@ const configPath = join(
 );
 
 gulp.task('webdriver', () =>
-  gulp.src(configPath).pipe(webdriver({
-    logLevel: 'verbose'
-  }))
+  gulp.src(configPath).pipe(
+    webdriver({
+      logLevel: 'verbose'
+    })
+  )
 );
 
 gulp.task('start-test-server', (done) => {
-  require('../../dist/server').default.then(done);// eslint-disable-line global-require, max-len
+  require('../../dist/server').default.then(done); // eslint-disable-line global-require, max-len
 });
-
 
 gulp.task('kill', () => {
   const gracefulExit = require('../../dist/server/utils/graceful_exit_util'); // eslint-disable-line global-require, max-len
@@ -26,9 +27,5 @@ gulp.task('kill', () => {
 });
 
 gulp.task('acceptance-test', (callback) => {
-  runSequence(
-    'start-test-server',
-    'webdriver',
-    'kill',
-    callback);
+  runSequence('start-test-server', 'webdriver', 'kill', callback);
 });

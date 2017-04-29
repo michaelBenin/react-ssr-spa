@@ -1,5 +1,6 @@
 {
   "extends": "airbnb",
+  "plugins": ["prettier"],
   "rules": {
     "react/require-default-props": ["off"],
     "react/no-array-index-key": ["off"],
@@ -8,7 +9,13 @@
     "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
     "class-methods-use-this": [0],
     "jsx-a11y/no-static-element-interactions": [0],
-    "react/jsx-boolean-value": ["off"]
+    "react/jsx-boolean-value": ["off"],
+    "prettier/prettier": ["warn", {
+        "singleQuote": true,
+        "semi": true,
+        "useTabs": false
+      }
+    ]
   },
   "env": {
     "es6": true,

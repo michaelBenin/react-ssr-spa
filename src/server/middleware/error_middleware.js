@@ -8,7 +8,8 @@ export default (err, req, res) => {
     res.status(403);
     return res.send('Form tampered with.');
   }
-  log.fatal(err,
+  log.fatal(
+    err,
     `Error on request: method: ${req.method},
       url: ${req.url}`
   );

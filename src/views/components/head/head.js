@@ -10,7 +10,7 @@ import Style from './style';
 
 function ClientSideHead(initialPageLoad, attr) {
   if (!initialPageLoad) {
-    return (<Helmet {...attr} />);
+    return <Helmet {...attr} />;
   }
   return null;
 }
@@ -49,7 +49,14 @@ function Head(props) {
       {style.map(function createStyleTags(conf) {
         return <Style key={JSON.stringify(conf)} {...conf} />;
       })}
-      {ClientSideHead(props.initialPageLoad, { title, meta, link, script, noscript, style })}
+      {ClientSideHead(props.initialPageLoad, {
+        title,
+        meta,
+        link,
+        script,
+        noscript,
+        style
+      })}
     </head>
   );
 }

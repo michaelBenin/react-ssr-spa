@@ -8,7 +8,6 @@ const bootPromises = [];
 
 log.info('booting initializer');
 
-
 if (config.get('cacheEnabled')) {
   const redisReady = new P(function redisReadyPromise(resolve, reject) {
     function handleRedisError(error) {

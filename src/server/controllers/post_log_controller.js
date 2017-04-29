@@ -2,14 +2,7 @@ import { get as _get, extend } from 'lodash';
 import log from '../services/logger_service';
 
 // Same levels provided by Bunyan
-const levels = [
-  'trace',
-  'debug',
-  'info',
-  'warn',
-  'error',
-  'fatal'
-];
+const levels = ['trace', 'debug', 'info', 'warn', 'error', 'fatal'];
 
 /**
  * Logging controller
@@ -26,15 +19,18 @@ const loggerController = (req, res) => {
   const level = _get(req, 'body.level');
   let message = _get(req, 'body.message');
   let data = _get(req, 'body.data');
-  const validLevel = (levels.indexOf(level) > -1);
+  const validLevel = levels.indexOf(level) > -1;
 
   if (validLevel) {
     try {
       data = JSON.parse(data);
     } catch (e) {
-      log.error({
-        req: req.url
-      }, 'Bad json passed from browser log.');
+      log.error(
+        {
+          req: req.url
+        },
+        'Bad json passed from browser log.'
+      );
       data = data || {
         data: 'Bad json passed from browser.'
       };
@@ -55,9 +51,12 @@ const loggerController = (req, res) => {
 
   if (!validLevel) {
     const failedLogMessage = 'Log attempted with unsupported method.';
-    log.warn({
-      req: req.url
-    }, failedLogMessage);
+    log.warn(
+      {
+        req: req.url
+      },
+      failedLogMessage
+    );
 
     res.status(405).json({
       status: 405,
@@ -69,9 +68,12 @@ const loggerController = (req, res) => {
 
   const unknownFailureMessage = 'Browser log failed for unknown reasons.';
 
-  log.error({
-    req: req.url
-  }, unknownFailureMessage);
+  log.error(
+    {
+      req: req.url
+    },
+    unknownFailureMessage
+  );
 
   res.status(503).json({
     status: 503,

@@ -42,37 +42,35 @@ export default (req, res) => {
     const branch = matchRoutes(routes, req.url);
 
     const promises = branch.map(function matchMap({ route, match }) {
-      return route.loadData
-        ? route.loadData(match)
-        : P.resolve(null);
+      return route.loadData ? route.loadData(match) : P.resolve(null);
     });
 
-    P.all(promises).then(() => {
-      const status = store.getState().status.code;
-      // console.log(store.getState());
+    P.all(promises)
+      .then(() => {
+        const status = store.getState().status.code;
+        // console.log(store.getState());
 
-      const renderedDOM = `<!doctype>${renderToString(
-        <Root store={store} history={memoryHistory} />
-      )}`;
+        const renderedDOM = `<!doctype>${renderToString(<Root store={store} history={memoryHistory} />)}`;
 
-      // TODO: cache rendered dom in redis
-      res.writeHead(status, {
-        'Content-Type': 'text/html',
-        'Access-Control-Allow-Origin': '*'
+        // TODO: cache rendered dom in redis
+        res.writeHead(status, {
+          'Content-Type': 'text/html',
+          'Access-Control-Allow-Origin': '*'
+        });
+
+        res.end(renderedDOM);
+        if (config.get('cacheEnabled')) {
+          redisClient.set(htmlKey, renderedDOM);
+          redisClient.set(statusKey, status);
+          redisClient.EXPIRE(htmlKey, cacheExpire); // eslint-disable-line new-cap
+          redisClient.EXPIRE(statusKey, cacheExpire); // eslint-disable-line new-cap
+        }
+        return false;
+      })
+      .catch((err) => {
+        log.error(err);
+        res.status(500).json(err);
       });
-
-      res.end(renderedDOM);
-      if (config.get('cacheEnabled')) {
-        redisClient.set(htmlKey, renderedDOM);
-        redisClient.set(statusKey, status);
-        redisClient.EXPIRE(htmlKey, cacheExpire); // eslint-disable-line new-cap
-        redisClient.EXPIRE(statusKey, cacheExpire); // eslint-disable-line new-cap
-      }
-      return false;
-    }).catch((err) => {
-      log.error(err);
-      res.status(500).json(err);
-    });
   }
 
   if (!config.get('cacheEnabled')) {
@@ -95,5 +93,6 @@ export default (req, res) => {
         'Content-Type': 'text/html'
       });
       return res.end(cacheResponse[1]);
-    }).catch(returnFromApi);
+    })
+    .catch(returnFromApi);
 };

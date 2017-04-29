@@ -28,7 +28,8 @@ class Nav extends Component {
         </ul>
         <form
           className="top-nav__search-form"
-          action="/search" method="GET"
+          action="/search"
+          method="GET"
           onSubmit={this.goToSearch}
         >
           <input
@@ -44,7 +45,9 @@ class Nav extends Component {
             className="top-nav__button"
             type="submit"
             onClick={this.goToSearch}
-          >Search</button>
+          >
+            Search
+          </button>
         </form>
       </nav>
     );
@@ -74,7 +77,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

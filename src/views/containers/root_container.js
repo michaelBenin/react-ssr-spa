@@ -19,7 +19,6 @@ function Root({ store, history }) {
   );
 }
 
-
 Root.propTypes = {
   store: PropTypes.shape({}).isRequired,
   history: PropTypes.shape({}).isRequired

@@ -11,12 +11,13 @@ import { Link } from 'react-router-dom';
  }
  */
 
-class Search extends Component { // eslint-disable-line react/prefer-stateless-function
+// eslint-disable-next-line react/prefer-stateless-function
+class Search extends Component {
   render() {
     if (this.props.error === true) {
       return (
         <section className="search">
-          <h1>{'We\'re sorry! There was an error. Message: '}</h1>
+          <h1>{"We're sorry! There was an error. Message: "}</h1>
           <p>{this.props.errorMessage}</p>
         </section>
       );

@@ -26,4 +26,3 @@ process.on('message', function handleMessage(message) {
 process.on('unhandledRejection', function handleRejection(reason, p) {
   log.error(`Unhandled Rejection at: Promise , ${p}`, ` reason: ${reason}`);
 });
-

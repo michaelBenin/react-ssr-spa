@@ -7,11 +7,9 @@ import config from '../configs/config';
 
 const configFilePath = path.join(__dirname, './../configs/.stylelintrc');
 
-
 gulp.task('style-lint', function lintSass() {
-  return gulp
-    .src(config.stylelint.src)
-    .pipe(stylelint({
+  return gulp.src(config.stylelint.src).pipe(
+    stylelint({
       configFile: configFilePath,
       reporters: [
         {
@@ -20,7 +18,8 @@ gulp.task('style-lint', function lintSass() {
         }
       ],
       failAfterError: true
-    }));
+    })
+  );
 });
 
 gulp.task('style-lint-fix', function styleLintFix() {
@@ -29,9 +28,12 @@ gulp.task('style-lint-fix', function styleLintFix() {
   // TODO: open an issue on stylefmt with this example
   const src = clone(config.stylelint.src);
   src.push('!./src/client/styles/main.scss');
-  return gulp.src(src)
-    .pipe(stylefmt({
-      config: configFilePath
-    }))
+  return gulp
+    .src(src)
+    .pipe(
+      stylefmt({
+        config: configFilePath
+      })
+    )
     .pipe(gulp.dest('src'));
 });

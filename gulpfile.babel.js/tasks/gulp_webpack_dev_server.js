@@ -14,14 +14,17 @@ gulp.task('webpack-dev-server', function runWebpackDevServer(callback) {
     }
   });
 
-  const server = webpackApp.listen(3001, 'localhost',
+  const server = webpackApp.listen(
+    3001,
+    'localhost',
     function webpackDevServerRunning(err /* , result*/) {
       if (err) {
         log(err);
       }
       log('Webpack dev server listening at localhost:3001');
       callback();
-    });
+    }
+  );
 
   process.on('SIGINT', () => {
     log('Process interrupted');

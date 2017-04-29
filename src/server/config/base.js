@@ -32,11 +32,13 @@ export default {
   },
   bunyanLogger: {
     name: 'react-ssr-spa',
-    streams: [{
-      level: 'debug',
-      type: 'raw',
-      stream: prettyStdOut
-    }]
+    streams: [
+      {
+        level: 'debug',
+        type: 'raw',
+        stream: prettyStdOut
+      }
+    ]
   },
   gitCommit: GIT_COMMIT,
   pm2WebInterface: '127.0.0.1:9615',

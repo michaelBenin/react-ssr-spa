@@ -5,8 +5,7 @@ const travis = process.env.TRAVIS_CI;
 // https://github.com/karma-runner/karma-coverage
 module.exports = function karmaConfIntegration(config) {
   const conf = {
-
-    browsers: (travis ? ['Chrome_travis_ci'] : ['Chrome']),
+    browsers: travis ? ['Chrome_travis_ci'] : ['Chrome'],
 
     files: [
       path.join(__dirname, '../../test/client/unit/**/*'),
@@ -21,9 +20,7 @@ module.exports = function karmaConfIntegration(config) {
       }
     ],
 
-    exclude: [
-      path.join(__dirname, '../../src/client/index.js')
-    ],
+    exclude: [path.join(__dirname, '../../src/client/index.js')],
 
     frameworks: ['mocha'],
 
@@ -70,11 +67,15 @@ module.exports = function karmaConfIntegration(config) {
                 options: {
                   presets: [
                     ['react'],
-                    ['env', {
-                      targets: {
-                        browsers: ['last 2 versions']
+                    [
+                      'env',
+                      {
+                        targets: {
+                          browsers: ['last 2 versions']
+                        }
                       }
-                    }]],
+                    ]
+                  ],
                   plugins: ['istanbul']
                 }
               }
@@ -95,13 +96,11 @@ module.exports = function karmaConfIntegration(config) {
         flags: ['--no-sandbox']
       }
     }
-
   };
 
-  conf.preprocessors[path.join(__dirname, '../../test/client/integration/**/*')] = [
-    'webpack',
-    'sourcemap'
-  ];
+  conf.preprocessors[
+    path.join(__dirname, '../../test/client/integration/**/*')
+  ] = ['webpack', 'sourcemap'];
 
   conf.preprocessors[path.join(__dirname, '../../test/client/unit/**/*')] = [
     'webpack',
@@ -122,4 +121,3 @@ module.exports = function karmaConfIntegration(config) {
 
   config.set(conf);
 };
-

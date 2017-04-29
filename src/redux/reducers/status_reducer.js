@@ -1,6 +1,9 @@
-export default function (state = {
-  code: 200
-}, action) {
+export default function (
+  state = {
+    code: 200
+  },
+  action
+) {
   if (action.type === 'NOT_FOUND_STATUS') {
     return {
       code: 404

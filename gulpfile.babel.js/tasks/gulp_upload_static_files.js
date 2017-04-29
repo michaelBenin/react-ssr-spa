@@ -18,13 +18,15 @@ gulp.task('upload-static-files', function publishAWS() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  return gulp.src('./dist/static/**/*')
-    .pipe(rename(function renamePlugin(path) {
-      path.dirname = `/${sha}/${path.dirname}`; // eslint-disable-line no-param-reassign
-      return path;
-    }))
+  return gulp
+    .src('./dist/static/**/*')
+    .pipe(
+      rename(function renamePlugin(path) {
+        path.dirname = `/${sha}/${path.dirname}`; // eslint-disable-line no-param-reassign
+        return path;
+      })
+    )
     .pipe(awspublish.gzip())
     .pipe(publisher.publish(headers))
     .pipe(awspublish.reporter());
 });
-
