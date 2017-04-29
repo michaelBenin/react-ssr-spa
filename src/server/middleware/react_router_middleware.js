@@ -11,6 +11,7 @@ import configureStore from '../../redux/store/store';
 import Root from '../../views/containers/root_container';
 import config from '../config';
 
+const featureFlags = config.get('featureFlags');
 const env = config.get('env');
 const staticUrl = config.get('staticUrl');
 const apiUrl = config.get('apiUrl');
@@ -31,7 +32,8 @@ export default (req, res) => {
         env,
         staticUrl,
         apiUrl,
-        initialPageLoad: true
+        initialPageLoad: true,
+        featureFlags
       }
     });
 

@@ -1,5 +1,6 @@
 import PrettyStream from 'bunyan-prettystream'; // eslint-disable-line  import/no-extraneous-dependencies
 import '../utils/load_env_var_util';
+import featureFlags from '../../../features_flags';
 
 const prettyStdOut = new PrettyStream();
 prettyStdOut.pipe(process.stdout);
@@ -15,6 +16,7 @@ const {
 } = process.env;
 
 export default {
+  featureFlags,
   cacheEnabled: false,
   redis: {
     port: REDIS_PORT,
