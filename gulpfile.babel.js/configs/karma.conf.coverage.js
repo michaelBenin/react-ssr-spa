@@ -11,6 +11,7 @@ module.exports = function karmaConfIntegration(config) {
     files: [
       path.join(__dirname, '../../test/client/unit/**/*'),
       path.join(__dirname, '../../test/client/integration/**/*'),
+      path.join(__dirname, '../../test/shared/**/*'),
       {
         pattern: path.join(__dirname, '../../src/client/**/*.js'),
         watched: false,
@@ -53,6 +54,12 @@ module.exports = function karmaConfIntegration(config) {
 
     webpack: {
       devtool: 'sourcemap',
+      externals: {
+        cheerio: 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      },
       module: {
         rules: [
           {
@@ -102,6 +109,12 @@ module.exports = function karmaConfIntegration(config) {
   ];
 
   conf.preprocessors[path.join(__dirname, '../../src/client/**/*.js')] = [
+    'webpack',
+    'sourcemap',
+    'coverage'
+  ];
+
+  conf.preprocessors[path.join(__dirname, '../../test/shared/**/*')] = [
     'webpack',
     'sourcemap',
     'coverage'

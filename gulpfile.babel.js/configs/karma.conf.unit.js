@@ -11,7 +11,8 @@ module.exports = function karmaConfUnit(config) {
     browsers: (travis ? ['Chrome_travis_ci'] : ['Chrome']),
     // karma only needs to know about the test bundle
     files: [
-      path.join(__dirname, '../../test/client/unit/**/*')
+      path.join(__dirname, '../../test/client/unit/**/*'),
+      path.join(__dirname, '../../test/shared/**/*')
     ],
     frameworks: ['mocha'],
     plugins: [
@@ -36,6 +37,12 @@ module.exports = function karmaConfUnit(config) {
     // webpack config object
     webpack: {
       devtool: 'sourcemap',
+      externals: {
+        cheerio: 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      },
       module: {
         rules: [
           {
@@ -69,6 +76,13 @@ module.exports = function karmaConfUnit(config) {
     'webpack'
     // 'sourcemap'
   ];
+
+  conf.preprocessors[path.join(__dirname, '../../test/shared/**/*')] = [
+    'webpack'
+    // 'sourcemap'
+
+  ];
+
   config.set(conf);
 };
 
