@@ -21,7 +21,7 @@ const startServer = () => {
       'Server is running.'
     );
   });
-  process.send('online');
+  process.send('ready');
   setServer(server);
 };
 

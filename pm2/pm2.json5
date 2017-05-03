@@ -8,6 +8,8 @@
       "exec_mode": "cluster_mode",
       "max_memory_restart": "500M",
       "min_uptime": 1000,
+      "listen_timeout": 5000,
+      "wait_ready": true,
       "watch": false,
       "merge_logs": true,
       "log_file": "/var/log/react-ssr-spa/pm2_react-ssr-spa_web_app_child.log",
