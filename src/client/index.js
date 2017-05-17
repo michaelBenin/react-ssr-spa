@@ -42,7 +42,7 @@ const store = configureStore(browserHistory, bootstrappedConfig, env);
 const routesToMatch = getRoutesWithStore(store);
 
 browserHistory.listen((location /* , action*/) => {
-  const url = `${location.pathname}${location.search}${location.hash}`;
+  const url = `${location.pathname}`;
   const branch = matchRoutes(routesToMatch, url);
   branch.map(function matchMap({ route, match }) {
     return route.loadData ? route.loadData(match) : P.resolve(null);

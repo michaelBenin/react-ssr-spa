@@ -39,7 +39,7 @@ export default (req, res) => {
 
     const routes = getRoutesWithStore(store);
 
-    const branch = matchRoutes(routes, req.url);
+    const branch = matchRoutes(routes, req.path);
 
     const promises = branch.map(function matchMap({ route, match }) {
       return route.loadData ? route.loadData(match) : P.resolve(null);
