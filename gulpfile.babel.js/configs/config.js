@@ -13,9 +13,7 @@ const config = {
       NODE_ENV: 'development'
     },
     nodeArgs: [
-      '--debug'
-      // Uncomment to insert debugger on script initialization
-      // '--debug-brk'
+      // '--inspect'
     ]
   },
   test: {
