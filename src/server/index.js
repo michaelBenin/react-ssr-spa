@@ -25,7 +25,7 @@ const startServer = () => {
   setServer(server);
 };
 
-const serverError = (err) => {
+const serverError = err => {
   log.fatal(err, err.message);
   doGracefulExit(err);
 };

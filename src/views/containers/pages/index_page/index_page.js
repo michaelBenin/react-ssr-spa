@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function () {
+export default function() {
   return (
     <div className="index-page">
       <h1>Welcome to react-ssr-spa working demo.</h1>

@@ -1,9 +1,11 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
   "plugins": ["prettier"],
   "rules": {
-    "react/require-default-props": ["off"],
-    "react/no-array-index-key": ["off"],
     "comma-dangle": [2, "never"],
     "react/jsx-filename-extension": [0, { "extensions": [".js"] }],
     "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],

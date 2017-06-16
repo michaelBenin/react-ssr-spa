@@ -67,7 +67,7 @@ export default (req, res) => {
         }
         return false;
       })
-      .catch((err) => {
+      .catch(err => {
         log.error(err);
         res.status(500).json(err);
       });

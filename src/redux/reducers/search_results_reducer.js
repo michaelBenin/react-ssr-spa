@@ -1,7 +1,7 @@
 // https://github.com/reactjs/redux/issues/99
 // import { canUseDOM } from 'exenv';
 
-export default function (state = {}, action) {
+export default function(state = {}, action) {
   const typeMap = {
     SEARCH_LOADING() {
       return {

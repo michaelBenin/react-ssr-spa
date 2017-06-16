@@ -76,6 +76,6 @@ export const createOrGetServer = () => {
   return server;
 };
 
-export const setServer = (runningServer) => {
+export const setServer = runningServer => {
   server = runningServer;
 };

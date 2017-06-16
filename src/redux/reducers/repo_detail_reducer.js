@@ -1,7 +1,7 @@
 // https://github.com/reactjs/redux/issues/99
 // import { canUseDOM } from 'exenv';
 
-export default function (state = {}, action) {
+export default function(state = {}, action) {
   const typeMap = {
     REPO_DETAIL_LOADING() {
       return {

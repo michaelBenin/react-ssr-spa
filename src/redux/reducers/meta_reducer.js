@@ -111,7 +111,7 @@ function getMetaRepo(action) {
   };
 }
 
-export default function (state = {}, action) {
+export default function(state = {}, action) {
   const { type } = action;
 
   const typeMap = {

@@ -17,7 +17,7 @@ gulp.task('webdriver', () =>
   )
 );
 
-gulp.task('start-test-server', (done) => {
+gulp.task('start-test-server', done => {
   require('../../dist/server').default.then(done); // eslint-disable-line global-require, max-len
 });
 
@@ -26,6 +26,6 @@ gulp.task('kill', () => {
   gracefulExit.default(false, true);
 });
 
-gulp.task('acceptance-test', (callback) => {
+gulp.task('acceptance-test', callback => {
   runSequence('start-test-server', 'webdriver', 'kill', callback);
 });

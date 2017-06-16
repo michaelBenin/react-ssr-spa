@@ -54,4 +54,12 @@ Layout.propTypes = {
   staticUrl: PropTypes.string.isRequired
 };
 
+Layout.defaultProps = {
+  route: {
+    routes: []
+  },
+  env: 'development',
+  staticUrl: '/'
+};
+
 export default connect(mapStateToProps)(Layout);

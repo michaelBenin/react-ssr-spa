@@ -1,3 +1,6 @@
+import { join } from 'path';
+
+const dir = __dirname;
 const cssSrcPath = './src/client/styles/main.scss';
 const staticFilePath = './dist/static/css';
 
@@ -5,8 +8,18 @@ const config = {
   clean: ['docs', 'node_modules', 'dist', 'logs/**/*.log'],
   dest: 'dist',
   nodemon: {
-    ignore: ['dist/client/**', 'src/**', 'test/**', '.git', 'node_modules/**'],
-    watch: ['dist/'],
+    ignore: [
+      join(dir, '../../dist/client/**'),
+      join(dir, '../../src/**'),
+      join(dir, '../../test/**'),
+      join(dir, '../../.git'),
+      join(dir, '../../node_modules/**')
+    ],
+    watch: [
+      join(dir, '../../dist/'),
+      join(dir, '../../.env'),
+      join(dir, '../../feature_flags.js')
+    ],
     script: 'dist/server',
     ext: 'js',
     env: {

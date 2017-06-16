@@ -14,7 +14,7 @@ gulp.task('test', function test(cb) {
     'style-lint',
     // 'acceptance-test',
 
-    (err) => {
+    err => {
       if (err) {
         const exitCode = 2;
         log('[ERROR] gulp build task failed', err);

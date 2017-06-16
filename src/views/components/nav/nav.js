@@ -34,7 +34,7 @@ class Nav extends Component {
         >
           <input
             className="top-nav__input"
-            ref={(searchQuery) => {
+            ref={searchQuery => {
               this.searchQuery = searchQuery;
             }}
             name="query"
