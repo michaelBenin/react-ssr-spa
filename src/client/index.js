@@ -8,8 +8,7 @@ import { matchRoutes } from 'react-router-config';
 import initialize from './utils/initializer_util';
 import configureStore from '../redux/store/store';
 import getRoutesWithStore from '../react_router/react_router';
-import initialLoadActionCreator
-  from '../redux/action_creators/initial_load_action_creator';
+import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
 import Root from '../views/containers/root_container';
 import { ThirdPartyJs, loadAllThirdPartyJs } from './utils/third_party_js_util';
 

@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 export default function Script({ innerHtml, type, src }) {
   if (innerHtml) {
     return (
+      // eslint-disable-next-line react/no-danger
       <script type={type} dangerouslySetInnerHTML={{ __html: innerHtml }} />
-    ); // eslint-disable-line react/no-danger, max-len
+    );
   }
   return <script type={type} src={src} />;
 }

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Config extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     if (!this.props.initialPageLoad) {
       return null;

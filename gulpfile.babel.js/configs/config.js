@@ -21,7 +21,7 @@ const config = {
       join(dir, '../../feature_flags.js')
     ],
     script: 'dist/server',
-    ext: 'js',
+    ext: 'js env',
     env: {
       NODE_ENV: 'development'
     },
@@ -80,8 +80,9 @@ const config = {
   babel: {
     sourceMaps: 'inline'
   },
+  // add external vendor js files here
   vendorJS: {
-    src: ['bower_components/modernizer/modernizr.js'],
+    src: [],
     dest: 'dist/static/js'
   },
   assets: {

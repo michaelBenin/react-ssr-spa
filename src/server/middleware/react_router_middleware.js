@@ -50,7 +50,9 @@ export default (req, res) => {
         const status = store.getState().status.code;
         // console.log(store.getState());
 
-        const renderedDOM = `<!doctype>${renderToString(<Root store={store} history={memoryHistory} />)}`;
+        const renderedDOM = `<!doctype>${renderToString(
+          <Root store={store} history={memoryHistory} />
+        )}`;
 
         // TODO: cache rendered dom in redis
         res.writeHead(status, {

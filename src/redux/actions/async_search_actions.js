@@ -2,8 +2,7 @@
 // import { canUseDOM } from 'exenv';
 import { extend } from 'lodash';
 import * as searchActions from './../action_creators/search_action_creators';
-import notFoundActionCreator
-  from '../../redux/action_creators/not_found_status_action_creator';
+import notFoundActionCreator from '../../redux/action_creators/not_found_status_action_creator';
 import SearchModel from '../../models/search';
 import log from '../../services/logger_service';
 
