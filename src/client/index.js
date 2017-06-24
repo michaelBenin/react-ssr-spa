@@ -4,7 +4,8 @@ import P from 'bluebird';
 import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import { matchRoutes } from 'react-router-config';
-
+import log from './services/logger_service';
+import reactGuardUtil from '../utils/react_guard_util';
 import initialize from './utils/initializer_util';
 import configureStore from '../redux/store/store';
 import getRoutesWithStore from '../react_router/react_router';
@@ -19,6 +20,7 @@ initialize().catch(
     // console.error(err);
   }
 );
+
 // get json here
 let bootstrappedConfig = {};
 let env = false;
@@ -26,13 +28,12 @@ const $config = $('.client-config');
 try {
   bootstrappedConfig = $config.data('state');
   env = bootstrappedConfig.config.env;
-  if (env === 'development') {
-    window.disqus_developer = 1;
-  }
 } catch (error) {
   // console.error(error, 'Error parsing client config.');
   bootstrappedConfig = {};
 }
+
+reactGuardUtil(env);
 
 browserHistory.location.key = bootstrappedConfig.routing.location.key;
 
@@ -55,11 +56,15 @@ function renderedApp() {
   loadAllThirdPartyJs(env);
 }
 
-render(
-  <Root store={store} history={browserHistory} />,
-  window.document,
-  renderedApp
-);
+try {
+  render(
+    <Root store={store} history={browserHistory} />,
+    window.document,
+    renderedApp
+  );
+} catch (err) {
+  log.fatal(`Unable to render app: ${err.message}`, err.stack);
+}
 
 if (module.hot) {
   module.hot.accept(

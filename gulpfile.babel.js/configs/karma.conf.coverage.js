@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const travis = process.env.TRAVIS_CI;
 
@@ -51,6 +52,14 @@ module.exports = function karmaConfIntegration(config) {
 
     webpack: {
       devtool: 'sourcemap',
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify('development'),
+            RUNTIME_ENV: JSON.stringify('browser')
+          }
+        })
+      ],
       externals: {
         cheerio: 'window',
         'react/addons': true,

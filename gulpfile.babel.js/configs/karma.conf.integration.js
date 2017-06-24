@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const karmaAuto = process.env.KARMA_AUTOWATCH;
 const travis = process.env.TRAVIS_CI;
@@ -35,6 +36,14 @@ module.exports = function karmaConfIntegration(config) {
     // webpack config object
     webpack: {
       devtool: 'sourcemap',
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify('development'),
+            RUNTIME_ENV: JSON.stringify('browser')
+          }
+        })
+      ],
       module: {
         rules: [
           {

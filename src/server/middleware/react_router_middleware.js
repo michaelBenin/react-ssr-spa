@@ -3,7 +3,7 @@ import React from 'react';
 import createMemoryHistory from 'history/createMemoryHistory';
 import { renderToString } from 'react-dom/server';
 import { matchRoutes } from 'react-router-config';
-
+import reactGuardUtil from '../../utils/react_guard_util';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
 import getRoutesWithStore from '../../react_router/react_router';
@@ -17,6 +17,8 @@ const staticUrl = config.get('staticUrl');
 const apiUrl = config.get('apiUrl');
 const cacheEnabled = config.get('cacheEnabled');
 const cacheExpire = 60 * 6;
+
+reactGuardUtil(env);
 
 export default (req, res) => {
   const htmlKey = `${req.url}:__html`;
