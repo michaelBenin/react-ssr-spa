@@ -2,8 +2,9 @@ import React from 'react';
 
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
+import { StaticRouter } from 'react-router';
 
-import AboutPage from '../../../../../src/views/containers/pages/about_page/about_page';
+import AboutPage from '../../../../../../src/views/containers/pages/about_page/about_page';
 
 describe('A suite for about page', function() {
   it('contains the correct class', function correctClass() {
@@ -11,6 +12,10 @@ describe('A suite for about page', function() {
   });
 
   it('contains spec with an expectation', function() {
-    expect(mount(<AboutPage />).find('.about-page').length).to.equal(1);
+    expect(
+      mount(<StaticRouter context={{}}><AboutPage /></StaticRouter>).find(
+        '.about-page'
+      ).length
+    ).to.equal(1);
   });
 });

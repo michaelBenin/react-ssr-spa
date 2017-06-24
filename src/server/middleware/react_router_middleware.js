@@ -16,10 +16,8 @@ const env = config.get('env');
 const staticUrl = config.get('staticUrl');
 const apiUrl = config.get('apiUrl');
 const cacheEnabled = config.get('cacheEnabled');
-const cacheExpire = 60 * 6; // 6 hours to start
-// refactor to use https://github.com/reactjs/react-router/blob/master/docs/guides/ServerRendering.md
+const cacheExpire = 60 * 6;
 
-// https://github.com/reactjs/react-router-redux/tree/master/examples/server
 export default (req, res) => {
   const htmlKey = `${req.url}:__html`;
   const statusKey = `${req.url}:__status`;
@@ -46,9 +44,8 @@ export default (req, res) => {
     });
 
     P.all(promises)
-      .then(() => {
+      .then(function hydrateStoreSuccess() {
         const status = store.getState().status.code;
-        // console.log(store.getState());
 
         const renderedDOM = `<!doctype>${renderToString(
           <Root store={store} history={memoryHistory} />
@@ -62,10 +59,8 @@ export default (req, res) => {
 
         res.end(renderedDOM);
         if (config.get('cacheEnabled')) {
-          redisClient.set(htmlKey, renderedDOM);
-          redisClient.set(statusKey, status);
-          redisClient.EXPIRE(htmlKey, cacheExpire); // eslint-disable-line new-cap
-          redisClient.EXPIRE(statusKey, cacheExpire); // eslint-disable-line new-cap
+          redisClient.setex(htmlKey, cacheExpire, renderedDOM);
+          redisClient.setex(statusKey, cacheExpire, status);
         }
         return false;
       })

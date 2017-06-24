@@ -1,5 +1,4 @@
 // TODO: Add configuration based logging for different envs
-// import config from './config_service';
 
 // todo, configure to use axios
 import axios from 'axios';

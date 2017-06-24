@@ -1,5 +1,4 @@
-/* eslint-disable */
-
+/* eslint-disable no-unused-vars, func-names, no-undef, prefer-rest-params, no-underscore-dangle  */
 import scriptJS from 'scriptjs';
 import P from 'bluebird';
 
@@ -7,7 +6,6 @@ export class ThirdPartyJs {
   // config here: https://analytics.google.com/analytics/web/#management/Settings/a45063514w75598220p78098335/%3Fm.page%3DPropertySettings/
   static loadGA(env) {
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/
-
     /*
     ga.l = +new Date;
     ga('create', '', 'auto');
@@ -26,13 +24,12 @@ export class ThirdPartyJs {
 
   static loadFB(env) {
     // https://developers.facebook.com/docs/plugins/like-button
-
     // return scriptJS('https://connect.facebook.net/en_US/sdk.js');
   }
 
   static loadTwitter(env) {
     // https://dev.twitter.com/web/tweet-button
-   //  return scriptJS('https://platform.twitter.com/widgets.js');
+    //  return scriptJS('https://platform.twitter.com/widgets.js');
   }
 
   static loadPinterest(env) {
@@ -42,7 +39,6 @@ export class ThirdPartyJs {
 
   static loadGoogleApi(env) {
     // https://developers.google.com/+/web/+1button/
-
     // return scriptJS('https://apis.google.com/js/client:platform.js');
   }
 
@@ -79,7 +75,9 @@ export class ThirdPartyJs {
   }
 
   static setThirdPartyGlobals(env) {
-    window.ga = window.ga || function () {
+    window.ga =
+      window.ga ||
+      function() {
         (ga.q = ga.q || []).push(arguments);
       };
 
@@ -101,8 +99,8 @@ export class ThirdPartyJs {
     window.googletag = window.googletag || {};
     window.googletag.cmd = window.googletag.cmd || [];
 
-    window.amzn_ps_tracking_id = "";
-    window.amzn_ps_instance_id = "";
+    window.amzn_ps_tracking_id = '';
+    window.amzn_ps_instance_id = '';
   }
 
   static loadAdSense(env) {
@@ -128,21 +126,22 @@ export class ThirdPartyJs {
   static loadAmazonAdSystem(env) {
     // return scriptJS('https://ps-us.amazon-adsystem.com/scripts/US/studio.js');
   }
-
 }
 
 export function loadAllThirdPartyJs(env) {
-  return P.all([
-   // ThirdPartyJs.loadAdSense(env),
-   // ThirdPartyJs.loadGA(env),
-   // ThirdPartyJs.loadFB(env),
-   // ThirdPartyJs.loadTwitter(env),
-   // ThirdPartyJs.loadPinterest(env),
-   // ThirdPartyJs.loadGoogleApi(env),
-   // ThirdPartyJs.loadGoogleTag(env),
-   // ThirdPartyJs.fbTracking(env),
-   // ThirdPartyJs.loadDisqus(env),
-   // ThirdPartyJs.loadSentry(env),
-   // ThirdPartyJs.loadAmazonAdSystem(env)
-  ]);
+  return P.all(
+    [
+      // ThirdPartyJs.loadAdSense(env),
+      // ThirdPartyJs.loadGA(env),
+      // ThirdPartyJs.loadFB(env),
+      // ThirdPartyJs.loadTwitter(env),
+      // ThirdPartyJs.loadPinterest(env),
+      // ThirdPartyJs.loadGoogleApi(env),
+      // ThirdPartyJs.loadGoogleTag(env),
+      // ThirdPartyJs.fbTracking(env),
+      // ThirdPartyJs.loadDisqus(env),
+      // ThirdPartyJs.loadSentry(env),
+      // ThirdPartyJs.loadAmazonAdSystem(env)
+    ]
+  );
 }
