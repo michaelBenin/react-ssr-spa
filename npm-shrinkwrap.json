@@ -11629,6 +11629,20 @@
       "integrity": "sha1-0fa1sRKahF8nNnLZsq0MS083y6E=",
       "dev": true
     },
+    "wdio-selenium-standalone-service": {
+      "version": "0.0.9",
+      "resolved": "https://registry.npmjs.org/wdio-selenium-standalone-service/-/wdio-selenium-standalone-service-0.0.9.tgz",
+      "integrity": "sha1-yA1P9Il0TVoLkdUYl2SRbUwMhWQ=",
+      "dev": true,
+      "dependencies": {
+        "fs-extra": {
+          "version": "0.30.0",
+          "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-0.30.0.tgz",
+          "integrity": "sha1-8jP/zAjU2n1DLapEl3aYnbHfk/A=",
+          "dev": true
+        }
+      }
+    },
     "wdio-sync": {
       "version": "0.6.14",
       "resolved": "https://registry.npmjs.org/wdio-sync/-/wdio-sync-0.6.14.tgz",

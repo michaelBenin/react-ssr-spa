@@ -165,6 +165,7 @@
     "supertest": "3.0.0",
     "type-detect": "4.0.3",
     "wdio-mocha-framework": "0.5.10",
+    "wdio-selenium-standalone-service": "0.0.9",
     "webdriverio": "4.8.0",
     "webpack": "3.0.0",
     "webpack-dev-server": "2.5.0"
