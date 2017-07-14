@@ -35,6 +35,7 @@ module.exports = {
         RUNTIME_ENV: JSON.stringify('browser')
       }
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
 

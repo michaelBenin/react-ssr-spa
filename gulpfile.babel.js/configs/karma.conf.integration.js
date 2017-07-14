@@ -42,7 +42,8 @@ module.exports = function karmaConfIntegration(config) {
             NODE_ENV: JSON.stringify('development'),
             RUNTIME_ENV: JSON.stringify('browser')
           }
-        })
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
       ],
       module: {
         rules: [
