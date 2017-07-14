@@ -104,6 +104,10 @@ Optimized for use with:
 
     npm run docs
 
+### Generate Complexity Report:
+
+    npm run complexity-report    
+
 ### Build production assets:
 
     npm run build-prod
