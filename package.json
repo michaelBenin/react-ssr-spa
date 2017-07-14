@@ -31,6 +31,7 @@
     "clean": "gulp clean",
     "styles-doc": "gulp style-doc",
     "js-doc": "gulp js-doc",
+    "complexity-report": "plato -r -d docs/complexity src",
     "docs": "gulp js-doc style-doc",
     "coverage": "cross-env NODE_ENV=coverage nyc --exclude=dist/client --reporter=text-lcov --include=dist --source-map=true mocha -r babel-register test/server/utils/initializer_util.js test/server/utils/test_initializer_util.js test/server/integration/**/*.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/utils/test_teardown_util.js | coveralls",
     "client-coverage": "gulp client-coverage; cat karma_coverage/lcov.info | codecov"
@@ -150,6 +151,7 @@
     "mocha.parallel": "0.15.2",
     "normalize-scss": "7.0.0",
     "nyc": "11.0.2",
+    "plato": "1.7.0",
     "pre-commit": "1.2.2",
     "prettier": "1.4.4",
     "react-addons-test-utils": "15.6.0",
