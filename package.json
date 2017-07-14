@@ -170,6 +170,7 @@
     "wdio-selenium-standalone-service": "0.0.9",
     "webdriverio": "4.8.0",
     "webpack": "3.2.0",
+    "webpack-common-shake": "1.5.3",
     "webpack-dev-server": "2.5.1"
   },
   "engines": {

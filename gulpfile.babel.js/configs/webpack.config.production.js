@@ -1,6 +1,7 @@
 // https://webpack.github.io/docs/list-of-plugins.html
 const path = require('path');
 const webpack = require('webpack');
+const ShakePlugin = require('webpack-common-shake').Plugin;
 
 module.exports = {
   devtool: 'source-map',
@@ -16,6 +17,7 @@ module.exports = {
         RUNTIME_ENV: JSON.stringify('browser')
       }
     }),
+    new ShakePlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true
