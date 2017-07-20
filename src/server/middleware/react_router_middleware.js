@@ -49,7 +49,7 @@ export default (req, res) => {
       .then(function hydrateStoreSuccess() {
         const status = store.getState().status.code;
 
-        const renderedDOM = `<!doctype>${renderToString(
+        const renderedDOM = `<!DOCTYPE html>${renderToString(
           <Root store={store} history={memoryHistory} />
         )}`;
 

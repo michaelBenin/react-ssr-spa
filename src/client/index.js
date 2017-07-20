@@ -14,6 +14,8 @@ import Root from '../views/containers/root_container';
 import { ThirdPartyJs, loadAllThirdPartyJs } from './utils/third_party_js_util';
 
 const browserHistory = createHistory();
+const originalHash = browserHistory.location.hash;
+browserHistory.location.hash = '';
 
 initialize().catch(
   function logError(/* err */) {
@@ -52,6 +54,7 @@ browserHistory.listen((location /* , action*/) => {
 ThirdPartyJs.setThirdPartyGlobals();
 
 function renderedApp() {
+  browserHistory.location.hash = originalHash;
   store.dispatch(initialLoadActionCreator());
   loadAllThirdPartyJs(env);
 }
