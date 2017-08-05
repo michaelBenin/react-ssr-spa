@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import get from 'lodash/get';
+
+import loadData from './repo_detail_state_manager';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class RepoDetail extends Component {
+  componentWillMount() {
+    if (!this.props.state.config.initialPageLoad) {
+      loadData(this.props.match, this.props.dispatch, this.props.state);
+    } else {
+      // TODO: warm cache for PWA, don't trigger render
+    }
+  }
+
   render() {
     if (this.props.error) {
       const errorMessage = "We're sorry, please try again later.";
@@ -45,15 +57,30 @@ class RepoDetail extends Component {
   }
 }
 
-function mapStateToProps(state = {}) {
-  return state.repoDetail;
-}
-
 RepoDetail.propTypes = {
+  match: PropTypes.shape().isRequired,
+  dispatch: PropTypes.func.isRequired,
+  state: PropTypes.shape().isRequired,
   repo: PropTypes.shape({}), // eslint-disable-line react/require-default-props
-  isLoading: PropTypes.bool, // eslint-disable-line react/require-default-props
+  isLoading: PropTypes.bool.isRequired, // eslint-disable-line react/require-default-props
   error: PropTypes.bool, // eslint-disable-line react/require-default-props
   errorMessage: PropTypes.string // eslint-disable-line react/require-default-props
 };
 
-export default connect(mapStateToProps)(RepoDetail);
+// More info here: https://github.com/reactjs/react-redux/issues/210
+RepoDetail.defaultProps = {
+  isLoading: true,
+  error: false
+};
+
+function mapStateToProps(state = {}) {
+  return {
+    error: get(state, 'repoDetail.error'),
+    errorMessage: get(state, 'repoDetail.errorMessage'),
+    isLoading: get(state, 'repoDetail.isLoading'),
+    repo: get(state, 'repoDetail.repo'),
+    state
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(RepoDetail));

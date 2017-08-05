@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { get as _get } from 'lodash';
+import { withRouter } from 'react-router';
 
-/*
- import { canUseDOM } from 'exenv';
- if (canUseDOM) {
- debugger;
- }
- */
+import loadData from './search_results_state_manager';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Search extends Component {
+  componentWillMount() {
+    if (!this.props.state.config.initialPageLoad) {
+      loadData(this.props.match, this.props.dispatch, this.props.state);
+    } else {
+      // TODO: warm cache for PWA, don't trigger render
+    }
+  }
+
   render() {
     if (this.props.error === true) {
       return (
@@ -52,14 +55,22 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  isLoading: PropTypes.bool, // eslint-disable-line react/require-default-props
+  match: PropTypes.shape().isRequired,
+  dispatch: PropTypes.func.isRequired,
+  state: PropTypes.shape().isRequired,
+  isLoading: PropTypes.bool.isRequired, // eslint-disable-line react/require-default-props
   error: PropTypes.bool, // eslint-disable-line react/require-default-props
   errorMessage: PropTypes.string, // eslint-disable-line react/require-default-props
   response: PropTypes.shape() // eslint-disable-line react/require-default-props
 };
 
+Search.defaultProps = {
+  isLoading: true,
+  error: false
+};
+
 function mapStateToProps(state = {}) {
-  return state.search;
+  return { response: state.search, state };
 }
 
-export default connect(mapStateToProps)(Search);
+export default withRouter(connect(mapStateToProps)(Search));

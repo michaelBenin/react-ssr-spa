@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 function ErrorPage({ env, componentInfo, err }) {
   const isDevelopment = env === 'development';
+  if (isDevelopment) {
+    console.error(err); // eslint-disable-line no-console
+    console.error(err.stack); // eslint-disable-line no-console
+  }
   return (
     <div className="error-page">
       <h1>{`Error Occurred.`}</h1>

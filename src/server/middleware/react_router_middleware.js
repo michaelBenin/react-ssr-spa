@@ -6,7 +6,7 @@ import { matchRoutes } from 'react-router-config';
 import reactGuardUtil from '../../utils/react_guard_util';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
-import getRoutesWithStore from '../../react_router/react_router';
+import routes from '../../react_router/react_router';
 import configureStore from '../../redux/store/store';
 import Root from '../../views/containers/root_container';
 import config from '../config';
@@ -37,12 +37,12 @@ export default (req, res) => {
       }
     });
 
-    const routes = getRoutesWithStore(store);
-
     const branch = matchRoutes(routes, req.path);
 
     const promises = branch.map(function matchMap({ route, match }) {
-      return route.loadData ? route.loadData(match) : P.resolve(null);
+      return route.loadData
+        ? route.loadData(match, store.dispatch, store.getState())
+        : P.resolve(null);
     });
 
     P.all(promises)
