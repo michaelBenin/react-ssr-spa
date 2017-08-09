@@ -3,23 +3,20 @@
 
 export default function(state = {}, action) {
   const typeMap = {
-    REPO_DETAIL_LOADING() {
+    SEARCH_LOADING() {
       return {
-        isLoading: true,
-        repo: action.repo
+        isLoading: true
       };
     },
-    REPO_DETAIL_LOADED() {
+    SEARCH_LOADED() {
       return {
-        isLoading: false,
-        repo: action.repo
+        isLoading: false
       };
     },
-    REPO_DETAIL_ERROR() {
+    SEARCH_ERROR() {
       return {
         isLoading: false,
-        error: true,
-        errorMessage: action.repo.errorMessage
+        error: action.error
       };
     }
   };

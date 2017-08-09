@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import get from 'lodash/get';
 
-import loadData from './repo_detail_state_manager';
+import loadData from './repo_detail_page_data_fetch';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class RepoDetail extends Component {
   componentWillMount() {
     if (!this.props.state.config.initialPageLoad) {

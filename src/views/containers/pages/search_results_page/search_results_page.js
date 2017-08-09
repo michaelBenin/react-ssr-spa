@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import loadData from './search_results_state_manager';
+import loadData from './search_results_data_fetch';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Search extends Component {
@@ -70,7 +70,11 @@ Search.defaultProps = {
 };
 
 function mapStateToProps(state = {}) {
-  return { response: state.search, state };
+  return {
+    isLoading: state.search.isLoading,
+    response: state.search.response,
+    state
+  };
 }
 
 export default withRouter(connect(mapStateToProps)(Search));

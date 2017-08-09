@@ -1,17 +1,26 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 
-import configReducer from './config_reducer';
-import metaReducer from './meta_reducer';
-import statusReducer from './status_reducer';
-import repoDetailReducer from './repo_detail_reducer';
-import searchResultsReducer from './search_results_reducer';
+import config from './config_reducer';
+import meta from './meta_reducer';
+import status from './status_reducer';
+
+import repoDetail from './repo_detail/repo_detail_reducer';
+import repoDetailPage from './repo_detail/repo_detail_page_reducer';
+
+import searchPage from './search/search_page_reducer';
+import search from './search/search_results_reducer';
 
 export default combineReducers({
-  routing: routerReducer,
-  config: configReducer,
-  meta: metaReducer,
-  status: statusReducer,
-  repoDetail: repoDetailReducer,
-  search: searchResultsReducer
+  routing,
+
+  config,
+  meta,
+  status,
+
+  repoDetailPage,
+  repoDetail,
+
+  searchPage,
+  search
 });

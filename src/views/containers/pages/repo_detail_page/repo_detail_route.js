@@ -1,8 +1,8 @@
 import RepoDetailPage from './repo_detail_page';
-import repoDetailStateManager from './repo_detail_state_manager';
+import repoDetailPageStateManager from './repo_detail_page_data_fetch';
 
 export default {
   path: '/repo/:user/:title',
   component: RepoDetailPage,
-  loadData: repoDetailStateManager
+  loadData: repoDetailPageStateManager
 };
