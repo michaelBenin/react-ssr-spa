@@ -1,9 +1,7 @@
-import $ from 'jquery';
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate, render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import log from './services/logger_service';
-import reactGuardUtil from '../utils/react_guard_util';
 import initialize from './utils/initializer_util';
 import configureStore from '../redux/store/store';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
@@ -14,25 +12,23 @@ const browserHistory = createHistory();
 const originalHash = browserHistory.location.hash;
 browserHistory.location.hash = '';
 
-initialize().catch(
-  function logError(/* err */) {
-    // console.error(err);
-  }
-);
+initialize().catch(function logError(/* err */) {
+  // console.error(err);
+});
 
 // get json here
 let bootstrappedConfig = {};
 let env = false;
-const $config = $('.client-config');
+
 try {
-  bootstrappedConfig = $config.data('state');
+  bootstrappedConfig = JSON.parse(
+    document.querySelector('.client-config').getAttribute('data-state')
+  );
   env = bootstrappedConfig.config.env;
 } catch (error) {
   // console.error(error, 'Error parsing client config.');
   bootstrappedConfig = {};
 }
-
-reactGuardUtil(env);
 
 browserHistory.location.key = bootstrappedConfig.routing.location.key;
 
@@ -54,7 +50,7 @@ function renderedApp() {
 }
 
 try {
-  render(
+  hydrate(
     <Root store={store} history={browserHistory} />,
     window.document,
     renderedApp

@@ -1,10 +1,13 @@
 import React from 'react';
 
 import { expect } from 'chai';
-import { /* shallow, */ mount } from 'enzyme';
 import { StaticRouter } from 'react-router';
 
 import NotFoundPage from '../../../../../../src/views/containers/pages/not_found_page/not_found_page';
+
+import Enzyme from '../../../../utils/enzyme_adapter_util';
+
+const { mount } = Enzyme;
 
 describe('A suite for not-found page', function() {
   /*
@@ -19,9 +22,11 @@ describe('A suite for not-found page', function() {
 
   it('contains spec with an expectation', function() {
     expect(
-      mount(<StaticRouter context={{}}><NotFoundPage /></StaticRouter>).find(
-        '.not-found'
-      ).length
+      mount(
+        <StaticRouter context={{}}>
+          <NotFoundPage />
+        </StaticRouter>
+      ).find('.not-found').length
     ).to.equal(1);
   });
 });

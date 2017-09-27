@@ -70,9 +70,9 @@ function mapStateToProps(state) {
 }
 
 Head.propTypes = {
-  staticUrl: PropTypes.string,
-  initialPageLoad: PropTypes.bool,
-  meta: PropTypes.shape({}) // eslint-disable-line react/no-unused-prop-types
+  staticUrl: PropTypes.string, // eslint-disable-line react/require-default-props
+  initialPageLoad: PropTypes.bool, // eslint-disable-line react/require-default-props
+  meta: PropTypes.shape({}) // eslint-disable-line react/require-default-props, react/no-unused-prop-types
 };
 
 export default connect(mapStateToProps)(Head);

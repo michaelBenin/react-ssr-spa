@@ -17,13 +17,9 @@ class Nav extends Component {
       <nav className="top-nav">
         <ul className="top-nav__link-container">
           <li className="top-nav__link">
-            <Link to={'/'}>
-              react-ssr-spa
-            </Link>
+            <Link to={'/'}>react-ssr-spa</Link>
 
-            <Link to={'/about'}>
-              About
-            </Link>
+            <Link to={'/about'}>About</Link>
           </li>
         </ul>
         <form

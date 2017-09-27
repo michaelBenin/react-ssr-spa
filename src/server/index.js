@@ -1,4 +1,3 @@
-import './utils/react_server_perf_util';
 import './utils/install_sourcemap_util';
 import config from './config';
 import { app, createOrGetServer, setServer } from './services/express_service';

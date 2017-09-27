@@ -14,11 +14,9 @@ export default class FontLoaderUtil {
       .then(function fontLoadSuccess() {
         document.documentElement.className += ' fonts-loaded';
       })
-      .catch(
-        function fontLoadFail(/* err */) {
-          document.documentElement.className +=
-            ' fonts-loaded fonts-loaded-error';
-        }
-      );
+      .catch(function fontLoadFail(/* err */) {
+        document.documentElement.className +=
+          ' fonts-loaded fonts-loaded-error';
+      });
   }
 }

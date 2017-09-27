@@ -12,8 +12,9 @@ module.exports = function karmaConfUnit(config) {
     browsers: travis ? ['Chrome_travis_ci'] : ['Chrome'],
     // karma only needs to know about the test bundle
     files: [
+      path.join(__dirname, '../../test/shared/utils/enzyme_adapter_util.js'),
       path.join(__dirname, '../../test/client/unit/**/*'),
-      path.join(__dirname, '../../test/shared/**/*')
+      path.join(__dirname, '../../test/shared/unit/**/*')
     ],
     frameworks: ['mocha'],
     plugins: [

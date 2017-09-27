@@ -9,6 +9,7 @@ module.exports = function karmaConfIntegration(config) {
     browsers: travis ? ['Chrome_travis_ci'] : ['Chrome'],
 
     files: [
+      path.join(__dirname, '../../test/shared/utils/**/*.js'),
       path.join(__dirname, '../../test/client/unit/**/*'),
       path.join(__dirname, '../../test/client/integration/**/*'),
       path.join(__dirname, '../../test/shared/**/*'),

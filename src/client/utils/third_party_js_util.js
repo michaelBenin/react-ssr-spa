@@ -129,19 +129,17 @@ export class ThirdPartyJs {
 }
 
 export function loadAllThirdPartyJs(env) {
-  return P.all(
-    [
-      // ThirdPartyJs.loadAdSense(env),
-      // ThirdPartyJs.loadGA(env),
-      // ThirdPartyJs.loadFB(env),
-      // ThirdPartyJs.loadTwitter(env),
-      // ThirdPartyJs.loadPinterest(env),
-      // ThirdPartyJs.loadGoogleApi(env),
-      // ThirdPartyJs.loadGoogleTag(env),
-      // ThirdPartyJs.fbTracking(env),
-      // ThirdPartyJs.loadDisqus(env),
-      // ThirdPartyJs.loadSentry(env),
-      // ThirdPartyJs.loadAmazonAdSystem(env)
-    ]
-  );
+  return P.all([
+    // ThirdPartyJs.loadAdSense(env),
+    // ThirdPartyJs.loadGA(env),
+    // ThirdPartyJs.loadFB(env),
+    // ThirdPartyJs.loadTwitter(env),
+    // ThirdPartyJs.loadPinterest(env),
+    // ThirdPartyJs.loadGoogleApi(env),
+    // ThirdPartyJs.loadGoogleTag(env),
+    // ThirdPartyJs.fbTracking(env),
+    // ThirdPartyJs.loadDisqus(env),
+    // ThirdPartyJs.loadSentry(env),
+    // ThirdPartyJs.loadAmazonAdSystem(env)
+  ]);
 }

@@ -17,7 +17,7 @@ gulp.task('webpack-dev-server', function runWebpackDevServer(callback) {
   const server = webpackApp.listen(
     3001,
     'localhost',
-    function webpackDevServerRunning(err /* , result*/) {
+    function webpackDevServerRunning(err /* , result */) {
       if (err) {
         log(err);
       }

@@ -43,6 +43,7 @@ const config = {
         src: [
           'test/server/utils/test_initializer_utils.js',
           'test/server/utils/enzyme_initializer.js',
+          'test/shared/utils/**/*.js',
           'test/server/unit/**/*.js',
           'test/shared/unit/**/*.js'
         ]
