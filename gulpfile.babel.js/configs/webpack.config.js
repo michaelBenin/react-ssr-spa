@@ -64,7 +64,7 @@ module.exports = {
                   }
                 ]
               ],
-              plugins: ['react-hot-loader/babel']
+              plugins: ['react-hot-loader/babel', 'transform-react-jsx-source']
             }
           }
         ],
