@@ -18,11 +18,7 @@
         "react"
       ],
       "plugins": [
-        ["istanbul", {
-          "exclude": [
-            "test/**/*.js"
-          ]
-        }]
+        "istanbul"
       ]
     }
   }
