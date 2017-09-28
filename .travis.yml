@@ -14,7 +14,7 @@ sudo: false
 language: node_js
 
 node_js:
-  - "8.1.4"
+  - "8.6.0"
 
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -28,3 +28,5 @@ script:
   - npm test
   - npm run coverage
   - npm run client-coverage
+  - npm run docs
+  - npm run complexity-report

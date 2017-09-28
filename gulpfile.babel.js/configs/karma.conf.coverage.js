@@ -48,7 +48,7 @@ module.exports = function karmaConfIntegration(config) {
           type: 'lcov'
         }
       ],
-      dir: path.join(__dirname, '../../', 'karma_coverage')
+      dir: path.join(__dirname, '../../', 'docs/client-coverage')
     },
 
     webpack: {

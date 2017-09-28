@@ -33,8 +33,8 @@
     "js-doc": "gulp js-doc",
     "complexity-report": "plato -r -d docs/complexity src",
     "docs": "gulp js-doc style-doc",
-    "coverage": "cross-env NODE_ENV=coverage nyc mocha test/server/utils/initializer_util.js test/server/utils/test_initializer_util.js test/server/integration/**/*.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/utils/test_teardown_util.js && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage/lcov.info .nyc_output",
-    "client-coverage": "gulp client-coverage; cat karma_coverage/lcov.info | codecov"
+    "coverage": "cross-env NODE_ENV=coverage nyc mocha test/server/utils/initializer_util.js test/server/utils/test_initializer_util.js test/server/integration/**/*.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/utils/test_teardown_util.js && cat ./docs/server-coverage/lcov.info | coveralls && rm -rf ./docs/server-coverage/lcov.info .nyc_output",
+    "client-coverage": "gulp client-coverage; cat docs/client-coverage/lcov.info | codecov"
   },
   "pre-commit": [
     "test"
@@ -176,6 +176,13 @@
     "node": "~6.9.0"
   },
   "nyc": {
+    "include": [
+      "src/**/*.js",
+      "src/client/**/*.js"
+    ],
+    "exclude": [
+      "test/**/*.js"
+    ],
     "require": [
       "babel-register"
     ],
@@ -183,7 +190,8 @@
       "lcov",
       "text"
     ],
-    "sourceMap": false,
-    "instrument": false
+    "sourceMap": true,
+    "instrument": true,
+    "report-dir": "./docs/server-coverage"
   }
 }
