@@ -7,6 +7,7 @@ import configureStore from '../redux/store/store';
 import initialLoadActionCreator from '../redux/action_creators/initial_load_action_creator';
 import Root from '../views/containers/root_container';
 import { ThirdPartyJs, loadAllThirdPartyJs } from './utils/third_party_js_util';
+import reactGuardUtil from '../utils/react_guard_util';
 
 const browserHistory = createHistory();
 const originalHash = browserHistory.location.hash;
@@ -29,6 +30,8 @@ try {
   // console.error(error, 'Error parsing client config.');
   bootstrappedConfig = {};
 }
+
+reactGuardUtil(env);
 
 browserHistory.location.key = bootstrappedConfig.routing.location.key;
 
