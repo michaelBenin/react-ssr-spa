@@ -1,4 +1,5 @@
 import { JSDOM } from 'jsdom';
+import '../../../src/server/utils/react_raf_util';
 
 const exposedProperties = ['window', 'navigator', 'document'];
 

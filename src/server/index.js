@@ -1,5 +1,6 @@
 import './utils/install_sourcemap_util';
 import config from './config';
+import './utils/react_raf_util';
 import { app, createOrGetServer, setServer } from './services/express_service';
 import errorMiddleware from './middleware/error_middleware';
 import log from './services/logger_service';

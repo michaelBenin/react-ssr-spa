@@ -178,11 +178,11 @@
   },
   "nyc": {
     "include": [
-      "src/**/*.js",
-      "src/client/**/*.js"
+      "src/**/*.js"
     ],
     "exclude": [
-      "test/**/*.js"
+      "test/**/*.js",
+      "src/client/**/*.js"
     ],
     "require": [
       "babel-register"
