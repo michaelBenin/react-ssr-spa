@@ -33,7 +33,7 @@
     "js-doc": "gulp js-doc",
     "complexity-report": "plato -r -d docs/complexity src",
     "docs": "gulp js-doc style-doc",
-    "coverage": "cross-env NODE_ENV=coverage nyc mocha test/server/utils/initializer_util.js test/server/utils/test_initializer_util.js test/server/integration/**/*.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/utils/test_teardown_util.js && cat ./docs/server-coverage/lcov.info | coveralls && rm -rf ./docs/server-coverage/lcov.info .nyc_output",
+    "coverage": "cross-env NODE_ENV=coverage nyc mocha --timeout 10000 test/server/utils/initializer_util.js test/server/utils/test_initializer_util.js test/server/integration/**/*.js test/server/utils/enzyme_initializer.js test/server/unit/**/*.js test/server/utils/test_teardown_util.js && cat ./docs/server-coverage/lcov.info | coveralls && rm -rf ./docs/server-coverage/lcov.info .nyc_output",
     "client-coverage": "gulp client-coverage; cat docs/client-coverage/lcov.info | codecov"
   },
   "pre-commit": [
@@ -191,8 +191,8 @@
       "lcov",
       "text"
     ],
-    "sourceMap": true,
-    "instrument": true,
+    "sourceMap": false,
+    "instrument": false,
     "report-dir": "./docs/server-coverage"
   }
 }

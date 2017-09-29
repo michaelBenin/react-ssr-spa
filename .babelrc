@@ -1,10 +1,13 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
       }
-    }],
+    ],
     "react"
   ],
   "plugins": [
@@ -13,15 +16,25 @@
   "env": {
     "coverage": {
       "presets": [
-        ["env", {
-          "targets": {
-            "node": "current"
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
           }
-        }],
+        ],
         "react"
       ],
       "plugins": [
-        "istanbul"
+        [
+          "istanbul",
+          {
+            "exclude": [
+              "test/**/*.js"
+            ]
+          }
+        ]
       ]
     }
   }
