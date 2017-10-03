@@ -1,3 +1,6 @@
+import { canUseDOM } from 'exenv';
+import extend from 'lodash/extend';
+
 export default function(
   state = {
     code: 200
@@ -15,5 +18,12 @@ export default function(
       code: 500
     };
   }
+
+  if (/PAGE_LOADING/.test(action.type) && canUseDOM) {
+    return extend({}, state, {
+      code: 200
+    });
+  }
+
   return state;
 }

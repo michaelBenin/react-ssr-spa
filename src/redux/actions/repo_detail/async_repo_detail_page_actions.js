@@ -8,8 +8,8 @@ import repoDetailAsyncAction from './async_repo_detail_actions';
 export default function fetchRepoDetail(params, dispatch, state) {
   dispatch(repoDetailPageActions.repoDetailPageLoading());
   return P.all([repoDetailAsyncAction(params, dispatch, state)])
-    .then(function handleRepoDetailData() {
-      dispatch(repoDetailPageActions.repoDetailPageLoaded());
+    .then(function handleRepoDetailData(actions) {
+      dispatch(repoDetailPageActions.repoDetailPageLoaded(state, actions));
     })
     .catch(function handleUserError(err) {
       log.error(err, 'Error in fetching repo detail page.');

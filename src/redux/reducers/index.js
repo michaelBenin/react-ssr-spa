@@ -11,12 +11,16 @@ import repoDetailPage from './repo_detail/repo_detail_page_reducer';
 import searchPage from './search/search_page_reducer';
 import search from './search/search_results_reducer';
 
+import indexPage from './index/index_page_reducer';
+
 export default combineReducers({
   routing,
 
   config,
   meta,
   status,
+
+  indexPage,
 
   repoDetailPage,
   repoDetail,

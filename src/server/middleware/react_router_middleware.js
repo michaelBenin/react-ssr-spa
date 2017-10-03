@@ -30,7 +30,8 @@ export default (req, res) => {
         staticUrl,
         apiUrl,
         initialPageLoad: true,
-        featureFlags
+        featureFlags,
+        navHistory: [`${req.protocol}://${req.hostname}${req.originalUrl}`]
       }
     });
 

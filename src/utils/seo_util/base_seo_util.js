@@ -2,7 +2,7 @@ import get from 'lodash/get';
 
 export default function(data = {}) {
   const { siteConf, title, type, publisher = true, extend = [] } = data;
-  const siteHumanReadable = get(siteConf, '[og:site_name]') || '';
+  const siteHumanReadable = get(siteConf, '[og:site_name]', '');
   const description = data.description || '';
   const url = data.url || '';
   const siteSlug = data.slug || '';
@@ -20,7 +20,7 @@ export default function(data = {}) {
       },
       {
         property: 'fb:pages',
-        content: `${get(data, 'facebook.fanpageId')}`
+        content: get(data, 'facebook.fanpageId')
       },
       {
         name: 'viewport',
@@ -61,11 +61,11 @@ export default function(data = {}) {
       },
       {
         property: 'fb:app_id',
-        content: `${get(data, 'appId')}`
+        content: get(data, 'appId')
       },
       {
         property: 'fb:admins',
-        content: `${get(data, 'appAdminId')}`
+        content: get(data, 'appAdminId')
       },
       {
         name: 'twitter:card',

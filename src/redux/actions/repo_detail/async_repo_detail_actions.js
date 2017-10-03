@@ -8,6 +8,7 @@ export default function fetchRepoDetail(params, dispatch, state) {
   return RepoDetailModel.fetch(params, state)
     .then(function handleRepoDetailData(repoData) {
       dispatch(repoDetailActions.repoDetailLoaded(repoData.data, state));
+      return repoData.data;
     })
     .catch(function handleUserError(err) {
       log.error(err, 'Error in fetching repo.');

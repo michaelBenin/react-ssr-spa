@@ -25,9 +25,7 @@ const config = {
     env: {
       NODE_ENV: 'development'
     },
-    nodeArgs: [
-      // '--inspect'
-    ]
+    nodeArgs: ['--inspect']
   },
   test: {
     server: {

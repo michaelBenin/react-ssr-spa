@@ -8,11 +8,12 @@ export function repoDetailPageLoading(state = {}) {
   };
 }
 
-export function repoDetailPageLoaded(state = {}) {
+export function repoDetailPageLoaded(state, data) {
   return {
     type: 'REPO_DETAIL_PAGE_LOADED',
     isLoading: false,
-    state
+    state,
+    data
   };
 }
 
