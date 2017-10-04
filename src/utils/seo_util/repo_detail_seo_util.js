@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import last from 'lodash/last';
 import baseSeoUtil from './base_seo_util';
 
 export default function(state, data) {
@@ -11,7 +12,7 @@ export default function(state, data) {
       fanpageId: ''
     },
     title: get(data, '[0].name'),
-    url: get(state, 'config.navHistory[0]'),
+    url: last(get(state, 'config.navHistory')),
     description: get(data, '[0].description'),
     image: get(data, '[0].owner.avatar_url'),
     articleSection: get(data, '[0].language'),
