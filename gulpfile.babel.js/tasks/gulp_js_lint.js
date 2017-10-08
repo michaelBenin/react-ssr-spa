@@ -45,7 +45,8 @@ gulp.task('js-lint-test', function lintTests() {
       eslint({
         useEslintrc: false,
         configFile: configFilePath,
-        rules: baseConfig.rules
+        rules: baseConfig.rules,
+        globals: ['$']
       })
     )
     .pipe(eslint.format())
@@ -93,7 +94,8 @@ gulp.task('js-lint-test-fix', function lintTests() {
         fix: true,
         useEslintrc: false,
         configFile: configFilePath,
-        rules: baseConfig.rules
+        rules: baseConfig.rules,
+        globals: ['$']
       })
     )
     .pipe(eslint.format())

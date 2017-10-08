@@ -12,6 +12,7 @@ import searchPage from './search/search_page_reducer';
 import search from './search/search_results_reducer';
 
 import indexPage from './index/index_page_reducer';
+import aboutPage from './about/about_page_reducer';
 
 export default combineReducers({
   routing,
@@ -21,6 +22,7 @@ export default combineReducers({
   status,
 
   indexPage,
+  aboutPage,
 
   repoDetailPage,
   repoDetail,

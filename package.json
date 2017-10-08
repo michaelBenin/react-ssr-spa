@@ -16,7 +16,7 @@
     "client-integration-test-watch": "KARMA_AUTOWATCH=on gulp client-integration-test",
     "server-unit-test": "gulp server-unit-test",
     "server-integration-test": "gulp server-integration-test",
-    "acceptance-test": "gulp acceptance-test",
+    "acceptance-test": "rm -rf ./dist && NODE_ENV=production npm run build-prod; NODE_ENV=test gulp acceptance-test",
     "js-lint": "gulp js-lint",
     "js-lint-fix": "gulp js-lint-fix",
     "style-lint": "gulp style-lint",

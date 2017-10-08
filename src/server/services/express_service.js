@@ -58,7 +58,7 @@ app.use(
 // TODO: configure for specific routes
 app.use(hpp());
 
-if (env === 'development') {
+if (env === 'development' || env === 'test') {
   app.use(express.static(path.join(__dirname, '../../static')));
 }
 

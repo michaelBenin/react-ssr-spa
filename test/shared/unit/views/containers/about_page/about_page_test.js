@@ -1,24 +1,21 @@
 import React from 'react';
+
 import { expect } from 'chai';
 import { StaticRouter } from 'react-router';
 
 import AboutPage from '../../../../../../src/views/containers/pages/about_page/about_page';
 import Enzyme from '../../../../utils/enzyme_adapter_util';
 
-const { shallow, mount } = Enzyme;
+const { shallow } = Enzyme;
 
 describe('A suite for about page', function() {
-  it('contains the correct class', function correctClass() {
-    expect(shallow(<AboutPage />).is('.about-page')).to.equal(true);
-  });
-
-  it('contains spec with an expectation', function() {
+  it('renders without error', function() {
     expect(
-      mount(
+      shallow(
         <StaticRouter context={{}}>
           <AboutPage />
         </StaticRouter>
-      ).find('.about-page').length
+      ).dive().length
     ).to.equal(1);
   });
 });

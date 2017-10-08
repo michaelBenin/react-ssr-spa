@@ -12,7 +12,7 @@ const configPath = join(
 gulp.task('webdriver', () =>
   gulp.src(configPath).pipe(
     webdriver({
-      logLevel: 'verbose'
+      // logLevel: 'verbose'
     })
   )
 );

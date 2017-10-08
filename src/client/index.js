@@ -49,6 +49,8 @@ function bootReact() {
     browserHistory.location.hash = originalHash;
     store.dispatch(initialLoadActionCreator());
     loadAllThirdPartyJs(env);
+    document.documentElement.className +=
+      document.documentElement.className === '' ? 'hydrated' : ' hydrated';
   }
 
   try {
