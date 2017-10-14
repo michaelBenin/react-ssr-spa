@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
+import ErrorBoundary from 'react-error-boundary';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import CSSTransition from 'react-transition-group/CSSTransition';
 
 import Header from './../../components/header/header';
 import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
+import log from '../../../services/logger_service';
 
 class Layout extends Component {
   livereload() {
@@ -27,9 +31,27 @@ class Layout extends Component {
     return (
       <body className="layout">
         <Header />
-        <section className="main" role="main">
-          {renderRoutes(this.props.route.routes)}
-        </section>
+
+        <ErrorBoundary
+          onError={(error, componentStack) => {
+            log.error(componentStack, error);
+          }}
+          fallbackcomponent={<div>Error</div>}
+        >
+          <TransitionGroup className="main" role="main">
+            <CSSTransition
+              key={this.props.location.key}
+              timeout={1000}
+              enter={true}
+              exit={true}
+              classNames="pageSlider"
+              mountOnEnter={true}
+              unmountOnExit={true}
+            >
+              {renderRoutes(this.props.route.routes)}
+            </CSSTransition>
+          </TransitionGroup>
+        </ErrorBoundary>
         <Footer />
         <Config />
         {this.livereload()}
@@ -51,7 +73,10 @@ Layout.propTypes = {
     routes: PropTypes.arrayOf(PropTypes.shape({}))
   }),
   env: PropTypes.string.isRequired,
-  staticUrl: PropTypes.string.isRequired
+  staticUrl: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    key: PropTypes.string
+  }).isRequired
 };
 
 Layout.defaultProps = {
