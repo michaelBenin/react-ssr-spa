@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { renderRoutes } from 'react-router-config';
+// import { renderRoutes } from 'react-router-config';
+import Switch from 'react-router/Switch';
+import Route from 'react-router/Route';
 import { connect } from 'react-redux';
 import ErrorBoundary from 'react-error-boundary';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
 import Header from './../../components/header/header';
-import Footer from './../../components/footer/footer';
+// import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
 import log from '../../../services/logger_service';
+
+const renderRoutes = (routes, location) =>
+  routes ? (
+    <Switch key={location.key} location={location}>
+      {routes.map(route => (
+        <Route
+          key={location.key}
+          location={location}
+          path={route.path}
+          exact={route.exact}
+          strict={route.strict}
+          component={route.component}
+        />
+      ))}
+    </Switch>
+  ) : null;
 
 class Layout extends Component {
   livereload() {
@@ -38,21 +56,25 @@ class Layout extends Component {
           }}
           fallbackcomponent={<div>Error</div>}
         >
-          <TransitionGroup className="main" role="main">
+          <TransitionGroup
+            enter={true}
+            exit={true}
+            appear={true}
+            className="main"
+            role="main"
+            component={'main'}
+          >
             <CSSTransition
-              key={this.props.location.key}
+              key={Math.random()}
+              classNames="fadeTranslate"
               timeout={1000}
-              enter={true}
-              exit={true}
-              classNames="pageSlider"
               mountOnEnter={true}
               unmountOnExit={true}
             >
-              {renderRoutes(this.props.route.routes)}
+              {renderRoutes(this.props.route.routes, this.props.location)}
             </CSSTransition>
           </TransitionGroup>
         </ErrorBoundary>
-        <Footer />
         <Config />
         {this.livereload()}
         {this.scriptbundle()}
