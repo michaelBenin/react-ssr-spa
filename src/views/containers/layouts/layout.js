@@ -9,7 +9,7 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
 import Header from './../../components/header/header';
-// import Footer from './../../components/footer/footer';
+import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
 import log from '../../../services/logger_service';
 
@@ -74,6 +74,7 @@ class Layout extends Component {
               {renderRoutes(this.props.route.routes, this.props.location)}
             </CSSTransition>
           </TransitionGroup>
+          <Footer />
         </ErrorBoundary>
         <Config />
         {this.livereload()}
