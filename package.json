@@ -56,7 +56,7 @@
     "fontfaceobserver": "2.0.13",
     "glob": "7.1.2",
     "he": "1.1.1",
-    "helmet": "3.8.1",
+    "helmet": "3.8.2",
     "hiredis": "0.5.0",
     "history": "4.7.2",
     "hpp": "0.2.2",
