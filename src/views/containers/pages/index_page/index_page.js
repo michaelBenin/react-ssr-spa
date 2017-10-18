@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 
 import loadData from './index_page_data_fetch';
 
+import Footer from './../../../components/footer/footer';
+
 class Homepage extends Component {
   componentWillMount() {
     if (!get(this.props, 'state.config.initialPageLoad')) {
@@ -21,6 +23,7 @@ class Homepage extends Component {
       <div className="index-page">
         <h1>Welcome to react-ssr-spa working demo.</h1>
         <Link to={'/repo/michaelBenin/react-ssr-spa'}>demo: react-ssr-spa</Link>
+        <Footer />
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Footer from './../../../components/footer/footer';
+
 function ErrorPage({ env, componentInfo, err }) {
   const isDevelopment = env === 'development';
   if (isDevelopment) {
@@ -19,6 +21,7 @@ function ErrorPage({ env, componentInfo, err }) {
       ) : (
         <p>{`We're sorry please try again later.`}</p>
       )}
+      <Footer />
     </div>
   );
 }

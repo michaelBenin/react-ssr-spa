@@ -6,6 +6,8 @@ import get from 'lodash/get';
 
 import loadData from './repo_detail_page_data_fetch';
 
+import Footer from './../../../components/footer/footer';
+
 class RepoDetail extends Component {
   componentWillMount() {
     if (!this.props.state.config.initialPageLoad) {
@@ -24,6 +26,7 @@ class RepoDetail extends Component {
             <h1>{errorMessage}</h1>
             <p>{this.props.errorMessage}</p>
           </article>
+          <Footer />
         </section>
       );
     }
@@ -34,6 +37,7 @@ class RepoDetail extends Component {
           <article className="repo-detail-page__main">
             <h1>Loading...</h1>
           </article>
+          <Footer />
         </section>
       );
     }
@@ -51,6 +55,7 @@ class RepoDetail extends Component {
           <p>{`Stars: ${repo.stargazers_count}`}</p>
           <p>{`Watchers: ${repo.watchers_count}`}</p>
         </section>
+        <Footer />
       </section>
     );
   }

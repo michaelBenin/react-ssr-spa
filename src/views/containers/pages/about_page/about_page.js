@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 
 import loadData from './about_page_data_fetch';
 
+import Footer from './../../../components/footer/footer';
+
 class AboutPage extends Component {
   componentWillMount() {
     if (!get(this.props, 'state.config.initialPageLoad')) {
@@ -28,6 +30,7 @@ class AboutPage extends Component {
             demo: react-ssr-spa
           </Link>
         </p>
+        <Footer />
       </div>
     );
   }

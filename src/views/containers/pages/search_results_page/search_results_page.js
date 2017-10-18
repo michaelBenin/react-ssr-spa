@@ -6,6 +6,8 @@ import { withRouter } from 'react-router';
 
 import loadData from './search_results_data_fetch';
 
+import Footer from './../../../components/footer/footer';
+
 // eslint-disable-next-line react/prefer-stateless-function
 class Search extends Component {
   componentWillMount() {
@@ -22,6 +24,7 @@ class Search extends Component {
         <section className="search">
           <h1>{"We're sorry! There was an error. Message: "}</h1>
           <p>{this.props.errorMessage}</p>
+          <Footer />
         </section>
       );
     }
@@ -30,6 +33,7 @@ class Search extends Component {
       return (
         <section className="search">
           <h1>Be Patient, we are loading in the search results.</h1>
+          <Footer />
         </section>
       );
     }
@@ -49,6 +53,7 @@ class Search extends Component {
             );
           })}
         </ul>
+        <Footer />
       </section>
     );
   }

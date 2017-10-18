@@ -9,7 +9,6 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
 import Header from './../../components/header/header';
-import Footer from './../../components/footer/footer';
 import Config from './../../components/config/config';
 import log from '../../../services/logger_service';
 
@@ -65,7 +64,7 @@ class Layout extends Component {
             component={'main'}
           >
             <CSSTransition
-              key={Math.random()}
+              key={this.props.location.pathname}
               classNames="fadeTranslate"
               timeout={1000}
               mountOnEnter={true}
@@ -74,7 +73,6 @@ class Layout extends Component {
               {renderRoutes(this.props.route.routes, this.props.location)}
             </CSSTransition>
           </TransitionGroup>
-          <Footer />
         </ErrorBoundary>
         <Config />
         {this.livereload()}
@@ -98,6 +96,7 @@ Layout.propTypes = {
   env: PropTypes.string.isRequired,
   staticUrl: PropTypes.string.isRequired,
   location: PropTypes.shape({
+    pathname: PropTypes.string,
     key: PropTypes.string
   }).isRequired
 };
