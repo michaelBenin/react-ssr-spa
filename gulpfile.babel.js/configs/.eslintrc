@@ -11,7 +11,12 @@
     "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
     "class-methods-use-this": [0],
     "jsx-a11y/no-static-element-interactions": [0],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }],
     "react/jsx-boolean-value": ["off"],
+    "react/no-unescaped-entities": ["off"],
     "prettier/prettier": ["warn", {
         "singleQuote": true,
         "semi": true,

@@ -2,6 +2,7 @@ import React from 'react';
 import { hydrate, render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import scriptJS from 'scriptjs';
+import get from 'lodash/get';
 import log from './services/logger_service';
 import initialize from './utils/initializer_util';
 import configureStore from '../redux/store/store';
@@ -26,7 +27,7 @@ function bootReact() {
     bootstrappedConfig = JSON.parse(
       document.querySelector('.client-config').getAttribute('data-state')
     );
-    env = bootstrappedConfig.config.env;
+    env = get(bootstrappedConfig, 'config.env');
   } catch (error) {
     // console.error(error, 'Error parsing client config.');
     bootstrappedConfig = {};

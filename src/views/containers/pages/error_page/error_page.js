@@ -11,7 +11,7 @@ function ErrorPage({ env, componentInfo, err }) {
   }
   return (
     <div className="error-page">
-      <h1>{`Error Occurred.`}</h1>
+      <h1>Error Occurred.</h1>
       {isDevelopment ? (
         <div>
           <h2>Error Message: {err.message}</h2>
@@ -19,7 +19,7 @@ function ErrorPage({ env, componentInfo, err }) {
           <h2>Component Info: {JSON.stringify(componentInfo, null, 2)}</h2>
         </div>
       ) : (
-        <p>{`We're sorry please try again later.`}</p>
+        <p>We\'re sorry please try again later.</p>
       )}
       <Footer />
     </div>
@@ -27,8 +27,8 @@ function ErrorPage({ env, componentInfo, err }) {
 }
 
 ErrorPage.propTypes = {
-  err: PropTypes.shape(),
-  componentInfo: PropTypes.shape(),
+  err: PropTypes.shape({}),
+  componentInfo: PropTypes.shape({}),
   env: PropTypes.string.isRequired
 };
 

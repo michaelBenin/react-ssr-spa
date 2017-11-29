@@ -61,7 +61,7 @@ class Layout extends Component {
             appear={true}
             className="main"
             role="main"
-            component={'main'}
+            component="main"
           >
             <CSSTransition
               key={this.props.location.pathname}

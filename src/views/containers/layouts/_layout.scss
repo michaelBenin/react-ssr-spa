@@ -18,12 +18,9 @@ body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-.fonts-loaded {
-
-  html,
-  body {
-    font-family: Amble, sans-serif;
-  }
+html.fonts-loaded,
+.fonts-loaded body {
+  font-family: Amble, sans-serif;
 }
 
 html {

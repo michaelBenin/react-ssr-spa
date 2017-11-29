@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import path from 'path';
 
-const Server = require('karma').Server;
+const { Server } = require('karma');
 
 const karmaAuto = process.env.KARMA_AUTOWATCH;
 const singleRun = karmaAuto !== 'on';

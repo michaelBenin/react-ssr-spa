@@ -8,11 +8,9 @@ export default function fetchAboutData(match, dispatch, state) {
       return false;
     }
   }
-  return asyncAboutPageAction(
-    match.params,
-    dispatch,
-    state
-  ).catch(function handleError(err) {
-    log.error(err);
-  });
+  return asyncAboutPageAction(match.params, dispatch, state).catch(
+    function handleError(err) {
+      log.error(err);
+    }
+  );
 }

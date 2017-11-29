@@ -21,14 +21,12 @@ class AboutPage extends Component {
   render() {
     return (
       <div className="about-page">
-        <h1>{"What's this about?"}</h1>
+        <h1>What's this about?</h1>
         <p>
           This project aims to do one thing well: make server side rendering
           simple in a react application using only mature community maintained
           libraries.
-          <Link to={'/repo/michaelBenin/react-ssr-spa'}>
-            demo: react-ssr-spa
-          </Link>
+          <Link to="/repo/michaelBenin/react-ssr-spa">demo: react-ssr-spa</Link>
         </p>
         <Footer />
       </div>
@@ -37,9 +35,9 @@ class AboutPage extends Component {
 }
 
 AboutPage.propTypes = {
-  match: PropTypes.shape().isRequired,
+  match: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
-  state: PropTypes.shape().isRequired
+  state: PropTypes.shape({}).isRequired
 };
 
 AboutPage.defaultProps = {};

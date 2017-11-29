@@ -10,7 +10,7 @@ import Footer from './../../../components/footer/footer';
 
 class RepoDetail extends Component {
   componentWillMount() {
-    if (!this.props.state.config.initialPageLoad) {
+    if (!get(this.props, 'state.config.initialPageLoad')) {
       loadData(this.props.match, this.props.dispatch, this.props.state);
     } else {
       // TODO: warm cache for PWA, don't trigger render
@@ -62,11 +62,11 @@ class RepoDetail extends Component {
 }
 
 RepoDetail.propTypes = {
-  match: PropTypes.shape().isRequired,
+  match: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
-  state: PropTypes.shape().isRequired,
+  state: PropTypes.shape({}).isRequired,
   repo: PropTypes.shape({}), // eslint-disable-line react/require-default-props
-  isLoading: PropTypes.bool.isRequired, // eslint-disable-line react/require-default-props
+  isLoading: PropTypes.bool, // eslint-disable-line react/require-default-props
   error: PropTypes.bool, // eslint-disable-line react/require-default-props
   errorMessage: PropTypes.string // eslint-disable-line react/require-default-props
 };

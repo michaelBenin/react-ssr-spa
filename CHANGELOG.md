@@ -1,5 +1,12 @@
 # Changelog
 
+### 9.0.0
+
+### Changed
+
+* Updated all dependencies
+* See: https://github.com/yannickcr/eslint-plugin-react/issues/1471
+
 ## 8.0.0
 
 ### Changed

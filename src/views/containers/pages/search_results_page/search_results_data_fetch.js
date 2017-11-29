@@ -8,11 +8,9 @@ export default function fetchSearchData(nextState, dispatch, state) {
       return false;
     }
   }
-  return fetchSearchPageAction(
-    nextState.params.query,
-    dispatch,
-    state
-  ).catch(function handleServerSideRenderError(err) {
-    log.error(err);
-  });
+  return fetchSearchPageAction(nextState.params.query, dispatch, state).catch(
+    function handleServerSideRenderError(err) {
+      log.error(err);
+    }
+  );
 }

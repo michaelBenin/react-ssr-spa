@@ -22,7 +22,7 @@ class Homepage extends Component {
     return (
       <div className="index-page">
         <h1>Welcome to react-ssr-spa working demo.</h1>
-        <Link to={'/repo/michaelBenin/react-ssr-spa'}>demo: react-ssr-spa</Link>
+        <Link to="/repo/michaelBenin/react-ssr-spa">demo: react-ssr-spa</Link>
         <Footer />
       </div>
     );
@@ -30,9 +30,9 @@ class Homepage extends Component {
 }
 
 Homepage.propTypes = {
-  match: PropTypes.shape().isRequired,
+  match: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
-  state: PropTypes.shape().isRequired
+  state: PropTypes.shape({}).isRequired
 };
 
 Homepage.defaultProps = {};

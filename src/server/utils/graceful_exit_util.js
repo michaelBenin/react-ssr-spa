@@ -12,8 +12,9 @@ export default (err, silent) => {
     log.info(`Process exiting because of error: ${err.message}`);
     log.fatal(
       err.stack,
-      `${err.message} - commit: ${process.env
-        .GIT_COMMIT}, Build Number: ${process.env.BUILD_NUMBER}`
+      `${err.message} - commit: ${process.env.GIT_COMMIT}, Build Number: ${
+        process.env.BUILD_NUMBER
+      }`
     );
   } else {
     log.info('Exiting without error.');
