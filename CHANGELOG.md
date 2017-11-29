@@ -1,5 +1,12 @@
 # Changelog
 
+### 9.0.1
+
+### Changed
+
+* Style lint fix now supported
+* npm run fix-all
+
 ### 9.0.0
 
 ### Changed
