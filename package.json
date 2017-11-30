@@ -63,7 +63,7 @@
     "hpp": "0.2.2",
     "lodash": "4.17.4",
     "pretty-error": "2.1.1",
-    "prop-types": "https://registry.npmjs.org/prop-types/-/prop-types-15.5.8.tgz",
+    "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-error-boundary": "1.2.0",
