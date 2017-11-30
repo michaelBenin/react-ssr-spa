@@ -1,7 +1,8 @@
 {
   "extends": "stylelint-config-standard",
   "plugins": [
-    "stylelint-scss"
+    "stylelint-scss",
+    "stylelint-order"
   ],
   "rules": {
     "block-opening-brace-space-before": "always",
@@ -50,5 +51,10 @@
         "none"
       ]
     }
-  }
+  },
+  "order/order": [
+    "custom-properties",
+    "declarations"
+  ],
+  "order/properties-alphabetical-order": true
 }
