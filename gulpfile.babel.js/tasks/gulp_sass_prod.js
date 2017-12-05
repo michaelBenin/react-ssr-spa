@@ -1,7 +1,8 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
-import minifyCss from 'gulp-clean-css';
+import postcss from 'gulp-postcss';
+import cssnano from 'cssnano';
 import config from './../configs/config';
 
 gulp.task('sass-prod', function sassProd() {
@@ -15,6 +16,6 @@ gulp.task('sass-prod', function sassProd() {
     .src(stylesSrc)
     .pipe(sass(sassConf).on('error', sass.logError))
     .pipe(autoprefixer(autoprefixerBrowsers))
-    .pipe(minifyCss())
+    .pipe(postcss([cssnano()]))
     .pipe(gulp.dest(cssDest));
 });
