@@ -28,8 +28,8 @@ Should you use this as a starting point for your application? A good way to know
 
 Requirements:
 
-node.js v6.9.x
-npm v3.10.8
+node.js v8.9.1
+npm v5.5.1
 
 ````
 git clone git@github.com:michaelBenin/react-ssr-spa.git
@@ -88,9 +88,14 @@ Optimized for use with:
     npm run js-lint-fix
 
 
-### Style Lint:
+### Style Lint (uses styleint):
 
     npm run style-lint
+    npm run style-lint-fix
+
+### Fix JS/SCSS Lint:
+
+    npm run fix-all
 
 ### Generate JS Documentation:
 
@@ -130,13 +135,17 @@ To run server in production mode:
 
     npm run upload-static-files
 
+### Configure Server 
+
+    ansible-playbook -u ubuntu ./ansible/deploy/deploy.yml
+
 ### Deployment (ansible & ansistrano)
 
     ansible-playbook -u ubuntu ./ansible/deploy/deploy.yml
 
 ### Rollback (ansible & ansistrano)
 
-    ansible-playbook -vvvv -u ubuntu ./ansible/rollback/rollback.yml
+    ansible-playbook -u ubuntu ./ansible/rollback/rollback.yml
 
 ### Core Libraries:
 

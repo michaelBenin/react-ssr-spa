@@ -1,0 +1,77 @@
+---
+- hosts: webAppApi
+  gather_facts: False
+  become: true
+  tasks:
+  - name: install python 2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal python-pip)
+  - apt:
+     name: aptitude
+     state: present
+  - apt:
+     update_cache: yes
+     upgrade: safe
+     cache_valid_time: 3600
+
+- hosts: webAppApi
+  become: true
+
+  roles:
+    - geerlingguy.nginx
+    - geerlingguy.nodejs
+    - kamaln7.swapfile
+    - nickhammond.logrotate
+
+  environment:
+    PM2_OPTIMIZE_MEMORY: 'true'
+
+  vars:
+    nginx_error_log: "off"
+    nginx_access_log: "off"
+    nodejs_version: "8.x"
+    swapfile_size: 4GB
+    nodejs_npm_global_packages:
+      - name: pm2
+        version: 2.8.0
+    logrotate_scripts:
+      - name: nginx
+        path: /var/log/nginx/*.log
+        options:
+          - hourly
+          - size 1M
+          - rotate 2
+          - missingok
+          - compress
+          - delaycompress
+          - copytruncate
+
+  tasks:
+    - apt:
+       name: python-boto
+       state: latest
+    - copy:
+       src: "{{playbook_dir}}/boto/boto.cfg"
+       dest: /etc/boto.cfg
+    - copy:
+       src: "{{playbook_dir}}/nginx/sites_available.conf"
+       dest: /etc/nginx/sites-available/default
+    - service:
+       name: nginx
+       state: restarted
+    - command: "/usr/local/lib/npm/bin/pm2 ping"
+      async: 1
+      poll: 0
+      ignore_errors: true
+    - pause:
+       seconds: 5
+    - command: "/usr/local/lib/npm/bin/pm2 install pm2-logrotate"
+    - command: "/usr/local/lib/npm/bin/pm2 set pm2-logrotate:max_size 500K"
+    - command: "/usr/local/lib/npm/bin/pm2 set pm2-logrotate:retain 1"
+    - command: "/usr/local/lib/npm/bin/pm2 set pm2-logrotate:rotateInterval '*/1 * * * *'"
+    - command: "/usr/local/lib/npm/bin/pm2 set pm2-logrotate:compress true"
+    - command: "/usr/local/lib/npm/bin/pm2 startup ubuntu"
+    - command: "/usr/local/lib/npm/bin/pm2 save"
+    - command: 'sleep 3 && sudo /sbin/reboot'
+      async: 1
+      poll: 0
+      ignore_errors: true
