@@ -39,9 +39,15 @@ class Layout extends Component {
   scriptbundle() {
     if (this.props.env === 'development') {
       // return <script src="/js/bundle.js" async></script>;
-      return <script src="//localhost:3001/static/bundle.js" async />;
+      return [
+        <script key="vendor" src="//localhost:3001/static/vendor.js" />,
+        <script key="bundle" src="//localhost:3001/static/bundle.js" async />
+      ];
     }
-    return <script src={`${this.props.staticUrl}/js/bundle.js`} async />;
+    return [
+      <script key="vendor" src={`${this.props.staticUrl}/js/vendor.js`} />,
+      <script key="bundle" src={`${this.props.staticUrl}/js/bundle.js`} async />
+    ];
   }
 
   render() {

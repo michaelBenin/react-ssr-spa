@@ -4,20 +4,36 @@ const webpack = require('webpack');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: [
-    'react-hot-loader/patch',
-    // activate HMR for React
+  entry: {
+    vendor: [
+      'react',
+      'react-dom',
+      'bluebird',
+      'history/createBrowserHistory',
+      'react-router-config',
+      'lodash/get',
+      'axios',
+      'redux',
+      'react-router-redux',
+      'react-redux',
+      'prop-types',
+      'exenv'
+    ],
+    app: [
+      'react-hot-loader/patch',
+      // activate HMR for React
 
-    'webpack-dev-server/client?http://localhost:3001',
-    // bundle the client for webpack-dev-server
-    // and connect to the provided endpoint
+      'webpack-dev-server/client?http://localhost:3001',
+      // bundle the client for webpack-dev-server
+      // and connect to the provided endpoint
 
-    'webpack/hot/only-dev-server',
-    // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
+      'webpack/hot/only-dev-server',
+      // bundle the client for hot reloading
+      // only- means to only hot reload for successful updates
 
-    path.join(__dirname, '../../src/client/index')
-  ],
+      path.join(__dirname, '../../src/client/index')
+    ]
+  },
   output: {
     path: path.join(__dirname, '../../dist'),
     filename: 'bundle.js',
@@ -34,6 +50,20 @@ module.exports = {
         NODE_ENV: JSON.stringify('development'),
         RUNTIME_ENV: JSON.stringify('browser')
       }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      // filename: "vendor.js"
+      // (Give the chunk a different name)
+      name: 'vendor',
+      chunks: ['app'],
+      minChunks(module /* , count */) {
+        const { context } = module;
+        return context && context.indexOf('node_modules') >= 0;
+      },
+      // (the commons chunk name)
+
+      filename: 'vendor.js'
+      // children: true
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(),
