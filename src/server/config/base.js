@@ -12,7 +12,9 @@ const {
   GIT_COMMIT,
   REDIS_PORT,
   REDIS_HOST,
-  STATIC_URL
+  STATIC_URL,
+  STATIC_VENDOR_URL,
+  STATIC_BUNDLE_URL
 } = process.env;
 
 export default {
@@ -45,6 +47,8 @@ export default {
   websocket: 'ws://127.0.0.1:3000',
   websocketPort: 3000,
   staticUrl: `${STATIC_URL}/${GIT_COMMIT}`,
+  staticBundleUrl: `${STATIC_URL}/${STATIC_BUNDLE_URL}`,
+  staticVendorUrl: `${STATIC_URL}/${STATIC_VENDOR_URL}`,
   apiUrl: 'api.github.com', // '127.0.0.1:8000'
   host: '127.0.0.1:8001',
   protocol: 'http://'

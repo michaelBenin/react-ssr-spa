@@ -1,23 +1,33 @@
 // http://qiita.com/kimagure/items/f2d8d53504e922fe3c5c
 const path = require('path');
 const webpack = require('webpack');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     vendor: [
+      'fontfaceobserver',
       'react',
       'react-dom',
       'bluebird',
       'history/createBrowserHistory',
       'react-router-config',
+      'react-router/Switch',
+      'react-router/Route',
+      'react-helmet',
+      'react-transition-group/TransitionGroup',
+      'react-transition-group/CSSTransition',
+      'react-error-boundary',
       'lodash/get',
       'axios',
       'redux',
+      'redux-thunk',
       'react-router-redux',
       'react-redux',
       'prop-types',
-      'exenv'
+      'exenv',
+      'scriptjs'
     ],
     app: [
       'react-hot-loader/patch',
@@ -51,19 +61,15 @@ module.exports = {
         RUNTIME_ENV: JSON.stringify('browser')
       }
     }),
+    new ManifestPlugin({ writeToFileEmit: true }),
     new webpack.optimize.CommonsChunkPlugin({
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
       name: 'vendor',
       chunks: ['app'],
       minChunks(module /* , count */) {
         const { context } = module;
         return context && context.indexOf('node_modules') >= 0;
       },
-      // (the commons chunk name)
-
       filename: 'vendor.js'
-      // children: true
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(),

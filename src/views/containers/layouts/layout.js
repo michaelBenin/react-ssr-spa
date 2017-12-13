@@ -36,8 +36,8 @@ class Layout extends Component {
     return '';
   }
 
-  scriptbundle() {
-    if (this.props.env === 'development') {
+  scriptbundle(env) {
+    if (env === 'development') {
       // return <script src="/js/bundle.js" async></script>;
       return [
         <script key="vendor" src="//localhost:3001/static/vendor.js" defer />,
@@ -45,8 +45,20 @@ class Layout extends Component {
       ];
     }
     return [
-      <script key="vendor" src={`${this.props.staticUrl}/js/vendor.js`} defer />,
-      <script key="bundle" src={`${this.props.staticUrl}/js/bundle.js`} defer />
+      <script
+        key="vendor"
+        src={`${this.props.staticVendorUrl}/${
+          this.props.manifestJSON['vendor.js']
+        }`}
+        defer
+      />,
+      <script
+        key="bundle"
+        src={`${this.props.staticBundleUrl}/js/${
+          this.props.manifestJSON['app.js']
+        }`}
+        defer
+      />
     ];
   }
 
@@ -80,9 +92,9 @@ class Layout extends Component {
             </CSSTransition>
           </TransitionGroup>
         </ErrorBoundary>
-        <Config />
         {this.livereload()}
-        {this.scriptbundle()}
+        {this.scriptbundle(this.props.env)}
+        <Config />
       </body>
     );
   }
@@ -91,7 +103,9 @@ class Layout extends Component {
 function mapStateToProps(state) {
   return {
     env: state.config.env,
-    staticUrl: state.config.staticUrl
+    manifestJSON: state.config.manifestJSON,
+    staticVendorUrl: state.config.staticVendorUrl,
+    staticBundleUrl: state.config.staticBundleUrl
   };
 }
 
@@ -100,7 +114,12 @@ Layout.propTypes = {
     routes: PropTypes.arrayOf(PropTypes.shape({}))
   }),
   env: PropTypes.string.isRequired,
-  staticUrl: PropTypes.string.isRequired,
+  manifestJSON: PropTypes.shape({
+    'vendor.js': PropTypes.string,
+    'app.js': PropTypes.string
+  }).isRequired,
+  staticBundleUrl: PropTypes.string.isRequired,
+  staticVendorUrl: PropTypes.string.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     key: PropTypes.string
@@ -111,8 +130,7 @@ Layout.defaultProps = {
   route: {
     routes: []
   },
-  env: 'development',
-  staticUrl: '/'
+  env: 'development'
 };
 
 export default connect(mapStateToProps)(Layout);

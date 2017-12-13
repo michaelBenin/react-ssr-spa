@@ -3,6 +3,8 @@ import React from 'react';
 import createMemoryHistory from 'history/createMemoryHistory';
 import { renderToString } from 'react-dom/server';
 import { matchRoutes } from 'react-router-config';
+import { existsSync } from 'fs';
+import path from 'path';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
 import routes from '../../react_router/react_router';
@@ -15,7 +17,25 @@ const env = config.get('env');
 const staticUrl = config.get('staticUrl');
 const apiUrl = config.get('apiUrl');
 const cacheEnabled = config.get('cacheEnabled');
+const staticVendorUrl = config.get('staticVendorUrl');
+const staticBundleUrl = config.get('staticBundleUrl');
 const cacheExpire = 60 * 6;
+
+const manifestPath = path.join(
+  __dirname,
+  '../../../dist/static/js/manifest.json'
+);
+
+let manifestJSON = {};
+
+if (env === 'production') {
+  if (existsSync(manifestPath)) {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    manifestJSON = require(manifestPath);
+  } else {
+    log.fatal(`Manifest file not found in middleware: ${manifestPath}`);
+  }
+}
 
 export default (req, res) => {
   const htmlKey = `${req.url}:__html`;
@@ -28,6 +48,9 @@ export default (req, res) => {
       config: {
         env,
         staticUrl,
+        staticVendorUrl,
+        staticBundleUrl,
+        manifestJSON,
         apiUrl,
         initialPageLoad: true,
         featureFlags,

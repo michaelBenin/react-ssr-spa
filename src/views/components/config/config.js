@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import omit from 'lodash/omit';
+import clone from 'lodash/clone';
 
 class Config extends Component {
   shouldComponentUpdate() {
@@ -14,25 +16,28 @@ class Config extends Component {
 
     return (
       <script
-        className="client-config"
-        type="application/json"
-        charSet="UTF-8"
-        data-state={this.props.data}
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: `document.addEventListener("DOMContentLoaded", function() {
+window.startApp(${this.props.state});});`
+        }}
       />
     );
   }
 }
 
 Config.propTypes = {
-  data: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
   initialPageLoad: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
+  const clonedState = clone(state);
   const { initialPageLoad } = state.config;
-  const data = initialPageLoad ? JSON.stringify(state) : '';
+  // clonedState.config = omit(clonedState.config, ['criticalCss']);
+  const currentState = initialPageLoad ? JSON.stringify(clonedState) : '';
   return {
-    data,
+    state: currentState,
     initialPageLoad
   };
 }

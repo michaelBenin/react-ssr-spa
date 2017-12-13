@@ -7,18 +7,27 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     vendor: [
+      'fontfaceobserver',
       'react',
       'react-dom',
       'bluebird',
       'history/createBrowserHistory',
       'react-router-config',
+      'react-router/Switch',
+      'react-router/Route',
+      'react-helmet',
+      'react-transition-group/TransitionGroup',
+      'react-transition-group/CSSTransition',
+      'react-error-boundary',
       'lodash/get',
       'axios',
       'redux',
+      'redux-thunk',
       'react-router-redux',
       'react-redux',
       'prop-types',
-      'exenv'
+      'exenv',
+      'scriptjs'
     ],
     app: path.join(__dirname, '../../src/client/index')
   },
