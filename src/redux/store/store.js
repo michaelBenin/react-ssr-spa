@@ -8,6 +8,11 @@ import reducer from '../reducers';
 export default function configureStore(history, initialState = {}, env) {
   let store = {}; // eslint-disable-line import/no-mutable-exports
 
+  // eslint-disable-next-line no-param-reassign
+  initialState.config.initialQueryParams = JSON.parse(
+    initialState.config.initialQueryParams
+  );
+
   if (env !== 'development') {
     store = createStore(
       reducer,

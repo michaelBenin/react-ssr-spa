@@ -5,6 +5,7 @@ import { renderToString } from 'react-dom/server';
 import { matchRoutes } from 'react-router-config';
 import { existsSync } from 'fs';
 import path from 'path';
+import serialize from 'serialize-javascript';
 import redisClient from '../services/redis_service';
 import log from '../services/logger_service';
 import routes from '../../react_router/react_router';
@@ -28,7 +29,7 @@ const manifestPath = path.join(
 
 let manifestJSON = {};
 
-if (env === 'production') {
+if (env === 'production' || env === 'test') {
   if (existsSync(manifestPath)) {
     // eslint-disable-next-line global-require, import/no-dynamic-require
     manifestJSON = require(manifestPath);
@@ -54,6 +55,8 @@ export default (req, res) => {
         apiUrl,
         initialPageLoad: true,
         featureFlags,
+        initialQueryParams: serialize(req.query, { isJSON: true }),
+
         navHistory: [`${req.protocol}://${req.hostname}${req.originalUrl}`]
       }
     });

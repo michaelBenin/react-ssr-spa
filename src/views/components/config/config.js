@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import omit from 'lodash/omit';
 import clone from 'lodash/clone';
+import serialize from 'serialize-javascript';
 
 class Config extends Component {
   shouldComponentUpdate() {
@@ -16,10 +16,9 @@ class Config extends Component {
 
     return (
       <script
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: `document.addEventListener("DOMContentLoaded", function() {
-window.startApp(${this.props.state});});`
+          __html: `/*<!--*/ \n
+window.appState = ${this.props.state}; \n /*-->*/`
         }}
       />
     );
@@ -34,7 +33,10 @@ Config.propTypes = {
 function mapStateToProps(state) {
   const clonedState = clone(state);
   const { initialPageLoad } = state.config;
-  // clonedState.config = omit(clonedState.config, ['criticalCss']);
+  clonedState.config.initialQueryParams = serialize(
+    clonedState.config.initialQueryParams,
+    { isJSON: true }
+  );
   const currentState = initialPageLoad ? JSON.stringify(clonedState) : '';
   return {
     state: currentState,

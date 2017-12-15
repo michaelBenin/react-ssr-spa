@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ShakePlugin = require('webpack-common-shake').Plugin;
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -33,9 +34,15 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../../dist/static/js'),
-    filename: 'bundle.js'
+    filename: 'bundle.[hash].js'
   },
   plugins: [
+    new webpack.HashedModuleIdsPlugin({
+      hashFunction: 'sha256',
+      hashDigest: 'hex',
+      hashDigestLength: 20
+    }),
+    new ManifestPlugin({ writeToFileEmit: true }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -43,18 +50,14 @@ module.exports = {
       }
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      // filename: "vendor.js"
-      // (Give the chunk a different name)
       name: 'vendor',
       chunks: ['app'],
+      async: false,
       minChunks(module /* , count */) {
         const { context } = module;
         return context && context.indexOf('node_modules') >= 0;
       },
-      // (the commons chunk name)
-
-      filename: 'vendor.js'
-      // children: true
+      filename: 'vendor.[hash].js'
     }),
     new ShakePlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),

@@ -44,6 +44,22 @@ class Layout extends Component {
         <script key="bundle" src="//localhost:3001/static/bundle.js" defer />
       ];
     }
+
+    if (env === 'test') {
+      return [
+        <script
+          key="vendor"
+          src={`/js/${this.props.manifestJSON['vendor.js']}`}
+          defer
+        />,
+        <script
+          key="bundle"
+          src={`/js/${this.props.manifestJSON['app.js']}`}
+          defer
+        />
+      ];
+    }
+
     return [
       <script
         key="vendor"
@@ -93,8 +109,8 @@ class Layout extends Component {
           </TransitionGroup>
         </ErrorBoundary>
         {this.livereload()}
-        {this.scriptbundle(this.props.env)}
         <Config />
+        {this.scriptbundle(this.props.env)}
       </body>
     );
   }

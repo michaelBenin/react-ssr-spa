@@ -117,6 +117,11 @@ Optimized for use with:
 
     npm run build-prod
 
+### Emulate Production Locally:
+
+    npm run build-prod
+    NODE_ENV=test node dist/server
+
 ### Run production server (requires PM2 installed globally)
 
 If PM2 is not installed:
