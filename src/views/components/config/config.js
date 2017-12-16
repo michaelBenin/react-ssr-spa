@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import clone from 'lodash/clone';
 import serialize from 'serialize-javascript';
 
@@ -10,38 +9,38 @@ class Config extends Component {
   }
 
   render() {
-    if (!this.props.initialPageLoad) {
-      return null;
+    const clonedState = clone(this.props.state);
+    const { initialPageLoad } = this.props.state.config;
+
+    if (!initialPageLoad) {
+      return {};
     }
 
+    clonedState.config.initialQueryParams = serialize(
+      clonedState.config.initialQueryParams,
+      { isJSON: true }
+    );
+    const state = initialPageLoad ? JSON.stringify(clonedState) : '';
+
+    /* eslint-disable react/no-danger */
     return (
       <script
         dangerouslySetInnerHTML={{
           __html: `/*<!--*/ \n
-window.appState = ${this.props.state}; \n /*-->*/`
+window.appState = ${state}; \n /*-->*/`
         }}
       />
     );
+    /* eslint-enable react/no-danger */
   }
 }
 
 Config.propTypes = {
-  state: PropTypes.string.isRequired,
-  initialPageLoad: PropTypes.bool.isRequired
+  state: PropTypes.shape({
+    config: PropTypes.shape({
+      initialPageLoad: PropTypes.bool.isRequired
+    }).isRequired
+  }).isRequired
 };
 
-function mapStateToProps(state) {
-  const clonedState = clone(state);
-  const { initialPageLoad } = state.config;
-  clonedState.config.initialQueryParams = serialize(
-    clonedState.config.initialQueryParams,
-    { isJSON: true }
-  );
-  const currentState = initialPageLoad ? JSON.stringify(clonedState) : '';
-  return {
-    state: currentState,
-    initialPageLoad
-  };
-}
-
-export default connect(mapStateToProps)(Config);
+export default Config;

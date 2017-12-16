@@ -109,7 +109,7 @@ class Layout extends Component {
           </TransitionGroup>
         </ErrorBoundary>
         {this.livereload()}
-        <Config />
+        <Config state={this.props.state} />
         {this.scriptbundle(this.props.env)}
       </body>
     );
@@ -121,7 +121,8 @@ function mapStateToProps(state) {
     env: state.config.env,
     manifestJSON: state.config.manifestJSON,
     staticVendorUrl: state.config.staticVendorUrl,
-    staticBundleUrl: state.config.staticBundleUrl
+    staticBundleUrl: state.config.staticBundleUrl,
+    state
   };
 }
 
@@ -139,7 +140,8 @@ Layout.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
     key: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  state: PropTypes.shape({}).isRequired
 };
 
 Layout.defaultProps = {
