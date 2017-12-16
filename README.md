@@ -55,6 +55,7 @@ Optimized for use with:
 
 [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
+[Node Inspector Manager](https://chrome.google.com/webstore/detail/nodejs-inspector-manager/bnmjajghllhhhgiaeipaibfmnjnponhd?hl=en)
 
 ### Server Side Unit Tests:
 
