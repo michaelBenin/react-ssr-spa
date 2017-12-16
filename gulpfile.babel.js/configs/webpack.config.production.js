@@ -11,6 +11,7 @@ module.exports = {
       'fontfaceobserver',
       'react',
       'react-dom',
+      'react-async-component',
       'bluebird',
       'history/createBrowserHistory',
       'react-router-config',
@@ -30,11 +31,15 @@ module.exports = {
       'exenv',
       'scriptjs'
     ],
-    app: path.join(__dirname, '../../src/client/index')
+    app: path.join(__dirname, '../../src/client/index'),
+    search: path.join(
+      __dirname,
+      '../../src/views/containers/pages/search_results_page/search_results_page.js'
+    )
   },
   output: {
     path: path.join(__dirname, '../../dist/static/js'),
-    filename: 'bundle.[hash].js'
+    filename: '[name].[hash].js'
   },
   plugins: [
     new webpack.HashedModuleIdsPlugin({
@@ -51,8 +56,7 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      chunks: ['app'],
-      async: false,
+      chunks: ['app', 'search'],
       minChunks(module /* , count */) {
         const { context } = module;
         return context && context.indexOf('node_modules') >= 0;
@@ -94,7 +98,8 @@ module.exports = {
                     }
                   }
                 ]
-              ]
+              ],
+              plugins: ['syntax-dynamic-import']
             }
           }
         ],

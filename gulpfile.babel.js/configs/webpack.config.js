@@ -10,6 +10,7 @@ module.exports = {
       'fontfaceobserver',
       'react',
       'react-dom',
+      'react-async-component',
       'bluebird',
       'history/createBrowserHistory',
       'react-router-config',
@@ -29,7 +30,7 @@ module.exports = {
       'exenv',
       'scriptjs'
     ],
-    app: [
+    bundle: [
       'react-hot-loader/patch',
       // activate HMR for React
 
@@ -42,11 +43,15 @@ module.exports = {
       // only- means to only hot reload for successful updates
 
       path.join(__dirname, '../../src/client/index')
-    ]
+    ],
+    search: path.join(
+      __dirname,
+      '../../src/views/containers/pages/search_results_page/search_results_page.js'
+    )
   },
   output: {
     path: path.join(__dirname, '../../dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: 'http://localhost:3001/static'
   },
   devServer: {
@@ -64,14 +69,14 @@ module.exports = {
     new ManifestPlugin({ writeToFileEmit: true }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      chunks: ['app'],
+      chunks: ['app', 'search'],
       minChunks(module /* , count */) {
         const { context } = module;
         return context && context.indexOf('node_modules') >= 0;
       },
       filename: 'vendor.js'
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
 
@@ -100,7 +105,11 @@ module.exports = {
                   }
                 ]
               ],
-              plugins: ['react-hot-loader/babel', 'transform-react-jsx-source']
+              plugins: [
+                'syntax-dynamic-import',
+                'react-hot-loader/babel',
+                'transform-react-jsx-source'
+              ]
             }
           }
         ],

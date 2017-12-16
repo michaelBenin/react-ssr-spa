@@ -15,16 +15,30 @@ import log from '../../../services/logger_service';
 const renderRoutes = (routes, location) =>
   routes ? (
     <Switch key={location.key} location={location}>
-      {routes.map(route => (
-        <Route
-          key={location.key}
-          location={location}
-          path={route.path}
-          exact={route.exact}
-          strict={route.strict}
-          component={route.component}
-        />
-      ))}
+      {routes.map(route => {
+        if (route.component) {
+          return (
+            <Route
+              key={location.key}
+              location={location}
+              path={route.path}
+              exact={route.exact}
+              strict={route.strict}
+              component={route.component}
+            />
+          );
+        }
+        return (
+          <Route
+            key={location.key}
+            location={location}
+            path={route.path}
+            exact={route.exact}
+            strict={route.strict}
+            render={route.render}
+          />
+        );
+      })}
     </Switch>
   ) : null;
 
@@ -89,24 +103,7 @@ class Layout extends Component {
           }}
           fallbackcomponent={<div>Error</div>}
         >
-          <TransitionGroup
-            enter={true}
-            exit={true}
-            appear={true}
-            className="main"
-            role="main"
-            component="main"
-          >
-            <CSSTransition
-              key={this.props.location.pathname}
-              classNames="fadeTranslate"
-              timeout={1000}
-              mountOnEnter={true}
-              unmountOnExit={true}
-            >
-              {renderRoutes(this.props.route.routes, this.props.location)}
-            </CSSTransition>
-          </TransitionGroup>
+          {renderRoutes(this.props.route.routes, this.props.location)}
         </ErrorBoundary>
         {this.livereload()}
         <Config state={this.props.state} />

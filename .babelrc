@@ -7,11 +7,7 @@
           "node": "current"
         }
       }
-    ],
-    "react"
-  ],
-  "plugins": [
-    "transform-react-jsx-source"
+    ]
   ],
   "env": {
     "coverage": {

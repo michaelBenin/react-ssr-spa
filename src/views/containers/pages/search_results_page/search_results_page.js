@@ -12,7 +12,10 @@ import Footer from './../../../components/footer/footer';
 // eslint-disable-next-line react/prefer-stateless-function
 class Search extends Component {
   componentWillMount() {
-    if (!get(this.props, 'state.config.initialPageLoad')) {
+    if (
+      !get(this.props, 'state.config.initialPageLoad') &&
+      this.props.isLoading === undefined
+    ) {
       loadData(this.props.match, this.props.dispatch, this.props.state);
     } else {
       // TODO: warm cache for PWA, don't trigger render
@@ -30,7 +33,7 @@ class Search extends Component {
       );
     }
 
-    if (this.props.isLoading === true) {
+    if (this.props.isLoading === true || this.props.isLoading === undefined) {
       return (
         <section className="search">
           <h1>Be Patient, we are loading in the search results.</h1>
@@ -71,7 +74,6 @@ Search.propTypes = {
 };
 
 Search.defaultProps = {
-  isLoading: true,
   error: false,
   response: {
     items: []
