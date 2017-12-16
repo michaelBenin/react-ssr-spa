@@ -5,6 +5,12 @@ import babel from 'gulp-babel';
 import config from './../configs/config';
 
 gulp.task('babel-server', function babelServer() {
+  const env = process.env.NODE_ENV;
+  const plugins =
+    env === 'production'
+      ? ['dynamic-import-node']
+      : ['dynamic-import-node', 'transform-react-jsx-source'];
+
   const babelStream = babel({
     sourceMaps: 'inline',
     presets: [
@@ -17,7 +23,8 @@ gulp.task('babel-server', function babelServer() {
           }
         }
       ]
-    ]
+    ],
+    plugins
   });
 
   babelStream.on('error', function handleError(err) {
