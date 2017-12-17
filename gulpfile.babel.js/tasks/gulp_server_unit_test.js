@@ -8,7 +8,7 @@ gulp.task('server-unit-test', function serverUnitTeset() {
     .src(config.test.server.unit.src, {
       read: false
     })
-    .pipe(mocha({ require: 'babel-register' }))
+    .pipe(mocha())
     .once('error', function handleError(err) {
       log(err);
     });

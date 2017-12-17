@@ -8,17 +8,19 @@ export default {
   path: '/search/:query',
   render: () => {
     if (process.env.RUNTIME_ENV !== 'browser') {
+      // eslint-disable-next-line global-require
       const SearchResultsPage = require('./search_results_page').default;
       return <SearchResultsPage />;
     }
     const SearchResultsPage = asyncComponent({
       resolve: () =>
-        import(/* webpackChunkName: "search.js"*/ './search_results_page'),
+        import(/* webpackChunkName: "search.js" */ './search_results_page'),
       autoResolveES2015Default: true,
       env: 'browser',
       LoadingComponent: () => <div>Loading...</div>, // Optional
+      // eslint-disable-next-line react/prop-types
       ErrorComponent: ({ error }) => <div>{error.message}</div>
-  });
+    });
     return <SearchResultsPage />;
   },
   loadData: searchResultsStateManager
