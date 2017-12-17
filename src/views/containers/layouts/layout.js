@@ -5,8 +5,8 @@ import Switch from 'react-router/Switch';
 import Route from 'react-router/Route';
 import { connect } from 'react-redux';
 import ErrorBoundary from 'react-error-boundary';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-import CSSTransition from 'react-transition-group/CSSTransition';
+// import TransitionGroup from 'react-transition-group/TransitionGroup';
+// import CSSTransition from 'react-transition-group/CSSTransition';
 
 import Header from './../../components/header/header';
 import Config from './../../components/config/config';

@@ -87,7 +87,11 @@ module.exports = function karmaConfIntegration(config) {
                       }
                     ]
                   ],
-                  plugins: ['istanbul']
+                  plugins: [
+                    'istanbul',
+                    'syntax-dynamic-import',
+                    'transform-react-jsx-source'
+                  ]
                 }
               }
             ],

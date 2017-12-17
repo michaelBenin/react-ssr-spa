@@ -23,6 +23,9 @@
         "react"
       ],
       "plugins": [
+        "dynamic-import-node",
+        "syntax-dynamic-import",
+        "transform-react-jsx-source",
         [
           "istanbul",
           {

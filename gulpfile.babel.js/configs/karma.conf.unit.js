@@ -74,7 +74,7 @@ module.exports = function karmaConfUnit(config) {
                     ]
                   ],
                   plugins: [
-                    'react-hot-loader/babel',
+                    'syntax-dynamic-import',
                     'transform-react-jsx-source'
                   ]
                 }
