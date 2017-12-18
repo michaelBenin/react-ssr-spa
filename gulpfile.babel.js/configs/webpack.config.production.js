@@ -11,7 +11,7 @@ module.exports = {
       'fontfaceobserver',
       'react',
       'react-dom',
-      'react-async-component',
+      'react-loadable',
       'bluebird',
       'history/createBrowserHistory',
       'react-router-config',

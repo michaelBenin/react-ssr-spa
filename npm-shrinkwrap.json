@@ -20672,11 +20672,6 @@
       "integrity": "sha1-wStu/cIkfBDae4dw0YUICnsEcVY=",
       "dev": true
     },
-    "react-async-component": {
-      "version": "1.0.2",
-      "resolved": "https://registry.npmjs.org/react-async-component/-/react-async-component-1.0.2.tgz",
-      "integrity": "sha512-H0nT+KHADICdFgflNZ0A6+EBcExajxY8XM100tKOT5Oidhdo/0bAi26ffBhraEls4FIi8Lm4917tMq8LIWN7Qg=="
-    },
     "react-deep-force-update": {
       "version": "2.1.1",
       "resolved": "https://registry.npmjs.org/react-deep-force-update/-/react-deep-force-update-2.1.1.tgz",
@@ -20755,6 +20750,14 @@
           "integrity": "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==",
           "dev": true
         }
+      }
+    },
+    "react-loadable": {
+      "version": "5.3.1",
+      "resolved": "https://registry.npmjs.org/react-loadable/-/react-loadable-5.3.1.tgz",
+      "integrity": "sha1-lpnpoI/tSbrNacqqKCA0tip2vN0=",
+      "requires": {
+        "prop-types": "15.6.0"
       }
     },
     "react-proxy": {
