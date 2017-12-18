@@ -5,8 +5,8 @@ import Switch from 'react-router/Switch';
 import Route from 'react-router/Route';
 import { connect } from 'react-redux';
 import ErrorBoundary from 'react-error-boundary';
-// import TransitionGroup from 'react-transition-group/TransitionGroup';
-// import CSSTransition from 'react-transition-group/CSSTransition';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import CSSTransition from 'react-transition-group/CSSTransition';
 
 import Header from './../../components/header/header';
 import Config from './../../components/config/config';
@@ -103,7 +103,24 @@ class Layout extends Component {
           }}
           fallbackcomponent={<div>Error</div>}
         >
-          {renderRoutes(this.props.route.routes, this.props.location)}
+          <TransitionGroup
+            enter={true}
+            exit={true}
+            appear={true}
+            className="main"
+            role="main"
+            component="main"
+          >
+            <CSSTransition
+              key={this.props.location.pathname}
+              classNames="fadeTranslate"
+              timeout={1000}
+              mountOnEnter={true}
+              unmountOnExit={true}
+            >
+              {renderRoutes(this.props.route.routes, this.props.location)}
+            </CSSTransition>
+          </TransitionGroup>
         </ErrorBoundary>
         {this.livereload()}
         <Config state={this.props.state} />
