@@ -14,7 +14,7 @@ export default {
     }
     const SearchResultsPage = asyncComponent({
       resolve: () =>
-        import(/* webpackChunkName: "search.js" */ './search_results_page'),
+        import(/* webpackChunkName: "search" */ './search_results_page'),
       autoResolveES2015Default: true,
       env: 'browser',
       LoadingComponent: () => <div>Loading...</div>, // Optional

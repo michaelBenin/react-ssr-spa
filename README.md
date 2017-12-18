@@ -57,6 +57,10 @@ Optimized for use with:
 
 [Node Inspector Manager](https://chrome.google.com/webstore/detail/nodejs-inspector-manager/bnmjajghllhhhgiaeipaibfmnjnponhd?hl=en)
 
+[React Performance Devtool](https://chrome.google.com/webstore/detail/react-performance-devtool/fcombecpigkkfcbfaeikoeegkmkjfbfm)
+
+[React-Sight](https://chrome.google.com/webstore/detail/react-sight/aalppolilappfakpmdfdkpppdnhpgifn)
+
 ### Server Side Unit Tests:
 
     npm run server-unit-test

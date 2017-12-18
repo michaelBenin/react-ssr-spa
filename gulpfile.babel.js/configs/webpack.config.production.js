@@ -31,11 +31,7 @@ module.exports = {
       'exenv',
       'scriptjs'
     ],
-    app: path.join(__dirname, '../../src/client/index'),
-    search: path.join(
-      __dirname,
-      '../../src/views/containers/pages/search_results_page/search_results_page.js'
-    )
+    app: path.join(__dirname, '../../src/client/index')
   },
   output: {
     path: path.join(__dirname, '../../dist/static/js'),

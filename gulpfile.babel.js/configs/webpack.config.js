@@ -43,11 +43,7 @@ module.exports = {
       // only- means to only hot reload for successful updates
 
       path.join(__dirname, '../../src/client/index')
-    ],
-    search: path.join(
-      __dirname,
-      '../../src/views/containers/pages/search_results_page/search_results_page.js'
-    )
+    ]
   },
   output: {
     path: path.join(__dirname, '../../dist'),
