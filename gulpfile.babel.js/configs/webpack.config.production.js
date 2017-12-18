@@ -35,6 +35,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../../dist/static/js'),
+    publicPath: '/js/',
     filename: '[name].[hash].js'
   },
   plugins: [
