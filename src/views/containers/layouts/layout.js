@@ -92,6 +92,30 @@ class Layout extends Component {
     ];
   }
 
+  scriptChunks(env) {
+    if (env === 'development') {
+      return null;
+    }
+
+    if (env === 'test') {
+      return this.props.chunks.map(chunk => (
+        <script
+          key={chunk}
+          src={`/js/${this.props.manifestJSON[`${chunk}.js`]}`}
+          defer
+        />
+      ));
+    }
+
+    return this.props.chunks.map(chunk => (
+      <script
+        key={chunk}
+        src={`${this.props.staticVendorUrl}/${this.props.manifestJSON[chunk]}`}
+        defer
+      />
+    ));
+  }
+
   render() {
     return (
       <body className="layout">
@@ -124,6 +148,7 @@ class Layout extends Component {
         </ErrorBoundary>
         {this.livereload()}
         <Config state={this.props.state} />
+        {this.scriptChunks(this.props.env)}
         {this.scriptbundle(this.props.env)}
       </body>
     );
@@ -134,6 +159,7 @@ function mapStateToProps(state) {
   return {
     env: state.config.env,
     manifestJSON: state.config.manifestJSON,
+    chunks: state.config.chunks,
     staticVendorUrl: state.config.staticVendorUrl,
     staticBundleUrl: state.config.staticBundleUrl,
     state
@@ -145,6 +171,7 @@ Layout.propTypes = {
     routes: PropTypes.arrayOf(PropTypes.shape({}))
   }),
   env: PropTypes.string.isRequired,
+  chunks: PropTypes.arrayOf(PropTypes.string),
   manifestJSON: PropTypes.shape({
     'vendor.js': PropTypes.string,
     'app.js': PropTypes.string
@@ -162,6 +189,7 @@ Layout.defaultProps = {
   route: {
     routes: []
   },
+  chunks: [],
   env: 'development'
 };
 

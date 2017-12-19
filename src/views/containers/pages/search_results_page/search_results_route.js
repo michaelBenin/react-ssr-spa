@@ -1,5 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import searchResultsStateManager from './search_results_data_fetch';
 
 const LazySearchResultsPage = Loadable({
   loader: () =>
@@ -15,10 +16,6 @@ const LazySearchResultsPage = Loadable({
   }
 });
 
-import searchResultsStateManager from './search_results_data_fetch';
-
-// http://babeljs.io/docs/plugins/syntax-dynamic-import/
-
 export default {
   path: '/search/:query',
   component: () => {
@@ -29,5 +26,6 @@ export default {
     }
     return <LazySearchResultsPage />;
   },
-  loadData: searchResultsStateManager
+  loadData: searchResultsStateManager,
+  chunk: 'search'
 };

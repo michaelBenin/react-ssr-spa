@@ -44,10 +44,20 @@ export default (req, res) => {
 
   function returnFromApi() {
     const memoryHistory = createMemoryHistory({ initialEntries: [req.url] });
+    const branch = matchRoutes(routes, req.path);
+
+    const chunks = branch.reduce(function matchMap(list, { route }) {
+      if (route.chunk) {
+        list.push(route.chunk);
+      }
+      return list;
+    }, []);
+
     // Unexpected keys will be ignored.
     const store = configureStore(memoryHistory, {
       config: {
         env,
+        chunks,
         staticUrl,
         staticVendorUrl,
         staticBundleUrl,
@@ -56,12 +66,9 @@ export default (req, res) => {
         initialPageLoad: true,
         featureFlags,
         initialQueryParams: serialize(req.query, { isJSON: true }),
-
         navHistory: [`${req.protocol}://${req.hostname}${req.originalUrl}`]
       }
     });
-
-    const branch = matchRoutes(routes, req.path);
 
     const promises = branch.map(function matchMap({ route, match }) {
       return route.loadData
