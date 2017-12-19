@@ -1,5 +1,23 @@
 # Changelog
 
+### 10.0.0
+
+### Changed
+
+* Upgraded dependencies
+* Added babel transforms for code splitting
+* Added configuration changes for import() code quality tools and tests
+* Added example lazyloading search route
+* Added bundle analyzer
+* Added performance improvements
+
+### 9.0.0
+
+### Changed
+
+* Updated all dependencies
+* See: https://github.com/yannickcr/eslint-plugin-react/issues/1471
+
 ### 9.0.1
 
 ### Changed

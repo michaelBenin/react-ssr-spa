@@ -1,7 +1,7 @@
 {
   "name": "react-ssr-spa",
   "private": false,
-  "version": "9.0.1",
+  "version": "10.0.0",
   "description": "Simple server rendered single page app.",
   "repository": "https://github.com/michaelBenin/react-ssr-spa",
   "license": "MIT",
