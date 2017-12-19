@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import withRouter from 'react-router/withRouter';
 import get from 'lodash/get';
 
 import loadData from './repo_detail_page_data_fetch';

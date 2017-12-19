@@ -31,7 +31,7 @@ const config = {
     server: {
       integration: {
         src: [
-          'test/server/utils/babel-register.js',
+          'test/server/utils/babel_register.js',
           'test/server/utils/test_initializer_util.js',
           'test/server/integration/**/*.js',
           'test/shared/integration/**/*.js',
@@ -40,7 +40,7 @@ const config = {
       },
       unit: {
         src: [
-          'test/server/utils/babel-register.js',
+          'test/server/utils/babel_register.js',
           'test/server/utils/test_initializer_utils.js',
           'test/server/utils/enzyme_initializer.js',
           'test/shared/utils/**/*.js',

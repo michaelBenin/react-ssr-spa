@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { get as _get } from 'lodash';
+import get from 'lodash/get';
 import Helmet from 'react-helmet';
 
 import Script from './script';
@@ -16,12 +16,12 @@ function ClientSideHead(initialPageLoad, attr) {
 }
 
 function Head(props) {
-  const meta = _get(props, 'meta.meta') || [];
-  const link = _get(props, 'meta.link') || [];
-  const script = _get(props, 'meta.script') || [];
-  const noscript = _get(props, 'meta.noscript') || [];
-  const style = _get(props, 'meta.style') || [];
-  const title = _get(props, 'meta.title');
+  const meta = get(props, 'meta.meta') || [];
+  const link = get(props, 'meta.link') || [];
+  const script = get(props, 'meta.script') || [];
+  const noscript = get(props, 'meta.noscript') || [];
+  const style = get(props, 'meta.style') || [];
+  const title = get(props, 'meta.title');
 
   // On initial render Helmet has a bug: https://github.com/nfl/react-helmet/issues/98
   return (

@@ -53,7 +53,7 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      chunks: ['app', 'search'],
+      chunks: ['app'],
       minChunks(module /* , count */) {
         const { context } = module;
         return context && context.indexOf('node_modules') >= 0;

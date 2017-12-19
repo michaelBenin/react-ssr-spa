@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import Link from 'react-router-dom/Link';
+import withRouter from 'react-router/withRouter';
 import get from 'lodash/get';
 import { flushSearch } from '../../../../redux/action_creators/search/search_action_creators';
 import loadData from './search_results_data_fetch';
@@ -14,8 +14,7 @@ class Search extends Component {
   componentWillMount() {
     if (
       !get(this.props, 'state.config.initialPageLoad') ||
-      this.props.isLoading === undefined ||
-      this.props.isLoading === false
+      !this.props.isLoading
     ) {
       this.props.loadData(this.props.match, this.props.state);
     } else {

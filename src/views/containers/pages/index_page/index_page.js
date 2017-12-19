@@ -2,8 +2,8 @@ import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
+import withRouter from 'react-router/withRouter';
+import Link from 'react-router-dom/Link';
 
 import loadData from './index_page_data_fetch';
 
