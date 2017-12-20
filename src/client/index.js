@@ -1,5 +1,8 @@
+import P from 'bluebird';
 import React from 'react';
 import { hydrate, render } from 'react-dom';
+import matchRoutes from 'react-router-config/matchRoutes';
+import routes from '../react_router/react_router';
 import createHistory from 'history/createBrowserHistory';
 import scriptJS from 'scriptjs';
 import get from 'lodash/get';
@@ -42,15 +45,32 @@ function bootReact() {
       document.documentElement.className === '' ? 'hydrated' : ' hydrated';
   }
 
-  try {
-    hydrate(
-      <Root store={store} history={browserHistory} />,
-      window.document,
-      renderedApp
-    );
-  } catch (err) {
-    // fire ad code here to still show ads
-    log.fatal(`Unable to render app: ${err.message}`, err.stack);
+  // eslint-disable-next-line no-restricted-globals
+  const branch = matchRoutes(routes, location.pathname);
+  const preloadChunks = branch.reduce(function matchMap(list, { route }) {
+    if (route.preloadChunk) {
+      list.push(route.preloadChunk);
+    }
+    return list;
+  }, []);
+
+  function hydrateApp() {
+    try {
+      hydrate(
+        <Root store={store} history={browserHistory} />,
+        window.document,
+        renderedApp
+      );
+    } catch (err) {
+      // fire ad code here to still show ads
+      log.fatal(`Unable to render app: ${err.message}`, err.stack);
+    }
+  }
+
+  if (preloadChunks.length) {
+    P.all(preloadChunks.map(chunk => chunk())).then(hydrateApp);
+  } else {
+    hydrateApp();
   }
 
   if (module.hot) {
