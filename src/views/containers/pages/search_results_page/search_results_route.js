@@ -31,13 +31,7 @@ const routeConfig = {
 
 const LazyComponent = Loadable({
   loader() {
-    return import(/* webpackChunkName: "search" */ './search_results_page').then(
-      resp => {
-        Component = resp.default;
-        routeConfig.loadData = Component.loadData;
-        return Component;
-      }
-    );
+    return routeConfig.preloadChunk();
   },
   loading() {
     return (
