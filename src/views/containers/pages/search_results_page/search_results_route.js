@@ -1,17 +1,44 @@
 import React from 'react';
 import Loadable from 'react-loadable';
-import searchResultsStateManager from './search_results_data_fetch';
 
-let CachedComponent = false;
+let Component = false;
 
-const LazySearchResultsPage = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "search" */ './search_results_page').then(
+if (process.env.RUNTIME_ENV !== 'browser') {
+  // eslint-disable-next-line global-require
+  Component = require('./search_results_page').default;
+}
+
+const routeConfig = {
+  path: '/search/:query',
+  component() {
+    if (Component) {
+      return <Component />;
+    }
+    return <LazyComponent />;
+  },
+  loadData: Component ? Component.loadData : () => {},
+  preloadChunk() {
+    return import(/* webpackChunkName: "search" */ './search_results_page').then(
       resp => {
-        CachedComponent = resp.default;
-        return CachedComponent;
+        Component = resp.default;
+        routeConfig.loadData = Component.loadData;
+        return Component;
       }
-    ),
+    );
+  },
+  chunk: 'search'
+};
+
+const LazyComponent = Loadable({
+  loader() {
+    return import(/* webpackChunkName: "search" */ './search_results_page').then(
+      resp => {
+        Component = resp.default;
+        routeConfig.loadData = Component.loadData;
+        return Component;
+      }
+    );
+  },
   loading() {
     return (
       <section key="search" className="search">
@@ -21,27 +48,4 @@ const LazySearchResultsPage = Loadable({
   }
 });
 
-export default {
-  path: '/search/:query',
-  component: () => {
-    if (process.env.RUNTIME_ENV !== 'browser') {
-      // eslint-disable-next-line global-require
-      const SearchResultsPage = require('./search_results_page').default;
-      return <SearchResultsPage />;
-    }
-    if (CachedComponent) {
-      return <CachedComponent />;
-    }
-    return <LazySearchResultsPage />;
-  },
-  loadData: searchResultsStateManager,
-  preloadChunk() {
-    return import(/* webpackChunkName: "search" */ './search_results_page').then(
-      resp => {
-        CachedComponent = resp.default;
-        return CachedComponent;
-      }
-    );
-  },
-  chunk: 'search'
-};
+export default routeConfig;

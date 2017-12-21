@@ -4,22 +4,34 @@ import { connect } from 'react-redux';
 import Link from 'react-router-dom/Link';
 import withRouter from 'react-router/withRouter';
 import get from 'lodash/get';
-import { flushSearch } from '../../../../redux/action_creators/search/search_action_creators';
-import loadData from './search_results_data_fetch';
 
+import loadData from './search_results_data_fetch';
 import Footer from './../../../components/footer/footer';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Search extends Component {
+  static loadData(nextState, dispatch, state) {
+    return loadData(nextState, dispatch, state);
+  }
+
   componentWillMount() {
     if (
       !get(this.props, 'state.config.initialPageLoad') ||
       !this.props.isLoading
     ) {
-      this.props.loadData(this.props.match, this.props.state);
-    } else {
-      // TODO: warm cache for PWA, don't trigger render
+      loadData(this.props.match, this.props.dispatch, this.props.state);
     }
+    /*
+     // TODO: warm cache for PWA, don't trigger render
+     if(get(this.props, 'state.config.initialPageLoad')) {
+       const CACHE_WARM = true;
+       loadData(
+         this.props.match,
+         this.props.dispatch,
+         this.props.state,
+         CACHE_WARM
+       );
+     }
+    */
   }
 
   /*
@@ -72,8 +84,8 @@ class Search extends Component {
 
 Search.propTypes = {
   match: PropTypes.shape({}).isRequired,
-  loadData: PropTypes.func.isRequired,
   state: PropTypes.shape({}).isRequired,
+  dispatch: PropTypes.func.isRequired,
   isLoading: PropTypes.bool, // eslint-disable-line react/require-default-props
   error: PropTypes.bool, // eslint-disable-line react/require-default-props
   errorMessage: PropTypes.string, // eslint-disable-line react/require-default-props
@@ -93,13 +105,4 @@ const mapStateToProps = (state = {}) => ({
   state
 });
 
-const mapDispatchToProps = dispatch => ({
-  flushSearch() {
-    dispatch(flushSearch());
-  },
-  loadData(match, state) {
-    loadData(match, dispatch, state);
-  }
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
+export default withRouter(connect(mapStateToProps)(Search));
