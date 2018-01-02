@@ -20,7 +20,7 @@ class Config extends Component {
       clonedState.config.initialQueryParams,
       { isJSON: true }
     );
-    const state = initialPageLoad ? JSON.stringify(clonedState) : '';
+    const state = initialPageLoad ? serialize(clonedState) : '';
 
     /* eslint-disable react/no-danger */
     return (
