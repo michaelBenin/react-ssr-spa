@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ShakePlugin = require('webpack-common-shake').Plugin;
 const ManifestPlugin = require('webpack-manifest-plugin');
+const WebpackChunkHash = require('webpack-chunk-hash');
 
 module.exports = {
   devtool: 'source-map',
@@ -60,6 +61,7 @@ module.exports = {
       },
       filename: 'vendor.[hash].js'
     }),
+    new WebpackChunkHash({ algorithm: 'md5' }),
     new ShakePlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.LoaderOptionsPlugin({

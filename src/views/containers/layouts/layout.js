@@ -110,7 +110,7 @@ class Layout extends Component {
     return this.props.chunks.map(chunk => (
       <script
         key={chunk}
-        src={`${this.props.staticVendorUrl}/${this.props.manifestJSON[chunk]}`}
+        src={`${this.props.staticBundleUrl}/${this.props.manifestJSON[chunk]}`}
         defer
       />
     ));
